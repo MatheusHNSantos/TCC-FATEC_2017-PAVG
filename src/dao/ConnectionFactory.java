@@ -16,6 +16,7 @@ public abstract class ConnectionFactory{
     private String banco;
     private String host;
     private String porta;
+    private String extras;
     private final String dns;
     
     ConnectionFactory() {
@@ -26,13 +27,10 @@ public abstract class ConnectionFactory{
         this.banco = "BancoTeste";
         this.host = "localhost";
         this.porta = "3306";
-        this.dns = "jdbc:" + this.driver + "://" + this.host + ":" + this.porta +"/" + banco;
+        this.extras = "?autoReconnect=true&useSSL=false";
+        this.dns = "jdbc:" + this.driver + "://" + this.host + ":" + this.porta +"/" + this.banco + this.extras;
     }
-    
-    public void debug(){
-        System.out.println(this.dns);
-    }
-    
+      
     public Connection getConnection() throws SQLException{
         if (this.conn == null) {
             this.conn = DriverManager.getConnection(this.dns, this.login, this.senha);
