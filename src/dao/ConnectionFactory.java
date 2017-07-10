@@ -35,10 +35,7 @@ public abstract class ConnectionFactory{
         if (this.conn == null) {
             this.conn = DriverManager.getConnection(this.dns, this.login, this.senha);
         }
-        else {
-            return this.conn;
-        }
-        
-        return null;
+
+        return this.conn;
     }
 }
