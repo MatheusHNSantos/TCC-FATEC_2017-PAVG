@@ -33,7 +33,7 @@ public abstract class ConnectionFactory{
         System.out.println(this.dns);
     }
     
-    public Connection getConnection() throws SQLException, ClassNotFoundException{
+    public Connection getConnection() throws SQLException{
         if (this.conn == null) {
             this.conn = DriverManager.getConnection(this.dns, this.login, this.senha);
         }
