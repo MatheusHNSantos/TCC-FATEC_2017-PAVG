@@ -10,5 +10,4 @@ package model;
  * @author felipemantoan
  */
 public interface Entity {
-    public boolean save();
 }
