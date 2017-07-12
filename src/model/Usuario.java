@@ -51,6 +51,10 @@ public class Usuario implements Entity{
         this.senha = senha;
     }
     
+    public boolean doLogin() {
+        return false;
+    }
+    
     @Override
     public boolean save() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
