@@ -35,7 +35,7 @@ public class LoginController extends Application{
             Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("view/Login.fxml"));
 
             stage.setTitle("FXML Welcome");
-            stage.setScene(new Scene(root, 300, 275));
+            stage.setScene(new Scene(root));
             stage.show();
             
         }
