@@ -7,7 +7,13 @@ package controller;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+import static javafx.application.Application.launch;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.PasswordField;
+import javafx.scene.control.TextField;
 
 /**
  * FXML Controller class
@@ -16,6 +22,13 @@ import javafx.fxml.Initializable;
  */
 public class LoginController implements Initializable {
 
+    Button btn_entrar;
+    Button btn_sair;
+    TextField txt_login;
+    PasswordField txt_senha;
+    Label lbl_login;
+    Label lbl_senha;
+    
     /**
      * Initializes the controller class.
      */
@@ -24,4 +37,11 @@ public class LoginController implements Initializable {
         // TODO
     }    
     
+    
+        /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+        launch(args);
+    }
 }
