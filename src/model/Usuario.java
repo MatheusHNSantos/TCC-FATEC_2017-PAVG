@@ -9,7 +9,7 @@ package model;
  *
  * @author felipemantoan
  */
-public class Usuario implements Entity{
+public class Usuario{
     
     private int id;
     private String login;

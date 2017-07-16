@@ -5,7 +5,6 @@
  */
 package dao;
 
-import model.Entity;
 import java.util.ArrayList;
 
 /**
@@ -14,9 +13,23 @@ import java.util.ArrayList;
  */
 abstract class CRUD {
     
-    public abstract boolean create();
-    public abstract boolean read(int id);
-    public abstract ArrayList readAll();
-    public abstract boolean update(Entity entity, int id);
-    public abstract boolean delete();
+    public boolean create() {
+     return false;   
+    }
+    
+    public boolean read() {
+        return false;
+    }
+    
+    public ArrayList readAll() {
+        return new ArrayList();
+    }
+    
+    public boolean update() {
+        return false;
+    }
+    
+    public boolean delete() {
+        return false;
+    }
 }
