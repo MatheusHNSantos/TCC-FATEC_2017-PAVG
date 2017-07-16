@@ -9,10 +9,17 @@ CREATE TABLE IF NOT EXISTS pessoa(
 );
 
 CREATE TABLE IF NOT EXISTS pessoa_fisica(
-	rg varchar(8) not null,
+	rg varchar(10) not null,
     cpf varchar(11) not null,
     id_pessoa int not null,
     CONSTRAINT UNK_CPF_PESSOA_FISICA UNIQUE KEY (cpf),
     CONSTRAINT UNK_RG_PESSOA_FISICA UNIQUE KEY (rg),
     CONSTRAINT FRK_ID_PESSOA_FISICA FOREIGN KEY (id_pessoa) REFERENCES pessoa(id_pessoa)
+);
+
+CREATE TABLE IF NOT EXISTS pessoa_juridica(
+	cnpj varchar(14) not null,
+    id_pessoa int not null,
+    CONSTRAINT UNK_CNPJ_PESSOA_JURIDICA UNIQUE KEY (cnpj),
+    CONSTRAINT FRK_ID_PESSOA_JURIDICA FOREIGN KEY (id_pessoa) REFERENCES pessoa(id_pessoa)
 );
