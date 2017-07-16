@@ -29,3 +29,15 @@ CREATE TABLE IF NOT EXISTS funcionario(
     id_pessoa int not null,
     CONSTRAINT FRK_ID_FUNCIONARIO FOREIGN KEY (id_pessoa) REFERENCES pessoa(id_pessoa)
 );
+
+CREATE TABLE IF NOT EXISTS usuario(
+	login varchar(255) not null,
+    senha varchar(255) not null,
+    id_funcionario int not null,
+    CONSTRAINT UNK_LOGIN_USUARIO UNIQUE KEY (login),
+    CONSTRAINT FRK_ID_USUARIO FOREIGN KEY (id_funcionario) REFERENCES funcionario(id_pessoa)
+);
+
+INSERT INTO pessoa (nome_pessoa, telefone_pessoa) VALUES ('Administrador', '199XXXXYYYY');
+INSERT INTO funcionario VALUES('Gerente', 1);
+INSERT INTO usuario VALUES ('admin', MD5('admin'), 1);
