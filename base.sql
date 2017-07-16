@@ -1,4 +1,4 @@
-CREATE DATABASE banco_testes;
+CREATE DATABASE IF NOT EXISTS banco_testes;
 USE banco_testes;
 
 CREATE TABLE IF NOT EXISTS pessoa(
@@ -22,4 +22,10 @@ CREATE TABLE IF NOT EXISTS pessoa_juridica(
     id_pessoa int not null,
     CONSTRAINT UNK_CNPJ_PESSOA_JURIDICA UNIQUE KEY (cnpj),
     CONSTRAINT FRK_ID_PESSOA_JURIDICA FOREIGN KEY (id_pessoa) REFERENCES pessoa(id_pessoa)
+);
+
+CREATE TABLE IF NOT EXISTS funcionario(
+	cargo varchar(255) not null,
+    id_pessoa int not null,
+    CONSTRAINT FRK_ID_FUNCIONARIO FOREIGN KEY (id_pessoa) REFERENCES pessoa(id_pessoa)
 );
