@@ -9,9 +9,8 @@ package model;
  *
  * @author felipemantoan
  */
-public class Usuario{
+public class Usuario extends Funcionario{
     
-    private int id;
     private String login;
     private String senha;
 
