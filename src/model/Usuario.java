@@ -46,11 +46,7 @@ public class Usuario extends Funcionario{
         if (senha.equals("")) {
             throw new Exception("A senha não pode ser nula!");
         }
-        
+              
         this.senha = senha;
-    }
-    
-    public boolean doLogin() {
-        return false;
     }
 }
