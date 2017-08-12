@@ -1,5 +1,7 @@
-# TCC
+# Trabalho de Conclusão de Curso
 
-Nunca commit em master
+Faculdade de Tecnologia do Estado de São Paulo - Mogi Mirim
 
-Use somente a sua branch
+Curso: Análise e Desenvolvimento de Sistemas
+
+Ano: 2017
