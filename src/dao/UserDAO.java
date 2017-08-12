@@ -5,7 +5,8 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
-import model.Usuario;
+import model.ModelInterface;
+import model.User;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -17,38 +18,34 @@ import model.Usuario;
  *
  * @author felipemantoan
  */
-public class UsuarioDAO extends CRUD{
-
-    public boolean create(Usuario $usuario) {
+public class UserDAO implements CRUDInterface{
+   
+    public boolean doLogin(User usuario) {
         return false;
     }
 
-    public boolean read(int id) {
+    @Override
+    public boolean create(ModelInterface model) {
         return false;
     }
 
-    public boolean update() {
+    @Override
+    public boolean read(ModelInterface model) {
         return false;
     }
 
-    public boolean delete() {
-        return false;
-    }
-
-    public ArrayList readAll() {
+    @Override
+    public ArrayList readAll(ModelInterface model) {
         return new ArrayList();
     }
-    
-    public boolean doLogin(Usuario usuario) {
-        
-        try {
-            Connection c = super.getConnection();
 
-        }
-        catch(SQLException ex) {
-            System.out.println(ex.getMessage());
-        }
-        
+    @Override
+    public boolean update(ModelInterface model) {
+        return false;
+    }
+
+    @Override
+    public boolean delete(ModelInterface model) {
         return false;
     }
 }
