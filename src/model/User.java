@@ -9,18 +9,18 @@ package model;
  *
  * @author felipemantoan
  */
-public class Usuario extends Funcionario{
+public class User extends Employee implements ModelInterface{
     
     private String login;
     private String senha;
 
-    Usuario() {
+    User() {
         this.id = -1;
         this.login = "";
         this.senha = "";
     }
     
-    Usuario(String login, String senha) {
+    User(String login, String senha) {
         this.login = login;
         this.senha = senha;
     }

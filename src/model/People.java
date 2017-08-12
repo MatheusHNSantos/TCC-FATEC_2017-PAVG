@@ -9,7 +9,7 @@ package model;
  *
  * @author felipemantoan
  */
-public abstract class Pessoa {
+public abstract class People {
     
     protected int id;
     protected String nome;

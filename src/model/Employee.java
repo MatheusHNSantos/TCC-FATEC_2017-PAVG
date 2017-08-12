@@ -9,7 +9,7 @@ package model;
  *
  * @author felipemantoan
  */
-public class Funcionario extends Pessoa{
+public class Employee extends People implements ModelInterface{
     protected String cargo;
 
     public String getCargo() {

@@ -9,6 +9,6 @@ package model;
  *
  * @author felipemantoan
  */
-public class Fornecedor extends Pessoa{
+public class Supplier extends People implements ModelInterface{
     
 }
