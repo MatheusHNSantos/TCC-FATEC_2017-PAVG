@@ -19,7 +19,7 @@ public abstract class ConnectionFactory{
     private final String extras;
     private final String dns;
     
-    ConnectionFactory() {
+    public ConnectionFactory() {
         
         /** @driver
          * Atributo referente ao SGBD que no caso é o MySQL/MariaDB

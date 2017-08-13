@@ -14,13 +14,38 @@ import model.ModelInterface;
  */
 public interface CRUDInterface {
     
+    /**
+     * 
+     * @param model
+     * @return 
+     */
     public boolean create(ModelInterface model);
     
+    /**
+     * 
+     * @param model
+     * @return 
+     */
     public boolean read(ModelInterface model);
     
+    /**
+     * 
+     * @param model
+     * @return 
+     */
     public ArrayList readAll(ModelInterface model);
     
+    /**
+     * 
+     * @param model
+     * @return 
+     */
     public boolean update(ModelInterface model);
     
+    /**
+     * 
+     * @param model
+     * @return 
+     */
     public boolean delete(ModelInterface model);
 }
