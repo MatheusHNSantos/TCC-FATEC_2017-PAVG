@@ -10,13 +10,13 @@ package model;
  * @author felipemantoan
  */
 public class Employee extends People implements ModelInterface{
-    protected String cargo;
+    protected String role;
 
-    public String getCargo() {
-        return cargo;
+    public String getRole() {
+        return role;
     }
 
-    public void setCargo(String cargo) {
-        this.cargo = cargo;
+    public void setRole(String role) {
+        this.role = role;
     }
 }

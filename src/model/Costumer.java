@@ -30,11 +30,11 @@ public class Costumer extends People implements ModelInterface{
         this.RG = RG;
     }
     
-    public boolean validarCPF() {
+    public boolean validateCPF() {
         return false;
     }
     
-    public boolean validarRG() {
+    public boolean validateRG() {
         return false;
     }
 }

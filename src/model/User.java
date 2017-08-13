@@ -12,17 +12,17 @@ package model;
 public class User extends Employee implements ModelInterface{
     
     private String login;
-    private String senha;
+    private String password;
 
     User() {
         this.id = -1;
         this.login = "";
-        this.senha = "";
+        this.password = "";
     }
     
-    User(String login, String senha) {
+    User(String login, String password) {
         this.login = login;
-        this.senha = senha;
+        this.password = password;
     }
     
     public String getLogin() {
@@ -37,16 +37,16 @@ public class User extends Employee implements ModelInterface{
         this.login = login;
     }
 
-    public String getSenha() {
-        return senha;
+    public String getPassword() {
+        return password;
     }
 
-    public void setSenha(String senha) throws Exception {
+    public void setPassword(String password) throws Exception {
         
-        if (senha.equals("")) {
+        if (password.equals("")) {
             throw new Exception("A senha não pode ser nula!");
         }
               
-        this.senha = senha;
+        this.password = password;
     }
 }

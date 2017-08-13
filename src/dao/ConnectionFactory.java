@@ -12,10 +12,10 @@ public abstract class ConnectionFactory{
     private Connection conn;
     private final String driver;
     private final String login;
-    private final String senha;
-    private final String banco;
+    private final String pass;
+    private final String database;
     private final String host;
-    private final String porta;
+    private final String port;
     private final String extras;
     private final String dns;
     
@@ -33,16 +33,16 @@ public abstract class ConnectionFactory{
         this.login = "root";
         
         /**
-         * @senha
+         * @pass
          * Normalmente é o nome do usuário que acessa o BD
          */
-        this.senha = "root";
+        this.pass = "root";
         
         /**
-         * @banco
+         * @database
          * Deve ser o nome do banco de dados
          */
-        this.banco = "BancoTeste";
+        this.database = "BancoTeste";
         
         /**
          * @host
@@ -52,10 +52,10 @@ public abstract class ConnectionFactory{
         this.host = "localhost";
         
         /**
-         * @porta
+         * @port
          * Por padrão a maioria dos SGBDs fornecem uma porta de acesso
          */
-        this.porta = "3306";
+        this.port = "3306";
         
         /**
          * @extras
@@ -68,7 +68,7 @@ public abstract class ConnectionFactory{
          * @dns
          * É o dominio que a aplicação deve acessar para operar o BD
          */
-        this.dns = "jdbc:" + this.driver + "://" + this.host + ":" + this.porta +"/" + this.banco + this.extras;
+        this.dns = "jdbc:" + this.driver + "://" + this.host + ":" + this.port +"/" + this.database + this.extras;
     }
     
     /**
@@ -78,7 +78,7 @@ public abstract class ConnectionFactory{
      */
     public Connection getConnection() throws SQLException{
         if (this.conn == null) {
-            this.conn = DriverManager.getConnection(this.dns, this.login, this.senha);
+            this.conn = DriverManager.getConnection(this.dns, this.login, this.pass);
         }
 
         return this.conn;

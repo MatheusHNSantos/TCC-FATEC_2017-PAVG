@@ -12,8 +12,8 @@ package model;
 public abstract class People {
     
     protected int id;
-    protected String nome;
-    protected String telefone;
+    protected String name;
+    protected String phone;
     
     public int getId() {
         return id;
@@ -23,19 +23,19 @@ public abstract class People {
         this.id = id;
     }
 
-    public String getNome() {
-        return nome;
+    public String getName() {
+        return name;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public String getTelefone() {
-        return telefone;
+    public String getPhone() {
+        return phone;
     }
 
-    public void setTelefone(String telefone) {
-        this.telefone = telefone;
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 }
