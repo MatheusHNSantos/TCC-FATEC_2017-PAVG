@@ -5,6 +5,8 @@
  */
 package model;
 
+import exception.UserException;
+
 /**
  *
  * @author felipemantoan
@@ -29,9 +31,9 @@ public class User extends Employee implements ModelInterface{
         return login;
     }
 
-    public void setLogin(String login) throws Exception {
+    public void setLogin(String login) throws UserException {
         if (login.equals("")) {
-            throw new Exception("O login não pode ser nulo!");
+            throw new UserException("O login não pode ser nulo!");
         }
         
         this.login = login;
@@ -41,10 +43,10 @@ public class User extends Employee implements ModelInterface{
         return password;
     }
 
-    public void setPassword(String password) throws Exception {
+    public void setPassword(String password) throws UserException {
         
         if (password.equals("")) {
-            throw new Exception("A senha não pode ser nula!");
+            throw new UserException("A senha não pode ser nula!");
         }
               
         this.password = password;
