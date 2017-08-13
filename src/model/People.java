@@ -9,7 +9,7 @@ package model;
  *
  * @author felipemantoan
  */
-public abstract class People {
+public abstract class People implements ModelInterface{
     
     protected int id;
     protected String name;

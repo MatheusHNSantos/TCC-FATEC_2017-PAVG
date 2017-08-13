@@ -9,6 +9,6 @@ package model;
  *
  * @author felipemantoan
  */
-public class TypeProduct {
+public class TypeProduct implements ModelInterface{
     
 }

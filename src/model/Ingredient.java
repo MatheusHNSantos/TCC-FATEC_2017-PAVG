@@ -9,6 +9,6 @@ package model;
  *
  * @author felipemantoan
  */
-public class Ingredient {
+public class Ingredient implements ModelInterface{
     
 }
