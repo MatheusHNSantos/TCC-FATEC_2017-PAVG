@@ -18,15 +18,16 @@ import model.User;
  *
  * @author felipemantoan
  */
-public class UserDAO implements CRUDInterface{
+public class UserDAO extends PeopleDAO implements CRUDInterface{
    
-    public boolean doLogin(User usuario) {
+    public boolean doLogin(User user) {
         return false;
     }
 
     @Override
     public boolean create(ModelInterface model) {
-        return false;
+       String people = "";
+       return false;
     }
 
     @Override
