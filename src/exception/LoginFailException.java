@@ -9,6 +9,10 @@ package exception;
  *
  * @author felipemantoan
  */
-public class LoginFailException {
+public class LoginFailException extends Exception{
+    
+    LoginFailException(String message) {
+        super(message);
+    }
     
 }
