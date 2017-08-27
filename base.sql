@@ -41,7 +41,6 @@ CREATE TABLE IF NOT EXISTS user(
 CREATE TABLE IF NOT EXISTS product_type(
 	id_product_type int not null auto_increment,
     name_product_type varchar(255) not null,
-	weight float not null,
     CONSTRAINT PRK_ID_PRODUCT_TYPE PRIMARY KEY (id_product_type)
 );
 
@@ -59,6 +58,7 @@ CREATE TABLE IF NOT EXISTS product(
     weight_product float not null,
     status_product char(1) not null,
 	id_product_type int not null,
+    CONSTRAINT PRK_ID_PRODUCT PRIMARY KEY (id_product),
 	CONSTRAINT FRK_PRODUCT_TYPE FOREIGN KEY (id_product_type) REFERENCES product_type(id_product_type)
 );
 
@@ -66,13 +66,14 @@ CREATE TABLE IF NOT EXISTS product_ingredient(
 	id_product_ingredient int not null,
     id_product int not null,
 	id_ingredient int not null,
+    CONSTRAINT PRK_ID_PRODUCT_INGREDIENT PRIMARY KEY (id_product_ingredient),
 	CONSTRAINT FRK_INGREDIENT FOREIGN KEY (id_ingredient) REFERENCES ingredient(id_ingredient),
     CONSTRAINT FRK_PRODUCT FOREIGN KEY (id_product) REFERENCES product(id_product)
 );
 
-CREATE TABLE IF NOT EXISTS order_(
+/* CREATE TABLE IF NOT EXISTS order_(
 	id_product_ingredient int not null
-);
+); */
 
 INSERT INTO people (name_people, cellphone_people) VALUES ('Administrador', '199XXXXYYYY');
 INSERT INTO employee VALUES('Gerente', 1);
