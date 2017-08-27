@@ -19,6 +19,8 @@ import model.User;
  * @author felipemantoan
  */
 public class UserDAO extends PeopleDAO implements CRUDInterface{
+    
+    private ConnectionFactory factory;
    
     public boolean doLogin(User user) {
         return false;
