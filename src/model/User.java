@@ -15,13 +15,7 @@ public class User extends Employee implements ModelInterface{
     
     private String login;
     private String password;
-
-    User() {
-        this.id = -1;
-        this.login = "";
-        this.password = "";
-    }
-    
+   
     User(String login, String password) {
         this.login = login;
         this.password = password;
@@ -32,7 +26,7 @@ public class User extends Employee implements ModelInterface{
     }
 
     public void setLogin(String login) throws UserException {
-        if (login.equals("")) {
+        if (login.isEmpty()) {
             throw new UserException("O login não pode ser nulo!");
         }
         
@@ -45,7 +39,7 @@ public class User extends Employee implements ModelInterface{
 
     public void setPassword(String password) throws UserException {
         
-        if (password.equals("")) {
+        if (password.isEmpty()) {
             throw new UserException("A senha não pode ser nula!");
         }
               
