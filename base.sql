@@ -1,10 +1,10 @@
-CREATE DATABASE IF NOT EXISTS banco_testes;
-USE banco_testes;
+CREATE DATABASE IF NOT EXISTS apetitoso;
+USE apetitoso;
 
 CREATE TABLE IF NOT EXISTS people(
 	id_people int not null auto_increment,
     name_people varchar(255) not null,
-    phone_people varchar(11) not null,
+    cellphone_people varchar(11) not null,
     CONSTRAINT PRK_ID_PEOPLE PRIMARY KEY (id_people) 
 );
 
@@ -38,6 +38,42 @@ CREATE TABLE IF NOT EXISTS user(
     CONSTRAINT FRK_ID_USER FOREIGN KEY (id_employee) REFERENCES employee(id_people)
 );
 
-INSERT INTO people (name_people, phone_people) VALUES ('Administrador', '199XXXXYYYY');
+CREATE TABLE IF NOT EXISTS product_type(
+	id_product_type int not null auto_increment,
+    name_product_type varchar(255) not null,
+	weight float not null,
+    CONSTRAINT PRK_ID_PRODUCT_TYPE PRIMARY KEY (id_product_type)
+);
+
+CREATE TABLE IF NOT EXISTS ingredient(
+	id_ingredient int not null,
+    name_ingredient varchar(255) not null,
+    status_ingredient char(1) not null,
+	CONSTRAINT PRK_ID_INGREDIENT PRIMARY KEY (id_ingredient)
+);
+
+CREATE TABLE IF NOT EXISTS product(
+	id_product int not null auto_increment,
+    name_product varchar(255) not null,
+    final_price_product decimal(15,2) not null,
+    weight_product float not null,
+    status_product char(1) not null,
+	id_product_type int not null,
+	CONSTRAINT FRK_PRODUCT_TYPE FOREIGN KEY (id_product_type) REFERENCES product_type(id_product_type)
+);
+
+CREATE TABLE IF NOT EXISTS product_ingredient(
+	id_product_ingredient int not null,
+    id_product int not null,
+	id_ingredient int not null,
+	CONSTRAINT FRK_INGREDIENT FOREIGN KEY (id_ingredient) REFERENCES ingredient(id_ingredient),
+    CONSTRAINT FRK_PRODUCT FOREIGN KEY (id_product) REFERENCES product(id_product)
+);
+
+CREATE TABLE IF NOT EXISTS order_(
+	id_product_ingredient int not null
+);
+
+INSERT INTO people (name_people, cellphone_people) VALUES ('Administrador', '199XXXXYYYY');
 INSERT INTO employee VALUES('Gerente', 1);
 INSERT INTO user VALUES ('admin', MD5('admin'), 1);
