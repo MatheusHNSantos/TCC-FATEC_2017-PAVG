@@ -4,15 +4,22 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane id="AnchorPane" fx:id="frm_login" minHeight="400.0" minWidth="600.0" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.LoginController">
+<AnchorPane id="AnchorPane" fx:id="frm_login" minHeight="400.0" minWidth="300.0" prefHeight="374.0" prefWidth="280.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.LoginController">
    <children>
-      <Button fx:id="btn_entrar" layoutX="390.0" layoutY="321.0" mnemonicParsing="false" text="Entrar" />
-      <Button fx:id="btn_sair" layoutX="165.0" layoutY="321.0" mnemonicParsing="false" text="Sair" />
-      <TextField fx:id="txt_login" layoutX="278.0" layoutY="105.0" />
-      <Label fx:id="lbl_login" layoutX="167.0" layoutY="110.0" text="Login:" />
-      <Label fx:id="lbl_senha" layoutX="167.0" layoutY="205.0" text="Senha:" />
-      <PasswordField fx:id="txt_senha" layoutX="278.0" layoutY="200.0" />
+      <Button fx:id="btn_entrar" alignment="CENTER" layoutX="177.0" layoutY="336.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="107.0" text="Entrar" />
+      <Button fx:id="btn_sair" alignment="CENTER" layoutX="62.0" layoutY="336.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="107.0" text="Sair" />
+      <TextField fx:id="txt_login" alignment="CENTER" layoutX="61.0" layoutY="264.0" prefHeight="30.0" prefWidth="224.0" />
+      <Label fx:id="lbl_login" alignment="CENTER" layoutX="15.0" layoutY="264.0" prefHeight="30.0" text="Login:" />
+      <Label fx:id="lbl_senha" alignment="CENTER" layoutX="15.0" layoutY="300.0" prefHeight="30.0" text="Senha:" />
+      <PasswordField fx:id="txt_senha" alignment="CENTER" layoutX="61.0" layoutY="300.0" prefHeight="30.0" prefWidth="224.0" />
+      <Label fx:id="lblWarning" layoutX="20.0" layoutY="372.0" text="Warning..." />
+      <ImageView fitHeight="240.0" fitWidth="286.0" layoutX="37.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@assets/imgs/Apetitoso.png" />
+         </image></ImageView>
    </children>
 </AnchorPane>
