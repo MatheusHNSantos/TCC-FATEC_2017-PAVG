@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
-<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
@@ -9,18 +8,18 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane id="AnchorPane" fx:id="frm_login" minHeight="400.0" minWidth="300.0" prefHeight="374.0" prefWidth="280.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.LoginController">
+<AnchorPane id="AnchorPane" fx:id="frm_login" minHeight="400.0" minWidth="300.0" prefHeight="412.0" prefWidth="300.0" stylesheets="@loginStyle.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.login.LoginController">
    <children>
-      <Button fx:id="btn_sair" alignment="CENTER" layoutX="62.0" layoutY="336.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="107.0" text="Sair" />
       <TextField fx:id="txt_login" alignment="CENTER" layoutX="61.0" layoutY="264.0" prefHeight="30.0" prefWidth="224.0" />
       <Label fx:id="lbl_login" alignment="CENTER" layoutX="15.0" layoutY="264.0" prefHeight="30.0" text="Login:" />
       <Label fx:id="lbl_senha" alignment="CENTER" layoutX="15.0" layoutY="300.0" prefHeight="30.0" text="Senha:" />
-      <PasswordField fx:id="txt_senha" alignment="CENTER" layoutX="61.0" layoutY="300.0" prefHeight="30.0" prefWidth="224.0" />
-      <Label fx:id="lblWarning" layoutX="20.0" layoutY="372.0" text="Warning..." />
+      <PasswordField fx:id="txt_senha" alignment="CENTER" layoutX="61.0" layoutY="300.0" onKeyReleased="#handlerPasswordEnterPressed" prefHeight="30.0" prefWidth="224.0" />
+      <Label fx:id="lblWarning" layoutX="16.0" layoutY="384.0" text="Warning..." />
       <ImageView fitHeight="227.0" fitWidth="192.0" layoutX="58.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="view/assets/imgs/Apetitoso.png" />
          </image></ImageView>
-      <JFXButton fx:id="btn_entrar" layoutX="173.0" layoutY="339.0" onMouseClicked="#handlerButtonAction" prefHeight="25.0" prefWidth="107.0" text="Entrar" />
+      <JFXButton fx:id="btn_entrar" layoutX="173.0" layoutY="339.0" onMouseClicked="#handlerButtonActionEntrar" prefHeight="25.0" prefWidth="107.0" text="Entrar" />
+      <JFXButton fx:id="btn_sair" layoutX="61.0" layoutY="339.0" onMouseClicked="#handlerButtonActionSair" prefHeight="25.0" prefWidth="107.0" text="Sair" />
    </children>
 </AnchorPane>
