@@ -3,11 +3,9 @@ package controller.login;
 import com.jfoenix.controls.JFXButton;
 import java.net.URL;
 import java.util.ResourceBundle;
-import javafx.application.Application;
 import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -21,13 +19,14 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import controller.controller.Controller;
 
 /**
  * FXML Controller class
  *
  * @author LucasFsc
  */
-public class LoginController extends Application implements Initializable, controller.controller.Controller {
+public class LoginController extends Controller {
 
     //<editor-fold defaultstate="collapsed" desc="Variables"> 
     private Thread one;
@@ -52,6 +51,7 @@ public class LoginController extends Application implements Initializable, contr
     @Override
     public void start(Stage stage) {
         try {
+            
             Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("controller/login/Login.fxml"));
             stage.setTitle("Login");
             stage.initStyle(StageStyle.UNDECORATED);
@@ -76,7 +76,6 @@ public class LoginController extends Application implements Initializable, contr
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         lblWarning.setText("");
-
         //Thread to wait css animation
         one = new Thread() {
             public void run() {

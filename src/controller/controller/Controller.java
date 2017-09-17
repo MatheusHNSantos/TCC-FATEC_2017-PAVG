@@ -5,6 +5,8 @@
  */
 package controller.controller;
 
+import javafx.application.Application;
+import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.stage.Stage;
 
@@ -13,13 +15,13 @@ import javafx.stage.Stage;
  *
  * @author SAMSUNG
  */
-public interface Controller {
+public abstract class Controller extends Application implements Initializable{
     
-    public void controllerUndecored(Parent root, Stage stage);
+    public abstract void controllerUndecored(Parent root, Stage stage);
     
-    public void controllerDecored(Parent root, Stage stage);
-}
-
-class controllerFask{
+    public abstract void controllerDecored(Parent root, Stage stage);
     
+    protected void instanceFXML(String path) {
+    
+    }
 }
