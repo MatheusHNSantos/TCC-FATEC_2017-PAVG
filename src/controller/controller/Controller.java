@@ -6,6 +6,7 @@
 package controller.controller;
 
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.stage.Stage;
@@ -17,11 +18,13 @@ import javafx.stage.Stage;
  */
 public abstract class Controller extends Application implements Initializable{
     
+    protected Stage window;
+    
     public abstract void controllerUndecored(Parent root, Stage stage);
     
     public abstract void controllerDecored(Parent root, Stage stage);
     
-    protected void instanceFXML(String path) {
-    
+    public void closeApplication() {
+        Platform.exit();
     }
 }
