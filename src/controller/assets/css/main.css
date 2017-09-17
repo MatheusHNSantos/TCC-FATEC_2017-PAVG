@@ -37,13 +37,13 @@
     -fx-text-fill: #ffffff;
 }
 
-.text-field {
+ .text-field {
     -fx-border-radius: 1px;
     -fx-background-radius: 1px;
     -fx-font-size: 13px;
     -fx-font-family: "Arial";
 }
-
+ 
 #AnchorPane {
     -fx-background-color: snow;
     -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);

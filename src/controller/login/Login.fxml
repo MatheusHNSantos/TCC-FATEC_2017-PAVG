@@ -17,7 +17,7 @@
       <Label fx:id="lblWarning" layoutX="16.0" layoutY="384.0" text="Warning..." />
       <ImageView fitHeight="227.0" fitWidth="192.0" layoutX="58.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="view/assets/imgs/Apetitoso.png" />
+            <Image url="@../assets/imgs/Apetitoso.png" />
          </image>
         </ImageView>
       <JFXButton fx:id="btn_entrar" styleClass="btn-success" layoutX="173.0" layoutY="339.0" onMouseClicked="#handlerButtonActionEntrar" prefHeight="25.0" prefWidth="107.0" text="Entrar" />
