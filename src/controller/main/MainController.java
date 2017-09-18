@@ -5,13 +5,22 @@
  */
 package controller.main;
 
+import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXCheckBox;
+import controller.controller.Controller;
+import controller.login.LoginController;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.application.Application;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
@@ -20,15 +29,19 @@ import javafx.stage.StageStyle;
  *
  * @author SAMSUNG
  */
-public class MainController extends Application {
-
+public class MainController implements Initializable{
+    
+    @FXML
+    JFXButton btnTest;
+    
     @Override
-    public void start(Stage primaryStage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("controller/main/main.fxml"));
-            primaryStage.setTitle("Login");
-            primaryStage.initStyle(StageStyle.DECORATED);
-            primaryStage.setScene(new Scene(root));
-            primaryStage.show();
+    public void initialize(URL location, ResourceBundle resources) {
+        btnTest.setOnMouseClicked(this::handlerClicked);
+    }
+    
+    
+    public void handlerClicked(MouseEvent event) {
+        System.exit(0);
     }
 
     

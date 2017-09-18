@@ -22,6 +22,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import controller.controller.Controller;
+import controller.main.MainController;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -96,6 +97,8 @@ public class LoginController implements Initializable{
                 } catch (IOException ex) {
                     Logger.getLogger(LoginController.class.getName()).log(Level.SEVERE, null, ex);
                 }
+            }else{
+                lblWarning.setText("Login ou Senha incorretos!");
             }
         }
         //</editor-fold>
@@ -132,10 +135,6 @@ public class LoginController implements Initializable{
         }
 
     }
-    //</editor-fold>
-    
-    //<editor-fold defaultstate="collapsed" desc="Controller methods">
-   
     //</editor-fold>
 
     public boolean checkLogin() {

@@ -6,6 +6,7 @@
 package controller.controller;
 
 import com.sun.javaws.Main;
+import controller.login.LoginController;
 import controller.main.MainController;
 import java.io.IOException;
 import java.net.URL;
@@ -37,8 +38,9 @@ import javafx.application.Application;
  */
 public class Controller extends Application {
 
-    public Stage createStageInstance(Stage stage, String path) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getClassLoader().getResource(path));
+    public static Stage createStageInstance(String path, Class<?> Class) throws IOException {
+        Parent root = FXMLLoader.load(Class.getClassLoader().getResource(path));
+        Stage stage = new Stage();
         stage.setScene(new Scene(root));
         return stage;
     }
@@ -51,8 +53,7 @@ public class Controller extends Application {
     @Override
     public void start(Stage PrimaryStage) {
         try {
-            this.createStageInstance(PrimaryStage, "controller/login/Login.fxml");
-            PrimaryStage.show();
+            load("login");
         }
         catch (Exception e) {
             System.out.println(e.getMessage());
@@ -68,23 +69,25 @@ public class Controller extends Application {
 
 
     public static String pathMain = "controller/main/main.fxml";
-
+    public static String pathLogin = "controller/login/login.fxml";
+    
     public static void load(String locate) throws IOException {
         
         switch (locate) {
             case "main":
                 loadCaller(pathMain, MainController.class, "main");
-                
+                break;
+            
+            case "login":
+                loadCaller(pathLogin, LoginController.class, "login");
                 break;
         }
     }
 
     public static void loadCaller(String path, Class<?> Class, String title) throws  IOException {
-        Parent root = FXMLLoader.load(Class.getClassLoader().getResource(path));
-        Stage stage = new Stage();
+        Stage stage = createStageInstance(path, Class);
         stage.initStyle(StageStyle.DECORATED);
         stage.setTitle(title);
-        stage.setScene(new Scene(root));
         stage.show();
     }
     
