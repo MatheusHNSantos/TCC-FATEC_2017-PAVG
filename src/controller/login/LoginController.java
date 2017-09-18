@@ -1,11 +1,13 @@
 package controller.login;
 
 import com.jfoenix.controls.JFXButton;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -31,7 +33,7 @@ import javafx.fxml.Initializable;
  *
  * @author LucasFsc
  */
-public class LoginController extends Application implements Initializable{
+public class LoginController implements Initializable{
 
     //<editor-fold defaultstate="collapsed" desc="Variables"> 
     private Thread one;
@@ -54,33 +56,9 @@ public class LoginController extends Application implements Initializable{
     // </editor-fold> 
 
     @Override
-    public void start(Stage stage) {
-        try {
-            
-            Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("controller/login/Login.fxml"));
-            stage.setTitle("Login");
-            stage.initStyle(StageStyle.DECORATED);
-            stage.setScene(new Scene(root));
-            stage.show();
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-        }
-    }
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
-        launch(LoginController.class, args);
-
-    }
-
-    /**
-     * Initilize data
-     */
-    @Override
     public void initialize(URL location, ResourceBundle resources) {
         lblWarning.setText("");
+
         //Thread to wait css animation
         one = new Thread() {
             public void run() {
