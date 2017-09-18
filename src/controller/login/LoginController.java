@@ -20,13 +20,18 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import controller.controller.Controller;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javafx.application.Application;
+import javafx.fxml.Initializable;
 
 /**
  * FXML Controller class
  *
  * @author LucasFsc
  */
-public class LoginController extends Controller {
+public class LoginController extends Application implements Initializable{
 
     //<editor-fold defaultstate="collapsed" desc="Variables"> 
     private Thread one;
@@ -54,7 +59,7 @@ public class LoginController extends Controller {
             
             Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("controller/login/Login.fxml"));
             stage.setTitle("Login");
-            stage.initStyle(StageStyle.UNDECORATED);
+            stage.initStyle(StageStyle.DECORATED);
             stage.setScene(new Scene(root));
             stage.show();
         } catch (Exception e) {
@@ -107,8 +112,12 @@ public class LoginController extends Controller {
         if (event.getCode() == KeyCode.ENTER) {
             if (checkLogin()) {
                 System.out.println("Open main");
-                openMain();
-                closeCurrentWindow(event);
+                try {
+                    openMain();
+                    Controller.closeApplication(event);
+                } catch (IOException ex) {
+                    Logger.getLogger(LoginController.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         }
         //</editor-fold>
@@ -121,8 +130,13 @@ public class LoginController extends Controller {
 
         if (checkLogin()) {
             lblWarning.setText("OK");
-            openMain();
-            closeCurrentWindow(event);
+            try {
+                openMain();
+                
+            } catch (IOException ex) {
+                Logger.getLogger(LoginController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            Controller.closeApplication(event);
         } else {
             //JOptionPane.showMessageDialog(null, "errou");
             lblWarning.setText("Login ou Senha incorretos!");
@@ -143,43 +157,8 @@ public class LoginController extends Controller {
     //</editor-fold>
     
     //<editor-fold defaultstate="collapsed" desc="Controller methods">
-    @Override
-    public void controllerDecored(Parent root, Stage stage) {
-        stage.initStyle(StageStyle.DECORATED);
-        stage.setTitle("Main");
-        stage.setScene(new Scene(root));
-        stage.show();
-
-    }
-    
-    @Override
-    public void controllerUndecored(Parent root, Stage stage) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+   
     //</editor-fold>
-
-    public void closeCurrentWindow(Event event) {
-        try {
-
-            //<editor-fold defaultstate="collapsed" desc="Close current window"> 
-            //Get current window and close
-            Stage stage = (Stage) ((Node) event.getTarget()).getScene().getWindow();
-            stage.close();
-            // </editor-fold> 
-
-        } catch (Exception ex) {
-            System.out.println(ex);
-        }
-    }
-
-    public void openMain() {
-        try {
-            Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("controller/main/main.fxml"));
-            controllerDecored(root, new Stage());
-        } catch (Exception e) {
-            System.out.println("tahas "+e);
-        }
-    }
 
     public boolean checkLogin() {
         if (txt_login.getText().equals("admin") && txt_senha.getText().equals("admin")) {
@@ -187,6 +166,10 @@ public class LoginController extends Controller {
         } else {
             return false;
         }
+    }
+
+    private void openMain() throws IOException {
+        Controller.load("main");
     }
     
     

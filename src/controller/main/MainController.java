@@ -20,27 +20,15 @@ import javafx.stage.StageStyle;
  *
  * @author SAMSUNG
  */
-public class MainController extends Application implements Initializable {
-
-    /**
-     * Initializes the controller class.
-     */
-    @Override
-    public void initialize(URL url, ResourceBundle rb) {
-        // TODO
-    }    
+public class MainController extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        try {
-            Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("controller/login/Login.fxml"));
-            primaryStage.setTitle("Main");
-            primaryStage.initStyle(StageStyle.UNDECORATED);
+        Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("controller/main/main.fxml"));
+            primaryStage.setTitle("Login");
+            primaryStage.initStyle(StageStyle.DECORATED);
             primaryStage.setScene(new Scene(root));
             primaryStage.show();
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-        }
     }
 
     
