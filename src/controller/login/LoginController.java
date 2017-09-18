@@ -1,10 +1,14 @@
 package controller.login;
 
 import com.jfoenix.controls.JFXButton;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -17,14 +21,13 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
-import controller.controller.Controller;
 
 /**
  * FXML Controller class
  *
  * @author LucasFsc
  */
-public class LoginController extends Controller {
+public class LoginController implements Initializable{
 
     //<editor-fold defaultstate="collapsed" desc="Variables"> 
     private Thread one;
@@ -47,35 +50,9 @@ public class LoginController extends Controller {
     // </editor-fold> 
 
     @Override
-    public void start(Stage stage) {
-        try {
-            this.window = stage;
-            Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("controller/login/Login.fxml"));
-
-            window.setTitle("Login");
-            window.initStyle(StageStyle.UNDECORATED);
-            window.setScene(new Scene(root));
-            window.setOnCloseRequest(e -> this.closeApplication());
-            window.show();
-            
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-        }
-    }
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
-        launch(LoginController.class, args);
-    }
-
-    /**
-     * Initilize data
-     */
-    @Override
     public void initialize(URL location, ResourceBundle resources) {
         lblWarning.setText("");
+
         //Thread to wait css animation
         one = new Thread() {
             public void run() {
@@ -87,11 +64,11 @@ public class LoginController extends Controller {
                 }
             }
         };
-        
+
         //<editor-fold defaultstate="collapsed" desc="Handlers"> 
         //create handler conversion methods (main actions - ignores fxml)
         txt_senha.setOnKeyReleased(this::handlerPasswordEnterPressed);
-        btn_sair.setOnMouseClicked(event -> this.closeApplication());
+        btn_sair.setOnMouseClicked(this::handlerButtonActionSair);
         btn_entrar.setOnMouseClicked(this::handlerButtonActionEntrar);
         //</editor-fold>
 
@@ -107,8 +84,8 @@ public class LoginController extends Controller {
         if (event.getCode() == KeyCode.ENTER) {
             if (checkLogin()) {
                 System.out.println("Open main");
-                openMain();
-                this.closeApplication();
+                //openMain();
+                closeCurrentWindow(event);
             }
         }
         //</editor-fold>
@@ -121,37 +98,38 @@ public class LoginController extends Controller {
 
         if (checkLogin()) {
             lblWarning.setText("OK");
-            openMain();
-            this.closeApplication();
+            //openMain();
+            //closeCurrentWindow(event);
         } else {
             //JOptionPane.showMessageDialog(null, "errou");
             lblWarning.setText("Login ou Senha incorretos!");
         }
     }
-    //</editor-fold>
-    
-    //<editor-fold defaultstate="collapsed" desc="Controller methods">
-    @Override
-    public void controllerDecored(Parent root, Stage stage) {
-        stage.initStyle(StageStyle.DECORATED);
-        stage.setTitle("Main");
-        stage.setScene(new Scene(root));
-        stage.show();
 
-    }
-    
-    @Override
-    public void controllerUndecored(Parent root, Stage stage) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-    //</editor-fold>
+    @FXML
+    private void handlerButtonActionSair(MouseEvent event) {
 
-    public void openMain() {
         try {
-            Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("controller/main/main.fxml"));
-            controllerDecored(root, new Stage());
+            one.start();
+
         } catch (Exception e) {
-            System.out.println("tahas "+e);
+            System.out.println("Error: " + e);
+        }
+
+    }
+    //</editor-fold>
+    
+    public void closeCurrentWindow(Event event) {
+        try {
+
+            //<editor-fold defaultstate="collapsed" desc="Close current window"> 
+            //Get current window and close
+            Stage stage = (Stage) ((Node) event.getTarget()).getScene().getWindow();
+            stage.close();
+            // </editor-fold> 
+
+        } catch (Exception ex) {
+            System.out.println(ex);
         }
     }
 
@@ -162,5 +140,4 @@ public class LoginController extends Controller {
             return false;
         }
     }
-
 }
