@@ -39,8 +39,15 @@ public class Controller {
                 break;
         }
     }
-    
-    
+
+    public static void loadCaller(String path, Class<?> Class, String title) throws  IOException {
+        Parent root = FXMLLoader.load(Class.getClassLoader().getResource(path));
+        Stage stage = new Stage();
+        stage.initStyle(StageStyle.DECORATED);
+        stage.setTitle(title);
+        stage.setScene(new Scene(root));
+        stage.show();
+    }
     
     public static void closeApplication(Event e) {
         Stage stage = (Stage) ((Node) e.getTarget()).getScene().getWindow();
@@ -56,16 +63,5 @@ public class Controller {
         Stage stage = (Stage) ((Node) e.getTarget()).getScene().getWindow();
         stage.show();
     }
-
-    public static void loadCaller(String path, Class<?> Class, String title) throws  IOException {
-        Parent root = FXMLLoader.load(Class.getClassLoader().getResource(path));
-        Stage stage = new Stage();
-        stage.initStyle(StageStyle.DECORATED);
-        stage.setTitle(title);
-        stage.setScene(new Scene(root));
-        stage.show();
-    }
-
-
 
 }
