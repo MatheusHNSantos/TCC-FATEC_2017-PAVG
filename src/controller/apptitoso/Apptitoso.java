@@ -6,8 +6,6 @@
 package controller.apptitoso;
 
 import controller.login.LoginController;
-import javafx.event.Event;
-import javafx.scene.Node;
 import javafx.stage.StageStyle;
 import static javafx.application.Application.launch;
 import javafx.application.Platform;
@@ -35,10 +33,10 @@ public class Apptitoso extends Application {
             stage.initStyle(StageStyle.DECORATED);
             stage.setTitle("Login");
             stage.show();
-            }
-            catch (Exception e) {
-                System.out.println(e.getMessage());
-            }
+        }
+        catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
     }
 
     /**

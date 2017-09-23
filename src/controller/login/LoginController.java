@@ -20,11 +20,13 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import controller.controller.Controller;
+import controller.dashboard.DashboardController;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.fxml.Initializable;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 /**
  * FXML Controller class
@@ -88,8 +90,8 @@ public class LoginController extends Controller implements Initializable{
         if (event.getCode() == KeyCode.ENTER) {
             if (checkLogin()) {
                 System.out.println("Open main");
-                //openMain();
-                Controller.closeApplication(event);
+                
+                LoginController.closeApplication(event);
             }else{
                 lblWarning.setText("Login ou Senha incorretos!");
             }
@@ -104,9 +106,19 @@ public class LoginController extends Controller implements Initializable{
 
         if (checkLogin()) {
             lblWarning.setText("OK");
-            //openMain();
-            System.out.println("teste");
-            Controller.closeApplication(event);
+            
+            DashboardController dash = new DashboardController();
+            Stage stage;
+            try {
+                stage = dash.createStageInstance();
+                stage.initStyle(StageStyle.DECORATED);
+                stage.setTitle("Dash");
+                stage.show();
+            } catch (IOException ex) {
+                Logger.getLogger(LoginController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+            LoginController.closeApplication(event);
         } else {
             //JOptionPane.showMessageDialog(null, "errou");
             lblWarning.setText("Login ou Senha incorretos!");
