@@ -19,23 +19,19 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
-import javafx.stage.Stage;
-import javafx.stage.StageStyle;
 import controller.controller.Controller;
-import controller.dashboard.DashboardController;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javafx.application.Application;
 import javafx.fxml.Initializable;
+import javafx.stage.Stage;
 
 /**
  * FXML Controller class
  *
  * @author LucasFsc
  */
-public class LoginController implements Initializable{
-
+public class LoginController extends Controller implements Initializable{
     //<editor-fold defaultstate="collapsed" desc="Variables"> 
     private Thread one;
     @FXML
@@ -58,6 +54,7 @@ public class LoginController implements Initializable{
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        
         lblWarning.setText("");
 
         //Thread to wait css animation
@@ -91,12 +88,8 @@ public class LoginController implements Initializable{
         if (event.getCode() == KeyCode.ENTER) {
             if (checkLogin()) {
                 System.out.println("Open main");
-                try {
-                    openMain();
-                    Controller.closeApplication(event);
-                } catch (IOException ex) {
-                    Logger.getLogger(LoginController.class.getName()).log(Level.SEVERE, null, ex);
-                }
+                //openMain();
+                Controller.closeApplication(event);
             }else{
                 lblWarning.setText("Login ou Senha incorretos!");
             }
@@ -111,12 +104,8 @@ public class LoginController implements Initializable{
 
         if (checkLogin()) {
             lblWarning.setText("OK");
-            try {
-                openMain();
-                
-            } catch (IOException ex) {
-                Logger.getLogger(LoginController.class.getName()).log(Level.SEVERE, null, ex);
-            }
+            //openMain();
+            System.out.println("teste");
             Controller.closeApplication(event);
         } else {
             //JOptionPane.showMessageDialog(null, "errou");
@@ -143,12 +132,12 @@ public class LoginController implements Initializable{
         } else {
             return false;
         }
-    }
+    }  
 
-    private void openMain() throws IOException {
-        Controller.load("dashboard");
+    public Stage createStageInstance() throws IOException {
+                
+        this.setFormPath("controller/login/login.fxml");
+        return this.createStageInstance(LoginController.class);
     }
-    
-    
 
 }

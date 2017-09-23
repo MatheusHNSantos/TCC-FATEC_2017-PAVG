@@ -30,67 +30,36 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import javafx.application.Application;
 
 /**
  *
  * @author SAMSUNG
  */
-public class Controller extends Application {
+public class Controller {
+    
+    private String formPath;
 
-    public static Stage createStageInstance(String path, Class<?> Class) throws IOException {
-        Parent root = FXMLLoader.load(Class.getClassLoader().getResource(path));
+    public String getFormPath() {
+        return formPath;
+    }
+
+    public void setFormPath(String formPath) {
+        this.formPath = formPath;
+    }
+        
+    public Stage createStageInstance(Class<?> Class) throws IOException {
+        System.out.println(Class.getClassLoader().getResource(this.formPath));
+        Parent root;
+        root = FXMLLoader.load(Class.getClassLoader().getResource(this.formPath));
         Stage stage = new Stage();
         stage.setScene(new Scene(root));
         return stage;
     }
    
-    public void closeApplication() {
+    public static void closeApplication() {
         Platform.exit();
     }
-    
-    
-    @Override
-    public void start(Stage PrimaryStage) {
-        try {
-            load("login");
-        }
-        catch (Exception e) {
-            System.out.println(e.getMessage());
-        }
-    }
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
-        launch(Controller.class, args);
-    }
-
-
-    public static String pathMain = "controller/main/main.fxml";
-    public static String pathLogin = "controller/login/login.fxml";
-    
-    public static void load(String locate) throws IOException {
-        
-        switch (locate) {
-            case "main":
-                loadCaller(pathMain, DashboardController.class, "main");
-                break;
-            
-            case "login":
-                loadCaller(pathLogin, LoginController.class, "login");
-                break;
-        }
-    }
-
-    public static void loadCaller(String path, Class<?> Class, String title) throws  IOException {
-        Stage stage = createStageInstance(path, Class);
-        stage.initStyle(StageStyle.DECORATED);
-        stage.setTitle(title);
-        stage.show();
-    }
-    
+ 
     public static void closeApplication(Event e) {
         Stage stage = (Stage) ((Node) e.getTarget()).getScene().getWindow();
         stage.close();
