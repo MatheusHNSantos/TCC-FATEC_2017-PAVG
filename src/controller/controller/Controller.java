@@ -7,7 +7,7 @@ package controller.controller;
 
 import com.sun.javaws.Main;
 import controller.login.LoginController;
-import controller.main.MainController;
+import controller.dashboard.DashboardController;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -75,7 +75,7 @@ public class Controller extends Application {
         
         switch (locate) {
             case "main":
-                loadCaller(pathMain, MainController.class, "main");
+                loadCaller(pathMain, DashboardController.class, "main");
                 break;
             
             case "login":

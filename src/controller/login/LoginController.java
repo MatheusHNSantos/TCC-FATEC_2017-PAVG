@@ -22,7 +22,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import controller.controller.Controller;
-import controller.main.MainController;
+import controller.dashboard.DashboardController;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -146,7 +146,7 @@ public class LoginController implements Initializable{
     }
 
     private void openMain() throws IOException {
-        Controller.load("main");
+        Controller.load("dashboard");
     }
     
     

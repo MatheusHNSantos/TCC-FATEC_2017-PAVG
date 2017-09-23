@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package controller.main;
+package controller.dashboard;
 
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXCheckBox;
@@ -29,7 +29,7 @@ import javafx.stage.StageStyle;
  *
  * @author SAMSUNG
  */
-public class MainController implements Initializable{
+public class DashboardController implements Initializable{
     
     @FXML
     JFXButton btnTest;
