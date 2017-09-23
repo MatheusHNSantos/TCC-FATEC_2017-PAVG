@@ -5,26 +5,9 @@
  */
 package controller.controller;
 
-import com.sun.javaws.Main;
-import controller.login.LoginController;
-import controller.dashboard.DashboardController;
-import java.io.IOException;
-import java.net.URL;
-import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javafx.application.Application;
 import javafx.event.Event;
-import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
 import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.stage.Stage;
-import javafx.stage.StageStyle;
 import java.io.IOException;
-import javafx.application.Application;
-import static javafx.application.Application.launch;
 import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -48,9 +31,8 @@ public class Controller {
     }
         
     public Stage createStageInstance(Class<?> Class) throws IOException {
-        System.out.println(Class.getClassLoader().getResource(this.formPath));
         Parent root;
-        root = FXMLLoader.load(Class.getClassLoader().getResource(this.formPath));
+        root = FXMLLoader.load(Class.getClassLoader().getResource(this.getFormPath()));
         Stage stage = new Stage();
         stage.setScene(new Scene(root));
         return stage;
