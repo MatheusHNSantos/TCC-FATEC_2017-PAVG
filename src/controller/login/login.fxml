@@ -20,7 +20,7 @@
             <Image url="@../assets/imgs/Apetitoso.png" />
          </image>
         </ImageView>
-      <JFXButton fx:id="btn_entrar" styleClass="btn-success" layoutX="173.0" layoutY="339.0" onMouseClicked="#handlerButtonActionEntrar" prefHeight="25.0" prefWidth="107.0" text="Entrar" />
-      <JFXButton fx:id="btn_sair" styleClass="btn-danger" layoutX="61.0" layoutY="339.0" onMouseClicked="#handlerButtonActionSair" prefHeight="25.0" prefWidth="107.0" text="Sair" />
+      <JFXButton fx:id="btn_entrar" styleClass="btn-success" layoutX="173.0" layoutY="339.0" prefHeight="25.0" prefWidth="107.0" text="Entrar" />
+      <JFXButton fx:id="btn_sair" styleClass="btn-danger" layoutX="61.0" layoutY="339.0" prefHeight="25.0" prefWidth="107.0" text="Sair" />
    </children>
 </AnchorPane>

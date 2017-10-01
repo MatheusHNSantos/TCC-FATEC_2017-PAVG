@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="283.0" prefWidth="388.0" stylesheets="@../assets/css/main.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.dashboard.DashboardController">
+   <children>
+      <JFXButton fx:id="btnTest" layoutX="168.0" layoutY="129.0" onMouseClicked="#handlerClicked" styleClass="btn-danger" text="Test" />
+   </children>
+</AnchorPane>

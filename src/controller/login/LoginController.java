@@ -1,9 +1,9 @@
 package controller.login;
 
 import com.jfoenix.controls.JFXButton;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
-import javafx.application.Application;
 import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -19,6 +19,12 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import controller.controller.Controller;
+import controller.dashboard.DashboardController;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javafx.fxml.Initializable;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
@@ -27,8 +33,7 @@ import javafx.stage.StageStyle;
  *
  * @author LucasFsc
  */
-public class LoginController extends Application implements Initializable, controller.controller.Controller {
-
+public class LoginController extends Controller implements Initializable{
     //<editor-fold defaultstate="collapsed" desc="Variables"> 
     private Thread one;
     @FXML
@@ -50,31 +55,8 @@ public class LoginController extends Application implements Initializable, contr
     // </editor-fold> 
 
     @Override
-    public void start(Stage stage) {
-        try {
-            Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("controller/login/Login.fxml"));
-            stage.setTitle("Login");
-            stage.initStyle(StageStyle.UNDECORATED);
-            stage.setScene(new Scene(root));
-            stage.show();
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-        }
-    }
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
-        launch(LoginController.class, args);
-
-    }
-
-    /**
-     * Initilize data
-     */
-    @Override
     public void initialize(URL location, ResourceBundle resources) {
+        
         lblWarning.setText("");
 
         //Thread to wait css animation
@@ -108,8 +90,10 @@ public class LoginController extends Application implements Initializable, contr
         if (event.getCode() == KeyCode.ENTER) {
             if (checkLogin()) {
                 System.out.println("Open main");
-                openMain();
-                closeCurrentWindow(event);
+                
+                LoginController.closeApplication(event);
+            }else{
+                lblWarning.setText("Login ou Senha incorretos!");
             }
         }
         //</editor-fold>
@@ -122,8 +106,19 @@ public class LoginController extends Application implements Initializable, contr
 
         if (checkLogin()) {
             lblWarning.setText("OK");
-            openMain();
-            closeCurrentWindow(event);
+            
+            DashboardController dash = new DashboardController();
+            Stage stage;
+            try {
+                stage = dash.createStageInstance();
+                stage.initStyle(StageStyle.DECORATED);
+                stage.setTitle("Dash");
+                stage.show();
+            } catch (IOException ex) {
+                Logger.getLogger(LoginController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+            LoginController.closeApplication(event);
         } else {
             //JOptionPane.showMessageDialog(null, "errou");
             lblWarning.setText("Login ou Senha incorretos!");
@@ -142,45 +137,6 @@ public class LoginController extends Application implements Initializable, contr
 
     }
     //</editor-fold>
-    
-    //<editor-fold defaultstate="collapsed" desc="Controller methods">
-    @Override
-    public void controllerDecored(Parent root, Stage stage) {
-        stage.initStyle(StageStyle.DECORATED);
-        stage.setTitle("Main");
-        stage.setScene(new Scene(root));
-        stage.show();
-
-    }
-    
-    @Override
-    public void controllerUndecored(Parent root, Stage stage) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-    //</editor-fold>
-
-    public void closeCurrentWindow(Event event) {
-        try {
-
-            //<editor-fold defaultstate="collapsed" desc="Close current window"> 
-            //Get current window and close
-            Stage stage = (Stage) ((Node) event.getTarget()).getScene().getWindow();
-            stage.close();
-            // </editor-fold> 
-
-        } catch (Exception ex) {
-            System.out.println(ex);
-        }
-    }
-
-    public void openMain() {
-        try {
-            Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("controller/main/main.fxml"));
-            controllerDecored(root, new Stage());
-        } catch (Exception e) {
-            System.out.println("tahas "+e);
-        }
-    }
 
     public boolean checkLogin() {
         if (txt_login.getText().equals("admin") && txt_senha.getText().equals("admin")) {
@@ -188,8 +144,12 @@ public class LoginController extends Application implements Initializable, contr
         } else {
             return false;
         }
+    }  
+
+    public Stage createStageInstance() throws IOException {
+                
+        this.setFormPath("controller/login/login.fxml");
+        return this.createStageInstance(LoginController.class);
     }
-    
-    
 
 }
