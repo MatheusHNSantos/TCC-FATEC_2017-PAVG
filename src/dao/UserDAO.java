@@ -7,6 +7,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 import javax.swing.JOptionPane;
 import model.ModelInterface;
 import model.User;
@@ -19,7 +20,7 @@ import model.User;
 
 /**
  *
- * @author felipemantoan
+ * @author Matheus Henrique
  */
 public class UserDAO extends PersonDAO implements CRUDInterface{
     
@@ -59,10 +60,29 @@ public class UserDAO extends PersonDAO implements CRUDInterface{
             return validacao;
     } 
 
-    @Override
-    public boolean create(ModelInterface model) {
-       String people = "";
-       return false;
+    //@Override
+    public boolean create(User user) {
+        Connection con = ConnectionFactory.getConnection();
+        PreparedStatement stmt = null;
+  
+        try {
+            stmt = con.prepareStatement("insert into user values(login, password, id_employee) values(?,?,?)");
+            stmt.setString(1, user.getLogin());
+            stmt.setString(2, user.getPassword());
+            stmt.setInt(3, user.getId_employee());
+            
+            stmt.executeUpdate();
+            
+            return true;
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Erro ao Salvar: " + ex.getMessage());
+            return false;
+        }
+        finally{
+            ConnectionFactory.closeConnection(con,stmt);
+            
+        }
+       
     }
 
     @Override
@@ -70,18 +90,83 @@ public class UserDAO extends PersonDAO implements CRUDInterface{
         return false;
     }
 
-    @Override
-    public ArrayList readAll(ModelInterface model) {
-        return new ArrayList();
+    //@Override
+    public List<User> readAllUsers(ModelInterface model) {
+        Connection con = ConnectionFactory.getConnection();
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+        
+        List<User> usuarios = new ArrayList<>();
+                
+        try {
+            stmt = con.prepareStatement("select * from user");
+            rs = stmt.executeQuery();
+            
+            while(rs.next()) {
+               
+                String login = rs.getString("login");
+                String password = rs.getString("password");
+                User user = new User(login,password);
+                user.setId_employee(rs.getInt("id_employee"));
+                usuarios.add(user);
+                
+            }
+            
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Falha ao consultar: " + ex.getMessage());
+        }finally{
+            ConnectionFactory.closeConnection(con, stmt, rs);
+        }
+        
+        return usuarios;
+       
     }
 
-    @Override
-    public boolean update(ModelInterface model) {
-        return false;
+    //@Override
+    public boolean update(User user) {
+                Connection con = ConnectionFactory.getConnection();
+        PreparedStatement stmt = null;
+        
+        try {
+            stmt = con.prepareStatement("update Usuario set login = ?, password = ?, id_employee = ? where login = ?");
+            stmt.setString(1, user.getLogin());
+            stmt.setString(2, user.getPassword());
+            stmt.setInt(3, user.getId_employee());
+            stmt.setInt(4, user.getId_employee());
+            
+            stmt.executeUpdate();
+            
+            return true;
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Erro ao Atualizar: " + ex.getMessage());
+            return false;
+        }
+        finally{
+            ConnectionFactory.closeConnection(con,stmt);
+        }
+      
     }
 
-    @Override
-    public boolean delete(ModelInterface model) {
-        return false;
+    //@Override
+    public boolean delete(User user) {
+        
+        Connection con = ConnectionFactory.getConnection();
+        PreparedStatement stmt = null;
+        
+        try {
+            stmt = con.prepareStatement("delete from user where id_employee = ?");
+            stmt.setInt(1, user.getId_employee());
+            
+            stmt.executeUpdate();
+            
+            return true;
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Erro ao Excluir: " + ex.getMessage());
+            return false;
+        }
+        finally{
+            ConnectionFactory.closeConnection(con,stmt);
+        }
     }
-}
+        
+ }
