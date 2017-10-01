@@ -67,8 +67,8 @@ CREATE TABLE IF NOT EXISTS product_type(
 CREATE TABLE IF NOT EXISTS ingredient(
   id_ingredient int not null,
   name_ingredient varchar(255) not null,
-  status_ingredient char(1) not null,
-  price int,
+  status_ingredient boolean not null,
+  price float not null,
   CONSTRAINT PRK_ID_INGREDIENT PRIMARY KEY (id_ingredient)
 );
 
@@ -77,7 +77,7 @@ CREATE TABLE IF NOT EXISTS product(
   name_product varchar(255) not null,
   final_price_product decimal(15,2) not null,
   weight_product float not null,
-  status_product char(1) not null,
+  status_product boolean not null,
   id_product_type int not null,
   CONSTRAINT PRK_ID_PRODUCT PRIMARY KEY (id_product),
   CONSTRAINT FRK_PRODUCT_TYPE FOREIGN KEY (id_product_type) REFERENCES product_type(id_product_type)
