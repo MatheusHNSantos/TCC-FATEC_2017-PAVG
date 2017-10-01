@@ -9,7 +9,7 @@ package model;
  *
  * @author Matheus Henrique
  */
-public class ProductIngredient {
+public class ProductIngredient implements ModelInterface{
     private int id;
     private int idProduct;
     private int idIngredient;
@@ -37,8 +37,5 @@ public class ProductIngredient {
     public void setIdIngredient(int idIngredient) {
         this.idIngredient = idIngredient;
     }
-    
-    
-    
     
 }
