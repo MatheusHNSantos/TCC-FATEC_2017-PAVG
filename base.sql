@@ -1,80 +1,118 @@
 CREATE DATABASE IF NOT EXISTS apetitoso;
 USE apetitoso;
 
-CREATE TABLE IF NOT EXISTS people(
-	id_people int not null auto_increment,
-    name_people varchar(255) not null,
-    cellphone_people varchar(11) not null,
-    CONSTRAINT PRK_ID_PEOPLE PRIMARY KEY (id_people) 
+CREATE TABLE IF NOT EXISTS address(
+  id_address int not null,
+  street varchar(255) not null,
+  number int not null,
+  neighborhood varchar(255) not null,
+  cep varchar(8) not null,
+  CONSTRAINT PRK_ID_ADDRESS PRIMARY KEY (id_address) 
+);
+
+CREATE TABLE IF NOT EXISTS phone(
+  id_phone int not null auto_increment,
+  phone varchar(12) not null,
+  CONSTRAINT PRK_ID_PHONE PRIMARY KEY (id_phone) 
+);
+
+CREATE TABLE IF NOT EXISTS person(
+  id_person int not null auto_increment,
+  name_person varchar(255) not null,
+  CONSTRAINT PRK_ID_PERSON PRIMARY KEY (id_person) 
+);
+
+CREATE TABLE IF NOT EXISTS phone_person(
+  id_phone_person int not null auto_increment,
+  id_phone int not null auto_increment,
+  id_person int not null auto_increment,
+  CONSTRAINT PRK_ID_PHONE_PERSON PRIMARY KEY (id_phone_person),
+  CONSTRAINT FRK_ID_PHONE_PERSON_PERSON FOREIGN KEY (id_person) REFERENCES person(id_person),
+  CONSTRAINT FRK_ID_PHONE_PERSON_PHONE FOREIGN KEY (id_phone) REFERENCES phone(id_phone)
 );
 
 CREATE TABLE IF NOT EXISTS costumer(
 	rg varchar(10) not null,
-    cpf varchar(11) not null,
-    id_people int not null,
-    CONSTRAINT UNK_CPF_COSTUMER UNIQUE KEY (cpf),
-    CONSTRAINT UNK_RG_COSTUMER UNIQUE KEY (rg),
-    CONSTRAINT FRK_ID_COSTUMER FOREIGN KEY (id_people) REFERENCES people(id_people)
+  cpf varchar(11) not null,
+  id_person int not null,
+  CONSTRAINT UNK_CPF_COSTUMER UNIQUE KEY (cpf),
+  CONSTRAINT UNK_RG_COSTUMER UNIQUE KEY (rg),
+  CONSTRAINT FRK_ID_COSTUMER FOREIGN KEY (id_person) REFERENCES person(id_person)
 );
 
 CREATE TABLE IF NOT EXISTS supplier(
-	cnpj varchar(14) not null,
-    id_people int not null,
-    CONSTRAINT UNK_CNPJ_SUPPLIER UNIQUE KEY (cnpj),
-    CONSTRAINT FRK_ID_SUPPLIER FOREIGN KEY (id_people) REFERENCES people(id_people)
+  cnpj varchar(14) not null,
+  id_person int not null,
+  CONSTRAINT UNK_CNPJ_SUPPLIER UNIQUE KEY (cnpj),
+  CONSTRAINT FRK_ID_SUPPLIER FOREIGN KEY (id_person) REFERENCES person(id_person)
 );
 
 CREATE TABLE IF NOT EXISTS employee(
-	role varchar(255) not null,
-    id_people int not null,
-    CONSTRAINT FRK_ID_EMPLOYEE FOREIGN KEY (id_people) REFERENCES people(id_people)
+  id_employee int not null,
+  role varchar(255) not null,
+  id_person int not null,
+  CONSTRAINT PRK_ID_EMPLOYEE PRIMARY KEY (id_employee),
+  CONSTRAINT FRK_ID_EMPLOYEE FOREIGN KEY (id_person) REFERENCES person(id_person)
 );
 
 CREATE TABLE IF NOT EXISTS user(
-	login varchar(255) not null,
-    password varchar(255) not null,
-    id_employee int not null,
-    CONSTRAINT UNK_LOGIN_USER UNIQUE KEY (login),
-    CONSTRAINT FRK_ID_USER FOREIGN KEY (id_employee) REFERENCES employee(id_people)
+  login varchar(255) not null,
+  password varchar(255) not null,
+  id_employee int not null,
+  CONSTRAINT UNK_LOGIN_USER UNIQUE KEY (login),
+  CONSTRAINT FRK_ID_USER FOREIGN KEY (id_employee) REFERENCES employee(id_employee)
 );
 
 CREATE TABLE IF NOT EXISTS product_type(
 	id_product_type int not null auto_increment,
-    name_product_type varchar(255) not null,
-    CONSTRAINT PRK_ID_PRODUCT_TYPE PRIMARY KEY (id_product_type)
+  name_product_type varchar(255) not null,
+  CONSTRAINT PRK_ID_PRODUCT_TYPE PRIMARY KEY (id_product_type)
 );
 
 CREATE TABLE IF NOT EXISTS ingredient(
-	id_ingredient int not null,
-    name_ingredient varchar(255) not null,
-    status_ingredient char(1) not null,
-	CONSTRAINT PRK_ID_INGREDIENT PRIMARY KEY (id_ingredient)
+  id_ingredient int not null,
+  name_ingredient varchar(255) not null,
+  status_ingredient char(1) not null,
+  CONSTRAINT PRK_ID_INGREDIENT PRIMARY KEY (id_ingredient)
 );
 
 CREATE TABLE IF NOT EXISTS product(
-	id_product int not null auto_increment,
-    name_product varchar(255) not null,
-    final_price_product decimal(15,2) not null,
-    weight_product float not null,
-    status_product char(1) not null,
-	id_product_type int not null,
-    CONSTRAINT PRK_ID_PRODUCT PRIMARY KEY (id_product),
-	CONSTRAINT FRK_PRODUCT_TYPE FOREIGN KEY (id_product_type) REFERENCES product_type(id_product_type)
+  id_product int not null auto_increment,
+  name_product varchar(255) not null,
+  final_price_product decimal(15,2) not null,
+  weight_product float not null,
+  status_product char(1) not null,
+  id_product_type int not null,
+  CONSTRAINT PRK_ID_PRODUCT PRIMARY KEY (id_product),
+  CONSTRAINT FRK_PRODUCT_TYPE FOREIGN KEY (id_product_type) REFERENCES product_type(id_product_type)
 );
 
 CREATE TABLE IF NOT EXISTS product_ingredient(
 	id_product_ingredient int not null,
-    id_product int not null,
+  id_product int not null,
 	id_ingredient int not null,
-    CONSTRAINT PRK_ID_PRODUCT_INGREDIENT PRIMARY KEY (id_product_ingredient),
+  CONSTRAINT PRK_ID_PRODUCT_INGREDIENT PRIMARY KEY (id_product_ingredient),
 	CONSTRAINT FRK_INGREDIENT FOREIGN KEY (id_ingredient) REFERENCES ingredient(id_ingredient),
-    CONSTRAINT FRK_PRODUCT FOREIGN KEY (id_product) REFERENCES product(id_product)
+  CONSTRAINT FRK_PRODUCT FOREIGN KEY (id_product) REFERENCES product(id_product)
 );
 
-/* CREATE TABLE IF NOT EXISTS order_(
-	id_product_ingredient int not null
-); */
+CREATE TABLE IF NOT EXISTS order(
+  id_order int not null,
+  id_user int not null,
+  id_employee int not null,
+  order_time timestamp CURRENT_TIME,
+  order_time_estimate int not null,
+  order_total decimal(10,2),
+  CONSTRAINT PRK_ID_ORDER PRIMARY KEY (id_order), 
+  CONSTRAINT FRK_ID_COSTUMER_ORDER FOREIGN KEY (id_costumer) REFERENCES costumer(id_person),
+  CONSTRAINT FRK_ID_EMPLOYEE_ORDER FOREIGN KEY (id_user) REFERENCES user(id_employee),
+);
 
-INSERT INTO people (name_people, cellphone_people) VALUES ('Administrador', '199XXXXYYYY');
-INSERT INTO employee VALUES('Gerente', 1);
-INSERT INTO user VALUES ('admin', MD5('admin'), 1);
+CREATE TABLE IF NOT EXISTS items_order(
+  id_item_order int not null,
+  id_order int not null,
+  id_product int not null,
+  CONSTRAINT PRK_ID_ITEMS_ORDER PRIMARY KEY (id_items_order),
+  CONSTRAINT FRK_ID_ITEMS_ORDER_ORDER FOREIGN KEY (id_order) REFERENCES order(id_order),
+  CONSTRAINT FRK_ID_ITEMS_ORDER_PRODUCT FOREIGN KEY (id_product) REFERENCES product(id_product)
+);
