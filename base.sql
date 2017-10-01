@@ -10,23 +10,23 @@ CREATE TABLE IF NOT EXISTS address(
   CONSTRAINT PRK_ID_ADDRESS PRIMARY KEY (id_address) 
 );
 
-CREATE TABLE IF NOT EXISTS phone(
-  id_phone int not null auto_increment,
-  phone varchar(12) not null,
-  CONSTRAINT PRK_ID_PHONE PRIMARY KEY (id_phone) 
-);
-
-CREATE TABLE IF NOT EXISTS person(
+CREATE TABLE IF NOT EXISTS person( 
   id_person int not null auto_increment,
-  id_phone int not null,
   id_address int not null,
   name_person varchar(255) not null,
   CONSTRAINT PRK_ID_PERSON PRIMARY KEY (id_person),
-  CONSTRAINT FRK_ID_PERSON_ADDRESS FOREIGN KEY (id_phone) REFERENCES address(id_address),
-  CONSTRAINT FRK_ID_PERSON_PHONE FOREIGN KEY (id_phone) REFERENCES phone(id_phone)
+  CONSTRAINT FRK_ID_PERSON_ADDRESS FOREIGN KEY (id_address) REFERENCES address(id_address)
 );
 
-CREATE TABLE IF NOT EXISTS costumer(
+CREATE TABLE IF NOT EXISTS phone( 
+  id_phone int not null auto_increment,
+  phone varchar(12) not null,
+  id_person int not null,
+  CONSTRAINT PRK_ID_PHONE PRIMARY KEY (id_phone), 
+  CONSTRAINT FRK_ID_PHONE_PERSON_PERSON FOREIGN KEY (id_person) REFERENCES person(id_person)
+);
+
+CREATE TABLE IF NOT EXISTS costumer(  
   rg varchar(10) not null,
   cpf varchar(11) not null,
   id_person int not null,
@@ -50,7 +50,7 @@ CREATE TABLE IF NOT EXISTS employee(
   CONSTRAINT FRK_ID_EMPLOYEE FOREIGN KEY (id_person) REFERENCES person(id_person)
 );
 
-CREATE TABLE IF NOT EXISTS user(
+CREATE TABLE IF NOT EXISTS user( 
   login varchar(255) not null,
   password varchar(255) not null,
   id_employee int not null,
