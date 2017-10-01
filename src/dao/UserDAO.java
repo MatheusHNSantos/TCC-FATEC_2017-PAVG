@@ -27,11 +27,11 @@ public class UserDAO extends PeopleDAO implements CRUDInterface{
    
     public boolean doLogin(User user) {
      
-        try {
+        /*try { //Ativar para SQlite
             ConnectionFactory.checkDatabase();
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(null, "Falha ao verificar existencia de base de dados: " + ex.getMessage());
-        }
+        }*/
             Connection con = ConnectionFactory.getConnection();
             PreparedStatement stmt = null;
             ResultSet rs = null;
