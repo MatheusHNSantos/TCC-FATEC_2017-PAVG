@@ -140,7 +140,7 @@ public class LoginController extends Controller implements Initializable{
     }
     //</editor-fold>
 
-        public boolean checkLogin() {
+    public boolean checkLogin() {
         User user = new User(txt_login.getText(),txt_senha.getText());
         UserDAO userDao = new UserDAO();
         

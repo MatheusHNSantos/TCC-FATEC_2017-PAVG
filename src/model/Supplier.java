@@ -9,6 +9,17 @@ package model;
  *
  * @author felipemantoan
  */
-public class Supplier extends People implements ModelInterface{
+public class Supplier extends Person implements ModelInterface{
+    private String CNPJ;
+
+    public String getCNPJ() {
+        return CNPJ;
+    }
+
+    public void setCNPJ(String CNPJ) {
+        this.CNPJ = CNPJ;
+    }
+    
+    
     
 }

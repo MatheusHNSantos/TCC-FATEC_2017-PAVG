@@ -9,7 +9,7 @@ package model;
  *
  * @author felipemantoan
  */
-public class Costumer extends People implements ModelInterface{
+public class Costumer extends Person implements ModelInterface{
     
     private String CPF;
     private String RG;

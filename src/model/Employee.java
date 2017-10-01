@@ -9,8 +9,17 @@ package model;
  *
  * @author felipemantoan
  */
-public class Employee extends People implements ModelInterface{
+public class Employee extends Person implements ModelInterface{
+    private int idEmployee;
     protected String role;
+
+    public int getId_employee() {
+        return idEmployee;
+    }
+
+    public void setId_employee(int idEmployee) {
+        this.idEmployee = idEmployee;
+    }
 
     public String getRole() {
         return role;

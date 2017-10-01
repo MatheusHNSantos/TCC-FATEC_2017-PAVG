@@ -39,32 +39,32 @@ public abstract class ConnectionFactory{
     }*/
     
  //MYSQL conexão ->
-    /*private static final String DRIVER = "com.mysql.jdbc.Driver";
-    private static final String DATABASE = "teste";
+    private static final String DRIVER = "com.mysql.jdbc.Driver";
+    private static final String DATABASE = "apetitoso";
     private static final String URL = "jdbc:mysql://localhost:3306/"+DATABASE;
     private static final String USER = "root";
-    private static final String PASS = "";*/
+    private static final String PASS = "";
     
     
     //SQLITE conexão ->
-    private static final String DRIVER = "org.sqlite.JDBC";
-     private static final String DATABASE = "CSdb.dat";
-    private static final String URL = "jdbc:sqlite:data/"+DATABASE;
+    /*private static final String DRIVER = "org.sqlite.JDBC";
+    private static final String DATABASE = "CSdb.dat";
+    private static final String URL = "jdbc:sqlite:data/"+DATABASE;*/
 
     //SQLite conexão ->
-    public static void checkDatabase() throws Exception { 
+   /* public static void checkDatabase() throws Exception { 
         File database = new File("data\\"+DATABASE);
         
         if(!database.exists()){
             createNewDatabase(database);   
         }
-    }
+    }*/
 
     public static Connection getConnection(){
         try {
             Class.forName(DRIVER);
-            //return DriverManager.getConnection(URL, USER, PASS);  //MYSQL conexão 
-            return DriverManager.getConnection(URL); //SQLITE conexão
+            return DriverManager.getConnection(URL, USER, PASS);  //MYSQL conexão 
+            //return DriverManager.getConnection(URL); //SQLITE conexão
              
         } catch (ClassNotFoundException | SQLException ex) {
             throw new RuntimeException("Erro na conexão: ", ex);
@@ -83,14 +83,14 @@ public abstract class ConnectionFactory{
     
     public static void closeConnection(Connection con, PreparedStatement stmt){
         
-        //closeConnection(con); //ativar para MYSQL conexão
+        closeConnection(con); //ativar para MYSQL conexão
         
         try {
             if(stmt != null){    
                  stmt.close();
             }
             
-            closeConnection(con); //ativar para SQLite conexão
+            //closeConnection(con); //ativar para SQLite conexão
             
         } catch (SQLException ex) {
              Logger.getLogger(ConnectionFactory.class.getName()).log(Level.SEVERE, null, ex);
@@ -111,7 +111,7 @@ public abstract class ConnectionFactory{
     } 
     
     //SQLite conexão ->
-    public static void createNewDatabase(File database) throws Exception {
+    /*public static void createNewDatabase(File database) throws Exception {
         
         database.getParentFile().mkdirs(); //Cria o diretorio pai do arquivo caso não exista
         database.createNewFile(); //Cria o arquivo do banco 
@@ -164,5 +164,5 @@ public abstract class ConnectionFactory{
         }finally{
             ConnectionFactory.closeConnection(con, stmt);
         }
-    }
+    }*/
 }
