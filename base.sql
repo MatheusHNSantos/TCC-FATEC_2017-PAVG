@@ -10,14 +10,6 @@ CREATE TABLE IF NOT EXISTS address(
   CONSTRAINT PRK_ID_ADDRESS PRIMARY KEY (id_address) 
 );
 
-CREATE TABLE IF NOT EXISTS phone( 
-  id_phone int not null auto_increment,
-  phone varchar(12) not null,
-  id_person int not null,
-  CONSTRAINT PRK_ID_PHONE PRIMARY KEY (id_phone), 
-  CONSTRAINT FRK_ID_PHONE_PERSON_PERSON FOREIGN KEY (id_person) REFERENCES person(id_person)
-);
-
 CREATE TABLE IF NOT EXISTS person( 
   id_person int not null auto_increment,
   id_address int not null,
@@ -26,6 +18,13 @@ CREATE TABLE IF NOT EXISTS person(
   CONSTRAINT FRK_ID_PERSON_ADDRESS FOREIGN KEY (id_address) REFERENCES address(id_address)
 );
 
+CREATE TABLE IF NOT EXISTS phone( 
+  id_phone int not null auto_increment,
+  phone varchar(12) not null,
+  id_person int not null,
+  CONSTRAINT PRK_ID_PHONE PRIMARY KEY (id_phone), 
+  CONSTRAINT FRK_ID_PHONE_PERSON_PERSON FOREIGN KEY (id_person) REFERENCES person(id_person)
+);
 
 CREATE TABLE IF NOT EXISTS costumer(  
   rg varchar(10) not null,
