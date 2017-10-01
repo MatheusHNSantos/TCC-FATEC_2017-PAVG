@@ -2,7 +2,7 @@ CREATE DATABASE IF NOT EXISTS apetitoso;
 USE apetitoso;
 
 CREATE TABLE IF NOT EXISTS address(
-  id_address int not null,
+  id_address int not null auto_increment,
   street varchar(255) not null,
   number int not null,
   neighborhood varchar(255) not null,
@@ -19,8 +19,10 @@ CREATE TABLE IF NOT EXISTS phone(
 CREATE TABLE IF NOT EXISTS person(
   id_person int not null auto_increment,
   id_phone int not null,
+  id_address int not null,
   name_person varchar(255) not null,
   CONSTRAINT PRK_ID_PERSON PRIMARY KEY (id_person),
+  CONSTRAINT FRK_ID_PERSON_ADDRESS FOREIGN KEY (id_phone) REFERENCES address(id_address),
   CONSTRAINT FRK_ID_PERSON_PHONE FOREIGN KEY (id_phone) REFERENCES phone(id_phone)
 );
 
@@ -41,7 +43,7 @@ CREATE TABLE IF NOT EXISTS supplier(
 );
 
 CREATE TABLE IF NOT EXISTS employee(
-  id_employee int not null,
+  id_employee int not null auto_increment,
   role varchar(255) not null,
   id_person int not null,
   CONSTRAINT PRK_ID_EMPLOYEE PRIMARY KEY (id_employee),
