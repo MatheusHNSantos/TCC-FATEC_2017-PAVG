@@ -16,18 +16,27 @@ public abstract class Person implements ModelInterface {
 
     protected int idPerson;
     protected String name;
-    private int idAndress;
+    private int idAddress;
+    private Address address;
     private List<Phone> listPhone = new ArrayList<>();
+
+    public int getIdAddress() {
+        return idAddress;
+    }
+
+    public void setIdAddress(int idAddress) {
+        this.idAddress = idAddress;
+    }
+
+    public Address getAddress() {
+        return address;
+    }
+
+    public void setAddress(Address address) {
+        this.address = address;
+    }
+    
    
-
-    public int getIdAndress() {
-        return idAndress;
-    }
-
-    public void setIdAndress(int idAndress) {
-        this.idAndress = idAndress;
-    }
-
     public int getIdPerson() {
         return idPerson;
     }
