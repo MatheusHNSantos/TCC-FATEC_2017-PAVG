@@ -21,7 +21,7 @@ import model.User;
  *
  * @author felipemantoan
  */
-public class UserDAO extends PeopleDAO implements CRUDInterface{
+public class UserDAO extends PersonDAO implements CRUDInterface{
     
     private ConnectionFactory factory;
    

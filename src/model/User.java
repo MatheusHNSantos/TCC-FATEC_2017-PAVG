@@ -5,7 +5,9 @@
  */
 package model;
 
-import exception.UserException;
+import exceptionPackage.UserException;
+
+
 
 /**
  *

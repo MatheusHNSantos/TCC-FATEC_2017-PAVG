@@ -12,7 +12,7 @@ import model.ModelInterface;
  *
  * @author felipemantoan
  */
-abstract class PeopleDAO implements CRUDInterface{
+abstract class PersonDAO implements CRUDInterface{
     
     @Override
     public boolean create(ModelInterface model) {
