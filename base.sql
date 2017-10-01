@@ -18,21 +18,14 @@ CREATE TABLE IF NOT EXISTS phone(
 
 CREATE TABLE IF NOT EXISTS person(
   id_person int not null auto_increment,
-  name_person varchar(255) not null,
-  CONSTRAINT PRK_ID_PERSON PRIMARY KEY (id_person) 
-);
-
-CREATE TABLE IF NOT EXISTS phone_person(
-  id_phone_person int not null auto_increment,
   id_phone int not null,
-  id_person int not null,
-  CONSTRAINT PRK_ID_PHONE_PERSON PRIMARY KEY (id_phone_person),
-  CONSTRAINT FRK_ID_PHONE_PERSON_PERSON FOREIGN KEY (id_person) REFERENCES person(id_person),
-  CONSTRAINT FRK_ID_PHONE_PERSON_PHONE FOREIGN KEY (id_phone) REFERENCES phone(id_phone)
+  name_person varchar(255) not null,
+  CONSTRAINT PRK_ID_PERSON PRIMARY KEY (id_person),
+  CONSTRAINT FRK_ID_PERSON_PHONE FOREIGN KEY (id_phone) REFERENCES phone(id_phone)
 );
 
 CREATE TABLE IF NOT EXISTS costumer(
-	rg varchar(10) not null,
+  rg varchar(10) not null,
   cpf varchar(11) not null,
   id_person int not null,
   CONSTRAINT UNK_CPF_COSTUMER UNIQUE KEY (cpf),
