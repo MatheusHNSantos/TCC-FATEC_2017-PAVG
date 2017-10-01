@@ -7,13 +7,11 @@ package model;
 
 /**
  *
- * @author Matheus Henrique
+ * @author felipemantoan
  */
-public class Ingredient implements ModelInterface{
+public class ProductType implements ModelInterface{
     private int id;
     private String name;
-    private boolean status;
-    private float price;
 
     public int getId() {
         return id;
@@ -29,22 +27,6 @@ public class Ingredient implements ModelInterface{
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public boolean isStatus() {
-        return status;
-    }
-
-    public void setStatus(boolean status) {
-        this.status = status;
-    }
-
-    public float getPrice() {
-        return price;
-    }
-
-    public void setPrice(float price) {
-        this.price = price;
     }
     
     
