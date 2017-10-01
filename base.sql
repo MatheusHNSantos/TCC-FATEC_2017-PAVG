@@ -24,8 +24,8 @@ CREATE TABLE IF NOT EXISTS person(
 
 CREATE TABLE IF NOT EXISTS phone_person(
   id_phone_person int not null auto_increment,
-  id_phone int not null auto_increment,
-  id_person int not null auto_increment,
+  id_phone int not null,
+  id_person int not null,
   CONSTRAINT PRK_ID_PHONE_PERSON PRIMARY KEY (id_phone_person),
   CONSTRAINT FRK_ID_PHONE_PERSON_PERSON FOREIGN KEY (id_person) REFERENCES person(id_person),
   CONSTRAINT FRK_ID_PHONE_PERSON_PHONE FOREIGN KEY (id_phone) REFERENCES phone(id_phone)
@@ -96,23 +96,23 @@ CREATE TABLE IF NOT EXISTS product_ingredient(
   CONSTRAINT FRK_PRODUCT FOREIGN KEY (id_product) REFERENCES product(id_product)
 );
 
-CREATE TABLE IF NOT EXISTS order(
-  id_order int not null,
+CREATE TABLE IF NOT EXISTS sale(
+  id_sale int not null AUTO_INCREMENT,
   id_user int not null,
-  id_employee int not null,
-  order_time timestamp CURRENT_TIME,
-  order_time_estimate int not null,
-  order_total decimal(10,2),
-  CONSTRAINT PRK_ID_ORDER PRIMARY KEY (id_order), 
-  CONSTRAINT FRK_ID_COSTUMER_ORDER FOREIGN KEY (id_costumer) REFERENCES costumer(id_person),
-  CONSTRAINT FRK_ID_EMPLOYEE_ORDER FOREIGN KEY (id_user) REFERENCES user(id_employee),
+  id_costumer int not null,
+  sale_time datetime,
+  sale_time_estimate int not null,
+  sale_total decimal(10,2),
+  CONSTRAINT PRK_ID_sale PRIMARY KEY (id_sale), 
+  CONSTRAINT FRK_ID_COSTUMER_SALE FOREIGN KEY (id_costumer) REFERENCES costumer(id_person),
+  CONSTRAINT FRK_ID_EMPLOYEE_SALE FOREIGN KEY (id_user) REFERENCES user(id_employee)
 );
 
-CREATE TABLE IF NOT EXISTS items_order(
-  id_item_order int not null,
-  id_order int not null,
+CREATE TABLE IF NOT EXISTS items_sale(
+  id_items_sale int not null,
+  id_sale int not null,
   id_product int not null,
-  CONSTRAINT PRK_ID_ITEMS_ORDER PRIMARY KEY (id_items_order),
-  CONSTRAINT FRK_ID_ITEMS_ORDER_ORDER FOREIGN KEY (id_order) REFERENCES order(id_order),
-  CONSTRAINT FRK_ID_ITEMS_ORDER_PRODUCT FOREIGN KEY (id_product) REFERENCES product(id_product)
+  CONSTRAINT PRK_ID_ITEMS_SALE PRIMARY KEY (id_items_sale),
+  CONSTRAINT FRK_ID_ITEMS_SALE_SALE FOREIGN KEY (id_sale) REFERENCES sale(id_sale),
+  CONSTRAINT FRK_ID_ITEMS_SALE_PRODUCT FOREIGN KEY (id_product) REFERENCES product(id_product)
 );
