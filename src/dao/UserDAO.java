@@ -3,9 +3,11 @@ package dao;
 
 import connection.ConnectionFactory;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 import model.ModelInterface;
 import model.User;
 
@@ -24,8 +26,38 @@ public class UserDAO extends PeopleDAO implements CRUDInterface{
     private ConnectionFactory factory;
    
     public boolean doLogin(User user) {
-        return false;
-    }
+     
+        try {
+            ConnectionFactory.checkDatabase();
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, "Falha ao verificar existencia de base de dados: " + ex.getMessage());
+        }
+            Connection con = ConnectionFactory.getConnection();
+            PreparedStatement stmt = null;
+            ResultSet rs = null;
+            boolean validacao = false;
+            
+            try {
+                stmt = con.prepareStatement("select * from User where login = ? and password = ?");
+                stmt.setString(1, user.getLogin());
+                stmt.setString(2, user.getPassword());
+                
+                rs = stmt.executeQuery();
+                
+                if (rs.next()){
+                    validacao  = true;
+                }
+                stmt.close();
+                
+            } catch (SQLException ex) {
+                JOptionPane.showMessageDialog(null, "Falha ao verificar login: " + ex.getMessage());
+                validacao  = false;
+            }finally{
+                ConnectionFactory.closeConnection(con, stmt, rs);
+            }
+            
+            return validacao;
+    } 
 
     @Override
     public boolean create(ModelInterface model) {
