@@ -21,12 +21,14 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import controller.controller.Controller;
 import controller.dashboard.DashboardController;
+import dao.UserDAO;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.fxml.Initializable;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import model.User;
 
 /**
  * FXML Controller class
@@ -138,12 +140,11 @@ public class LoginController extends Controller implements Initializable{
     }
     //</editor-fold>
 
-    public boolean checkLogin() {
-        if (txt_login.getText().equals("admin") && txt_senha.getText().equals("admin")) {
-            return true;
-        } else {
-            return false;
-        }
+        public boolean checkLogin() {
+        User user = new User(txt_login.getText(),txt_senha.getText());
+        UserDAO userDao = new UserDAO();
+        
+        return userDao.doLogin(user);
     }  
 
     public Stage createStageInstance() throws IOException {
