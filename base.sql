@@ -97,6 +97,7 @@ CREATE TABLE IF NOT EXISTS sale(
   id_user int not null,
   id_costumer int not null,
   sale_time datetime,
+  sale_date date,
   sale_time_estimate int not null,
   sale_total decimal(10,2),
   CONSTRAINT PRK_ID_sale PRIMARY KEY (id_sale), 
@@ -112,3 +113,9 @@ CREATE TABLE IF NOT EXISTS items_sale(
   CONSTRAINT FRK_ID_ITEMS_SALE_SALE FOREIGN KEY (id_sale) REFERENCES sale(id_sale),
   CONSTRAINT FRK_ID_ITEMS_SALE_PRODUCT FOREIGN KEY (id_product) REFERENCES product(id_product)
 );
+
+
+insert into address values(1,'rua1',123,'mataatrlanticac','12345678');
+insert into person values(1,1,'Jorge');
+insert into employee values(1,'Manager',1);
+insert into user values('admin','admin',1);
