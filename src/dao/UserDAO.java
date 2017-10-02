@@ -27,8 +27,6 @@ import model.User;
  */
 public class UserDAO extends PersonDAO implements CRUDInterface{
     
-    private ConnectionFactory factory;
-   
     public boolean doLogin(ModelInterface model) {
      
         /*try { //Ativar para SQlite
