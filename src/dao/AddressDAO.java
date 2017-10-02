@@ -20,7 +20,7 @@ public class AddressDAO implements CRUDInterface{
     }
 
     @Override
-    public boolean read(ModelInterface model) {
+    public ModelInterface read(ModelInterface model) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 

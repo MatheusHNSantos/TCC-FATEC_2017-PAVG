@@ -6,6 +6,7 @@
 package dao;
 
 import java.util.ArrayList;
+import java.util.List;
 import model.ModelInterface;
 
 /**
@@ -20,12 +21,12 @@ abstract class PersonDAO implements CRUDInterface{
     }
 
     @Override
-    public boolean read(ModelInterface model) {
-        return false;
+    public ModelInterface read(ModelInterface model) {
+        return model;
     }
 
     @Override
-    public ArrayList readAll(ModelInterface model) {
+    public List<ModelInterface> readAll(ModelInterface model) {
         return new ArrayList();
     }
 

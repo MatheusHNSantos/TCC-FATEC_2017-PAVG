@@ -5,7 +5,7 @@
  */
 package dao;
 
-import java.util.ArrayList;
+import java.util.List;
 import model.ModelInterface;
 
 /**
@@ -26,14 +26,14 @@ public interface CRUDInterface {
      * @param model
      * @return 
      */
-    public boolean read(ModelInterface model);
+    public ModelInterface read(ModelInterface model);
     
     /**
      * 
      * @param model
      * @return 
      */
-    public ArrayList readAll(ModelInterface model);
+    public List<ModelInterface> readAll(ModelInterface model);
     
     /**
      * 
