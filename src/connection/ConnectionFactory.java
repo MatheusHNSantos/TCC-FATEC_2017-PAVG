@@ -4,6 +4,8 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -43,24 +45,30 @@ public abstract class ConnectionFactory{
     /**
      * 
      * @return Instância da classe Connection
-     * @throws SQLException
-     * @throws java.lang.ClassNotFoundException
      */
-    public static Connection getConnection() throws ClassNotFoundException, SQLException{
-        Class.forName(DRIVER);
-        return DriverManager.getConnection(URL, USER, PASS); 
+   public static Connection getConnection(){
+        try {
+            Class.forName(DRIVER);
+            return DriverManager.getConnection(URL, USER, PASS); 
+             
+        } catch (ClassNotFoundException | SQLException ex) {
+            throw new RuntimeException("Erro na conexão: ", ex);
+        }   
     }
     
     /**
      * Este Método é responsável pelo fechamento da conexão
      * 
      * @param con
-     * @throws SQLException
      */
-    public static void closeConnection(Connection con) throws SQLException{
-        if (!con.isClosed()) {
-          con.close();  
-        } 
+    public static void closeConnection(Connection con){
+        try {
+            if (!con.isClosed()) {
+                con.close(); 
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(ConnectionFactory.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
     
     /**
@@ -70,10 +78,14 @@ public abstract class ConnectionFactory{
      * @param stmt
      * @throws SQLException
      */
-    public static void closeConnection(Connection con, PreparedStatement stmt) throws SQLException{
-        closeConnection(con); 
-        if (!stmt.isClosed()) {
-            stmt.close();
+    public static void closeConnection(Connection con, PreparedStatement stmt){
+        try {
+            closeConnection(con);
+            if (!stmt.isClosed()) {
+                stmt.close();
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(ConnectionFactory.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
     
@@ -85,10 +97,14 @@ public abstract class ConnectionFactory{
      * @param rs
      * @throws SQLException
      */
-    public static void closeConnection(Connection con, PreparedStatement stmt, ResultSet rs) throws SQLException{
-        closeConnection(con, stmt);
-        if (!rs.isClosed()) {
-            rs.close();
+    public static void closeConnection(Connection con, PreparedStatement stmt, ResultSet rs){
+        try {
+            closeConnection(con, stmt);
+            if (!rs.isClosed()) {
+                rs.close();
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(ConnectionFactory.class.getName()).log(Level.SEVERE, null, ex);
         }
     } 
    
