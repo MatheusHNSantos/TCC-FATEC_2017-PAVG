@@ -72,7 +72,7 @@ public abstract class ConnectionFactory{
      */
     public static void closeConnection(Connection con, PreparedStatement stmt) throws SQLException{
         closeConnection(con); 
-        if (stmt.isClosed()) {
+        if (!stmt.isClosed()) {
             stmt.close();
         }
     }
@@ -87,7 +87,7 @@ public abstract class ConnectionFactory{
      */
     public static void closeConnection(Connection con, PreparedStatement stmt, ResultSet rs) throws SQLException{
         closeConnection(con, stmt);
-        if (rs.isClosed()) {
+        if (!rs.isClosed()) {
             rs.close();
         }
     } 
