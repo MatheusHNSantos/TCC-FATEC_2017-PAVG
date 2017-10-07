@@ -9,6 +9,6 @@ package dao;
  *
  * @author Matheus Henrique
  */
-public class SupplierDAO {
+public class SupplierDAO extends PersonDAO implements CRUDInterface{
     
 }

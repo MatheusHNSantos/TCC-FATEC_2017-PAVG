@@ -5,10 +5,45 @@
  */
 package dao;
 
+import connection.ConnectionFactory;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import javax.swing.JOptionPane;
+import model.ModelInterface;
+import model.Employee;
+
 /**
  *
  * @author Matheus Henrique
  */
-public class EmployeeDAO {
+public class EmployeeDAO extends PersonDAO implements CRUDInterface{
+    
+    @Override
+    public boolean create(ModelInterface model) {
+        Connection con = ConnectionFactory.getConnection();
+        PreparedStatement stmt = null;
+        
+        Employee employee = (Employee) model;
+  
+        try {
+            stmt = con.prepareStatement("insert into employee values(role,id_person) values(?,?)");
+            stmt.setString(1, employee.getRole());
+            stmt.setInt(2, employee.getIdPerson());
+           
+            
+            stmt.executeUpdate();
+            
+            return true;
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Erro ao Salvar: " + ex.getMessage());
+            return false;
+        }
+        finally{
+            ConnectionFactory.closeConnection(con,stmt);
+            
+        }
+    }
+    
     
 }

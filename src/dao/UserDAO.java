@@ -25,7 +25,7 @@ import model.User;
  *
  * @author Matheus Henrique
  */
-public class UserDAO extends PersonDAO implements CRUDInterface{
+public class UserDAO implements CRUDInterface{
     
     public boolean doLogin(ModelInterface model) {
      
@@ -74,7 +74,7 @@ public class UserDAO extends PersonDAO implements CRUDInterface{
             stmt = con.prepareStatement("insert into user values(login, password, id_employee) values(?,?,?)");
             stmt.setString(1, user.getLogin());
             stmt.setString(2, user.getPassword());
-            stmt.setInt(3, user.getId_employee());
+            stmt.setInt(3, user.getIdEmployee());
             
             stmt.executeUpdate();
             
@@ -105,7 +105,7 @@ public class UserDAO extends PersonDAO implements CRUDInterface{
    
             user.setLogin(rs.getString("login"));
             user.setPassword(rs.getString("password"));
-            user.setId_employee(rs.getInt("id_emplyoee"));
+            user.setIdEmployee(rs.getInt("id_emplyoee"));
 
                 
             
@@ -136,7 +136,7 @@ public class UserDAO extends PersonDAO implements CRUDInterface{
                 String login = rs.getString("login");
                 String password = rs.getString("password");
                 User user = new User(login,password);
-                user.setId_employee(rs.getInt("id_employee"));
+                user.setIdEmployee(rs.getInt("id_employee"));
                 usuarios.add(user);
                 
                 
@@ -162,8 +162,8 @@ public class UserDAO extends PersonDAO implements CRUDInterface{
             stmt = con.prepareStatement("update Usuario set login = ?, password = ?, id_employee = ? where login = ?");
             stmt.setString(1, user.getLogin());
             stmt.setString(2, user.getPassword());
-            stmt.setInt(3, user.getId_employee());
-            stmt.setInt(4, user.getId_employee());
+            stmt.setInt(3, user.getIdEmployee());
+            stmt.setInt(4, user.getIdEmployee());
             
             stmt.executeUpdate();
             
@@ -187,7 +187,7 @@ public class UserDAO extends PersonDAO implements CRUDInterface{
         
         try {
             stmt = con.prepareStatement("delete from user where id_employee = ?");
-            stmt.setInt(1, user.getId_employee());
+            stmt.setInt(1, user.getIdEmployee());
             
             stmt.executeUpdate();
             

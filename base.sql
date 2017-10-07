@@ -55,7 +55,9 @@ CREATE TABLE IF NOT EXISTS user(
   password varchar(255) not null,
   id_employee int not null,
   CONSTRAINT UNK_LOGIN_USER UNIQUE KEY (login),
-  CONSTRAINT FRK_ID_USER FOREIGN KEY (id_employee) REFERENCES employee(id_employee)
+  CONSTRAINT UNK_ID_USER UNIQUE KEY (id_employee),
+  CONSTRAINT FRK_ID_USER FOREIGN KEY (id_employee) REFERENCES employee(id_employee),
+  CONSTRAINT PRK_ID_EMPLOYEE_USER PRIMARY KEY (id_employee)
 );
 
 CREATE TABLE IF NOT EXISTS product_type(

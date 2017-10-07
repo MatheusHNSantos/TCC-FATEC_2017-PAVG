@@ -13,11 +13,20 @@ import exceptionPackage.UserException;
  *
  * @author felipemantoan
  */
-public class User extends Employee implements ModelInterface{
+public class User implements ModelInterface{
     
     private String login;
     private String password;
-   
+    private int idEmployee;
+
+    public int getIdEmployee() {
+        return idEmployee;
+    }
+
+    public void setIdEmployee(int idEmployee) {
+        this.idEmployee = idEmployee;
+    }
+    
     public User(String login, String password) {
         this.login = login;
         this.password = password;
