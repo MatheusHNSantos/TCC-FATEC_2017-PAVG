@@ -1,6 +1,4 @@
 package connection;
-import java.awt.HeadlessException;
-import java.io.File;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -74,8 +72,7 @@ public abstract class ConnectionFactory{
             if(stmt != null){    
                  stmt.close();
             }
-            
-            
+                 
         } catch (SQLException ex) {
              Logger.getLogger(ConnectionFactory.class.getName()).log(Level.SEVERE, null, ex);
         }  
