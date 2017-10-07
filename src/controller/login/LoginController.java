@@ -21,14 +21,14 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import controller.controller.Controller;
 import controller.dashboard.DashboardController;
-import dao.UserDAO;
+import dao.entity.UserDAO;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.fxml.Initializable;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
-import model.User;
+import model.entity.User;
 
 /**
  * FXML Controller class
