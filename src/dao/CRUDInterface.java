@@ -5,6 +5,7 @@
  */
 package dao;
 
+import java.sql.SQLException;
 import java.util.List;
 import model.ModelInterface;
 
@@ -18,8 +19,10 @@ public interface CRUDInterface {
      * 
      * @param model
      * @return 
+     * @throws java.lang.ClassNotFoundException 
+     * @throws java.sql.SQLException 
      */
-    public boolean create(ModelInterface model);
+    public int create(ModelInterface model) throws ClassNotFoundException, SQLException;
     
     /**
      * 
