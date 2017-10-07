@@ -42,7 +42,7 @@ public class UserDAO implements CRUDInterface{
             User user = (User) model;
             
             try {
-                stmt = con.prepareStatement("select * from User where login = ? and password = ?");
+                stmt = con.prepareStatement("select * from user where login = ? and password = ?");
                 stmt.setString(1, user.getLogin());
                 stmt.setString(2, user.getPassword());
                 
