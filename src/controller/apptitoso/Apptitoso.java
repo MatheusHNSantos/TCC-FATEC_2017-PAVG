@@ -6,7 +6,6 @@
 package controller.apptitoso;
 
 import controller.login.LoginController;
-import javafx.stage.StageStyle;
 import static javafx.application.Application.launch;
 import javafx.application.Platform;
 import javafx.stage.Stage;
@@ -26,13 +25,7 @@ public class Apptitoso extends Application {
     @Override
     public void start(Stage PrimaryStage) {
         try {
-            LoginController lc = new LoginController();
-            Stage stage;
-            stage = lc.createStageInstance();
-            
-            stage.initStyle(StageStyle.DECORATED);
-            stage.setTitle("Login");
-            stage.show();
+           LoginController.loader().show();
         }
         catch (Exception e) {
             System.out.println(e.getMessage());
