@@ -6,21 +6,18 @@
 package controller.dashboard;
 
 import com.jfoenix.controls.JFXButton;
-import controller.controller.Controller;
-import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.input.MouseEvent;
-import javafx.stage.Stage;
 
 /**
  * FXML Controller class
  *
  * @author SAMSUNG
  */
-public class DashboardController extends Controller implements Initializable{
+public class DashboardController implements Initializable{
     
     @FXML
     JFXButton btnTest;
@@ -34,11 +31,4 @@ public class DashboardController extends Controller implements Initializable{
     public void handlerClicked(MouseEvent event) {
         System.exit(0);
     }
-
-    public Stage createStageInstance() throws IOException {        
-        this.setFormPath("controller/dashboard/dashboard.fxml");
-        return this.createStageInstance(DashboardController.class);
-    }
-    
-    
 }
