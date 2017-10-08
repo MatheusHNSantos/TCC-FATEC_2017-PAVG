@@ -58,35 +58,15 @@ public class LoginController implements Initializable{
                 }
             }
         };
-        txt_senha.setOnKeyReleased(this::handlerPasswordEnterPressed);
+
         btn_sair.setOnMouseClicked(this::handlerButtonActionSair);
         btn_entrar.setOnMouseClicked(this::handlerButtonActionEntrar);
     }
-
-    @FXML
-    private void handlerPasswordEnterPressed(KeyEvent event) {
-        System.out.println(event.getCode());
-        if (event.getCode() == KeyCode.ENTER) {
-            if (checkLogin()) {
-                System.out.println("Open main");
-                
-                Controller.closeApplication(event);
-            }else{
-                lblWarning.setText("Login ou Senha incorretos!");
-            }
-        }
-    }
-
+    
     @FXML
     private void handlerButtonActionEntrar(MouseEvent event) {
         System.out.println(txt_login.getText() + " " + txt_senha.getText());
 
-        if (checkLogin()) {
-            lblWarning.setText("OK");
-            
-        } else {
-            lblWarning.setText("Login ou Senha incorretos!");
-        }
     }
 
     @FXML
@@ -100,15 +80,7 @@ public class LoginController implements Initializable{
         }
 
     }
-    
-    public boolean checkLogin() {
-        if (txt_login.getText().equals("admin") && txt_senha.getText().equals("admin")) {
-            return true;
-        } else {
-            return false;
-        }
-    }
-    
+        
     public static Stage loader() throws IOException {
         return Controller.loader(LoginController.class, StageStyle.UNDECORATED, "login/login.fxml", "Meucu");
     }
