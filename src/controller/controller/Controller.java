@@ -13,6 +13,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 /**
  *
@@ -20,28 +21,26 @@ import javafx.stage.Stage;
  */
 public class Controller {
     
-    private String formPath;
-
-    public String getFormPath() {
-        return formPath;
+    private static final String sPathControl = "controller/";
+    
+    public static Stage loader(Class<?> Class, StageStyle style, String path, String title) throws IOException {
+        Stage stage = createStageInstance(sPathControl + path, Class);
+        stage.initStyle(style);
+        stage.setTitle(title);
+        return stage;
     }
 
-    public void setFormPath(String formPath) {
-        this.formPath = formPath;
-    }
-        
-    public Stage createStageInstance(Class<?> Class) throws IOException {
-        Parent root;
-        root = FXMLLoader.load(Class.getClassLoader().getResource(this.getFormPath()));
+    public static Stage createStageInstance(String path, Class<?> Class) throws IOException {
+        Parent root = FXMLLoader.load(Class.getClassLoader().getResource(path));
         Stage stage = new Stage();
         stage.setScene(new Scene(root));
         return stage;
     }
-   
-    public static void closeApplication() {
+
+    public void closeApplication() {
         Platform.exit();
     }
- 
+
     public static void closeApplication(Event e) {
         Stage stage = (Stage) ((Node) e.getTarget()).getScene().getWindow();
         stage.close();
@@ -57,4 +56,9 @@ public class Controller {
         stage.show();
     }
 
+    public static void renameApplication(Event e, String title) {
+        Stage stage = (Stage) ((Node) e.getTarget()).getScene().getWindow();
+        stage.setTitle(title);
+        stage.notify();
+    }
 }
