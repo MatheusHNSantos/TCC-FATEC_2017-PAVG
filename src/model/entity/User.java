@@ -17,6 +17,7 @@ public class User {
     
     private String login;
     private String password;
+<<<<<<< HEAD:src/model/entity/User.java
     private int idEmployee;
 
     public int getIdEmployee() {
@@ -28,6 +29,10 @@ public class User {
     }
     
     public User(String login, String password) {
+=======
+   
+    User(String login, String password) {
+>>>>>>> master:src/model/User.java
         this.login = login;
         this.password = password;
     }

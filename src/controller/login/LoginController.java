@@ -1,42 +1,27 @@
 package controller.login;
 
 import com.jfoenix.controls.JFXButton;
-import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
-import javafx.event.Event;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-import javafx.scene.input.KeyCode;
-import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import controller.controller.Controller;
-import controller.dashboard.DashboardController;
-import dao.entity.UserDAO;
 import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javafx.fxml.Initializable;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
-import model.entity.User;
 
 /**
  * FXML Controller class
  *
  * @author LucasFsc
  */
-public class LoginController extends Controller implements Initializable{
-    //<editor-fold defaultstate="collapsed" desc="Variables"> 
+public class LoginController implements Initializable{
     private Thread one;
     @FXML
     Button btn_sair;
@@ -54,7 +39,6 @@ public class LoginController extends Controller implements Initializable{
     Label lblWarning;
     @FXML
     JFXButton btn_entrar;
-    // </editor-fold> 
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -73,58 +57,14 @@ public class LoginController extends Controller implements Initializable{
             }
         };
 
-        //<editor-fold defaultstate="collapsed" desc="Handlers"> 
-        //create handler conversion methods (main actions - ignores fxml)
-        txt_senha.setOnKeyReleased(this::handlerPasswordEnterPressed);
         btn_sair.setOnMouseClicked(this::handlerButtonActionSair);
         btn_entrar.setOnMouseClicked(this::handlerButtonActionEntrar);
-        //</editor-fold>
-
     }
-
-    //<editor-fold defaultstate="collapsed" desc="Handler methods"> 
-    @FXML
-    private void handlerPasswordEnterPressed(KeyEvent event) {
-        
-        //<editor-fold defaultstate="collapsed" desc="Shortcut enter key for password field"> 
-
-        System.out.println(event.getCode());
-        if (event.getCode() == KeyCode.ENTER) {
-            if (checkLogin()) {
-                System.out.println("Open main");
-                
-                LoginController.closeApplication(event);
-            }else{
-                lblWarning.setText("Login ou Senha incorretos!");
-            }
-        }
-        //</editor-fold>
-
-    }
-
+    
     @FXML
     private void handlerButtonActionEntrar(MouseEvent event) {
         System.out.println(txt_login.getText() + " " + txt_senha.getText());
 
-        if (checkLogin()) {
-            lblWarning.setText("OK");
-            
-            DashboardController dash = new DashboardController();
-            Stage stage;
-            try {
-                stage = dash.createStageInstance();
-                stage.initStyle(StageStyle.DECORATED);
-                stage.setTitle("Dash");
-                stage.show();
-            } catch (IOException ex) {
-                Logger.getLogger(LoginController.class.getName()).log(Level.SEVERE, null, ex);
-            }
-
-            LoginController.closeApplication(event);
-        } else {
-            //JOptionPane.showMessageDialog(null, "errou");
-            lblWarning.setText("Login ou Senha incorretos!");
-        }
     }
 
     @FXML
@@ -138,19 +78,8 @@ public class LoginController extends Controller implements Initializable{
         }
 
     }
-    //</editor-fold>
-
-    public boolean checkLogin() {
-        User user = new User(txt_login.getText(),txt_senha.getText());
-        UserDAO userDao = new UserDAO();
         
-        return userDao.doLogin(user);
-    }  
-
-    public Stage createStageInstance() throws IOException {
-                
-        this.setFormPath("controller/login/login.fxml");
-        return this.createStageInstance(LoginController.class);
+    public static Stage loader() throws IOException {
+        return Controller.loader(LoginController.class, StageStyle.UNDECORATED, "login/login.fxml", "Meucu");
     }
-
 }
