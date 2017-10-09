@@ -24,6 +24,10 @@ import javafx.stage.StageStyle;
  * @author LucasFsc
  */
 public class LoginController implements Initializable{
+    
+    private static final String path = "login/login.fxml";
+    private static final String title = "Login";
+    
     private Thread one;
     @FXML
     Button btn_sair;
@@ -41,7 +45,10 @@ public class LoginController implements Initializable{
     Label lblWarning;
     @FXML
     JFXButton btn_entrar;
-
+    
+    
+    
+    
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         
@@ -80,8 +87,8 @@ public class LoginController implements Initializable{
         }
 
     }
-        
+    
     public static Stage loader() throws IOException {
-        return Controller.loader(LoginController.class, StageStyle.UNDECORATED, "login/login.fxml", "Meucu");
+        return Controller.loader(LoginController.class, StageStyle.UNDECORATED, path, title);
     }
 }
