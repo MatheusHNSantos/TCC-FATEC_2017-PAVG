@@ -1,13 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXToggleButton?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
 
 <AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" stylesheets="@../assets/css/main.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.dashboard.DashboardController">
@@ -32,15 +37,13 @@
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <JFXButton layoutX="14.0" layoutY="642.0" styleClass="btn-success" text="Fechar pedido" />
-                        <TableView fx:id="tableView" layoutX="14.0" layoutY="402.0" prefHeight="200.0" prefWidth="670.0">
+                        <TableView fx:id="tableView" layoutX="14.0" layoutY="14.0" prefHeight="669.0" prefWidth="1258.0" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="14.0">
                            <columns>
-                              <TableColumn fx:id="row1" prefWidth="75.0" text="ID" />
-                              <TableColumn fx:id="row2" prefWidth="75.0" text="Nome" />
-                              <TableColumn fx:id="row3" prefWidth="75.0" text="Preço" />
+                              <TableColumn fx:id="row1" prefWidth="241.0" text="ID" />
+                              <TableColumn fx:id="row2" prefWidth="601.0" text="Nome" />
+                              <TableColumn fx:id="row3" prefWidth="409.0" text="Preço" />
                            </columns>
                         </TableView>
-                        <Text layoutX="14.0" layoutY="388.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Produtos" />
                      </children></AnchorPane>
             </content>
           </Tab>
@@ -57,6 +60,75 @@
             <Tab closable="false" text="Mapa">
               <content>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+              </content>
+            </Tab>
+            <Tab closable="false" text="Clientes">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+              </content>
+            </Tab>
+            <Tab closable="false" text="Pedido">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="691.0" prefWidth="1091.0">
+                     <children>
+                        <VBox layoutX="45.0" layoutY="47.0" prefHeight="670.0" prefWidth="100.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="10.0">
+                           <children>
+                              <ImageView fitHeight="64.0" fitWidth="64.0" pickOnBounds="true" preserveRatio="true" smooth="false">
+                                 <image>
+                                    <Image url="controller/assets/imgs/plus.png" />
+                                 </image>
+                              </ImageView>
+                              <ImageView fitHeight="64.0" fitWidth="64.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="controller/assets/imgs/brush.png" />
+                                 </image>
+                                 <VBox.margin>
+                                    <Insets top="10.0" />
+                                 </VBox.margin>
+                              </ImageView>
+                              <ImageView fitHeight="64.0" fitWidth="64.0" pickOnBounds="true" preserveRatio="true">
+                                 <VBox.margin>
+                                    <Insets top="10.0" />
+                                 </VBox.margin>
+                                 <image>
+                                    <Image url="controller/assets/imgs/checked.png" />
+                                 </image>
+                              </ImageView>
+                              <ImageView fitHeight="64.0" fitWidth="64.0" pickOnBounds="true" preserveRatio="true">
+                                 <VBox.margin>
+                                    <Insets top="10.0" />
+                                 </VBox.margin>
+                                 <image>
+                                    <Image url="controller/assets/imgs/cancel.png" />
+                                 </image>
+                              </ImageView>
+                           </children>
+                        </VBox>
+                        <TableView layoutX="749.0" layoutY="451.0" prefHeight="660.0" prefWidth="630.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="650.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
+                          <columns>
+                            <TableColumn prefWidth="75.0" text="C1" />
+                            <TableColumn prefWidth="75.0" text="C2" />
+                          </columns>
+                        </TableView>
+                        <TextArea layoutX="412.0" layoutY="478.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="181.0" prefWidth="520.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="120.0" AnchorPane.topAnchor="500.0" />
+                        <Label layoutX="125.0" layoutY="458.0" text="Observações do pedido" AnchorPane.topAnchor="458.0" />
+                        <VBox layoutX="110.0" layoutY="14.0" prefHeight="440.0" prefWidth="255.0" AnchorPane.leftAnchor="120.0" AnchorPane.topAnchor="10.0">
+                           <children>
+                              <Label text="Nome" />
+                              <TextField prefHeight="28.0" prefWidth="308.0" />
+                              <Label text="Telefone" />
+                              <TextField />
+                              <Label text="Endreço" />
+                              <TextField />
+                           </children>
+                        </VBox>
+                        <VBox layoutX="380.0" layoutY="14.0" prefHeight="440.0" prefWidth="255.0" AnchorPane.leftAnchor="385.0" AnchorPane.topAnchor="10.0">
+                           <children>
+                              <JFXToggleButton prefHeight="56.0" prefWidth="273.0" text="Gerar cupom fiscal" />
+                           </children>
+                        </VBox>
+                     </children>
+                  </AnchorPane>
               </content>
             </Tab>
         </tabs>

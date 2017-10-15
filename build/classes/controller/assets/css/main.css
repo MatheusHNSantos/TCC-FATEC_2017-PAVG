@@ -51,6 +51,12 @@
     -fx-effect: dropshadow(two-pass-box, rgba(204,204,204,0.2), 2, 0, 0, 0);
 }
 
+
+
+#togglePlus{
+    -fx-graphic: url('plus.png'); 
+}
+
 #AnchorPane {
     -fx-background-color: snow;
     -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);
