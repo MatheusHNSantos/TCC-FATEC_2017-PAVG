@@ -114,11 +114,33 @@
                         <Label layoutX="125.0" layoutY="458.0" text="Observações do pedido" AnchorPane.topAnchor="458.0" />
                         <VBox layoutX="110.0" layoutY="14.0" prefHeight="440.0" prefWidth="255.0" AnchorPane.leftAnchor="120.0" AnchorPane.topAnchor="10.0">
                            <children>
-                              <Label text="Nome" />
-                              <TextField prefHeight="28.0" prefWidth="308.0" />
-                              <Label text="Telefone" />
+                              <Label text="Codigo do pedido" />
+                              <TextField editable="false" text="num">
+                                 <VBox.margin>
+                                    <Insets />
+                                 </VBox.margin>
+                              </TextField>
+                              <Label text="Nome">
+                                 <VBox.margin>
+                                    <Insets top="10.0" />
+                                 </VBox.margin>
+                              </Label>
+                              <TextField prefHeight="28.0" prefWidth="308.0">
+                                 <VBox.margin>
+                                    <Insets />
+                                 </VBox.margin>
+                              </TextField>
+                              <Label text="Telefone">
+                                 <padding>
+                                    <Insets top="10.0" />
+                                 </padding>
+                              </Label>
                               <TextField />
-                              <Label text="Endreço" />
+                              <Label text="Endreço">
+                                 <padding>
+                                    <Insets top="10.0" />
+                                 </padding>
+                              </Label>
                               <TextField />
                            </children>
                         </VBox>
