@@ -65,4 +65,8 @@ public abstract class Person implements Entity{
         this.name = name;
     }
 
+    @Override
+    public void save() {
+
+    }
 }

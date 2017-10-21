@@ -1,4 +1,4 @@
-package utils.validation;
+package util.validation;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -10,6 +10,6 @@ package utils.validation;
  *
  * @author felipemantoan
  */
-public interface ValidationInterface {
+public interface Validation {
     
 }
