@@ -21,7 +21,7 @@ import javafx.stage.StageStyle;
  */
 public class Controller {
     
-    private static final String sPathControl = "controller/";
+    private static final String sPathControl = "fxml/";
     
     public static Stage loader(Class<?> Class, StageStyle style, String path, String title) throws IOException {
         Stage stage = createStageInstance(sPathControl + path, Class);

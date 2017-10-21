@@ -5,7 +5,10 @@
  */
 package model.entity.address;
 
+import dao.entity.address.AddressDAO;
 import model.entity.Entity;
+
+import java.sql.SQLException;
 
 /**
  *
@@ -58,9 +61,12 @@ public class Address implements Entity {
         this.cep = cep;
     }
 
-
     @Override
-    public void save() {
+    public void save() throws SQLException, ClassNotFoundException {
+        if (this.id < 1) {
+            AddressDAO.update(this);
+        }
 
+        AddressDAO.create(this);
     }
 }

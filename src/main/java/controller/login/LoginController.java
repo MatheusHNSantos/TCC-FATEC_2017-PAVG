@@ -80,6 +80,6 @@ public class LoginController implements Initializable{
     }
         
     public static Stage loader() throws IOException {
-        return Controller.loader(LoginController.class, StageStyle.UNDECORATED, "login/login.fxml", "Meucu");
+        return Controller.loader(LoginController.class, StageStyle.UNDECORATED, "login.fxml", "Meucu");
     }
 }
