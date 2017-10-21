@@ -1,0 +1,57 @@
+.button, .btn {
+    -fx-font-size: 12px;
+    -fx-font-family: "Arial";
+    -fx-padding: 10px;
+    -fx-border-radius: 1px;
+    -fx-background-radius: 1px;
+    -fx-background-insets: 0,1,2,0;
+}
+
+.btn-danger {
+    -fx-background-color: #d9534f;
+    -fx-text-fill: #ffffff;
+}
+
+.btn-default {
+    -fx-background-color: #c2c2c2;
+    -fx-text-fill: #222222;
+}
+
+.btn-info {
+    -fx-background-color: #5bc0de;
+    -fx-text-fill: #ffffff;
+}
+
+.btn-primary {
+    -fx-background-color: #428bca;
+    -fx-text-fill: #ffffff;
+}
+
+.btn-success {
+    -fx-background-color: #5cb85c;
+    -fx-text-fill: #ffffff;
+}
+
+.btn-warning {
+    -fx-background-color: #f0ad4e;
+    -fx-text-fill: #ffffff;
+}
+
+.text-field {
+    -fx-border-radius: 1px;
+    -fx-background-radius: 1px;
+    -fx-font-size: 13px;
+    -fx-font-family: "Arial";
+    -fx-border-color: #c2c2c2;
+}
+
+.text-field:focused {
+    -fx-border-color: #555555;
+    -fx-faint-focus-color: #f2f2f2;
+    -fx-effect: dropshadow(two-pass-box, rgba(204,204,204,0.2), 2, 0, 0, 0);
+}
+
+#AnchorPane {
+    -fx-background-color: snow;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);
+}
