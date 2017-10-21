@@ -5,11 +5,13 @@
  */
 package model.entity.address;
 
+import model.entity.Entity;
+
 /**
  *
  * @author Matheus Henrique
  */
-public class Address {
+public class Address implements Entity {
     private int id;
     private String street;
     private int number;
@@ -55,6 +57,10 @@ public class Address {
     public void setCep(String cep) {
         this.cep = cep;
     }
-    
-    
+
+
+    @Override
+    public void save() {
+
+    }
 }

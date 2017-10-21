@@ -5,6 +5,7 @@
  */
 package model.entity.person;
 
+import model.entity.Entity;
 import model.entity.address.Address;
 import model.entity.phone.Phone;
 
@@ -15,7 +16,7 @@ import java.util.List;
  *
  * @author felipemantoan
  */
-public abstract class Person {
+public abstract class Person implements Entity{
 
     protected int idPerson;
     protected String name;
