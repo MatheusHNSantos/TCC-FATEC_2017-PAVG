@@ -15,7 +15,7 @@ import java.sql.SQLException;
  * @author Matheus Henrique
  */
 public class Address implements Entity {
-    private int id;
+    private int id = -1;
     private String street;
     private int number;
     private String neighborhood;
@@ -63,10 +63,11 @@ public class Address implements Entity {
 
     @Override
     public void save() throws SQLException, ClassNotFoundException {
-        if (this.id < 1) {
+        if (this.id > -1) {
             AddressDAO.update(this);
         }
-
-        AddressDAO.create(this);
+        else{
+            AddressDAO.create(this);
+        }
     }
 }
