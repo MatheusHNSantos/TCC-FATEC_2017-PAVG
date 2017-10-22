@@ -63,20 +63,49 @@ public class AddressDAO implements DAO {
         stmt.setString(4, address.getCep());
         stmt.setInt(5, address.getId());
         stmt.executeUpdate();
+        ConnectionFactory.closeConnection(conn, stmt);
         return true;
     }
 
-    public Address load(int id) {
-        return new Address();
+    public static Address load(int id) throws ClassNotFoundException, SQLException {
+        Connection conn = ConnectionFactory.getConnection();
+        String sql = "SELECT * FROM address WHERE id_address = ?";
+        PreparedStatement stmt = conn.prepareStatement(sql);
+        stmt.setInt(1, id);
+        ResultSet rs = stmt.executeQuery();
+        rs.next();
+        Address a = AddressDAO.createInstance(rs);
+        ConnectionFactory.closeConnection(conn, stmt, rs);
+        return a;
     }
 
-    public ArrayList<Address> loadAll() {
-        return new ArrayList<Address>();
+    public static ArrayList<Address> loadAll() throws SQLException {
+
+        ArrayList<Address> addresses = new ArrayList<>();
+
+        Connection conn = ConnectionFactory.getConnection();
+        String sql = "SELECT * FROM address";
+        PreparedStatement stmt = conn.prepareStatement(sql);
+        ResultSet rs = stmt.executeQuery();
+        while(rs.next()) {
+            addresses.add(AddressDAO.createInstance(rs));
+        }
+        return addresses;
     }
 
     @Override
-    public void load() {}
+    public void load() {return;}
 
     @Override
     public boolean delete() {return false;}
+
+    protected static Address createInstance(ResultSet result) throws SQLException {
+        Address address = new Address();
+        address.setId(result.getInt("id_address"));
+        address.setStreet(result.getString("street"));
+        address.setNumber(result.getInt("number"));
+        address.setNeighborhood(result.getString("neighborhood"));
+        address.setCep(result.getString("cep"));
+        return address;
+    }
 }
