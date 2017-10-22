@@ -6,7 +6,14 @@
 package dao.entity.person;
 
 import dao.entity.DAO;
+import model.entity.address.Address;
 import model.entity.person.Person;
+import util.connection.ConnectionFactory;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 
 /**
@@ -17,11 +24,24 @@ abstract class PersonDAO implements DAO{
 
     public static int LAST_ID_INSERT = -1;
 
-    public boolean create(Person person){
-        return false;
+    public static boolean create(Person person) throws SQLException {
+        Connection conn = ConnectionFactory.getConnection();
+        String sql = "INSERT INTO person (id_address, name_person) VALUES (?, ?)";
+
+        PreparedStatement stmt = conn.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);
+
+        stmt.setInt(1, person.getAddress().getId());
+        stmt.setString(2, person.getName());
+        stmt.execute();
+
+        ResultSet rs = stmt.getGeneratedKeys();
+        LAST_ID_INSERT = rs.next() ? rs.getInt(1) : -1;
+        ConnectionFactory.closeConnection(conn, stmt, rs);
+        return true;
+
     }
 
-    public boolean update(Person person){
+    public static boolean update(Person person){
         return false;
     }
 }
