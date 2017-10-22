@@ -6,6 +6,7 @@
 package dao.entity.person;
 
 import dao.entity.address.AddressDAO;
+import model.entity.address.Address;
 import model.entity.person.Person;
 import model.entity.person.employee.Employee;
 import util.connection.ConnectionFactory;
@@ -14,6 +15,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 /**
  *
@@ -90,6 +92,29 @@ public class EmployeeDAO extends PersonDAO {
         Employee e = EmployeeDAO.createInstance(rs);
         ConnectionFactory.closeConnection(conn, stmt, rs);
         return e;
+    }
+
+    public static ArrayList<Employee> loadAll() throws SQLException {
+
+        ArrayList<Employee> employees = new ArrayList<>();
+
+        Connection conn = ConnectionFactory.getConnection();
+        String sql = "SELECT " +
+                "employee.id_employee, employee.role, " +
+                "person.id_person, person.name_person, " +
+                "address.id_address, address.street, " +
+                "address.number, address.cep, address.neighborhood " +
+                "FROM employee " +
+                "INNER JOIN person ON person.id_person = employee.id_person " +
+                "INNER JOIN address ON address.id_address = person.id_address";
+        PreparedStatement stmt = conn.prepareStatement(sql);
+
+        ResultSet rs = stmt.executeQuery();
+
+        while(rs.next()) {
+            employees.add(EmployeeDAO.createInstance(rs));
+        }
+        return employees;
     }
 
     public static Employee createInstance(ResultSet result) throws SQLException {
