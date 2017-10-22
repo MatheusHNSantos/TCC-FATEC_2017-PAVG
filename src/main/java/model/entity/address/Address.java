@@ -68,6 +68,7 @@ public class Address implements Entity {
         }
         else{
             AddressDAO.create(this);
+            this.setId(AddressDAO.LAST_ID_INSERT);
         }
     }
 }
