@@ -104,7 +104,7 @@ public class AddressDAO implements DAO {
         return;
     }
 
-    protected static Address createInstance(ResultSet result) throws SQLException {
+    public static Address createInstance(ResultSet result) throws SQLException {
         Address address = new Address();
         address.setId(result.getInt("id_address"));
         address.setStreet(result.getString("street"));

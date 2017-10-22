@@ -13,6 +13,8 @@ import dao.entity.person.PersonDAO;
  */
 public class CostumerDAO extends PersonDAO {
 
+    public static int LAST_ID_INSERT = -1;
+
     @Override
     public boolean create() {
         return false;
