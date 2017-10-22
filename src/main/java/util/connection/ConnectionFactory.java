@@ -1,4 +1,4 @@
-package dao.connection;
+package util.connection;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;

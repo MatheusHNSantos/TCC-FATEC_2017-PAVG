@@ -5,7 +5,7 @@
  */
 package dao.entity.address;
 
-import dao.connection.ConnectionFactory;
+import util.connection.ConnectionFactory;
 import dao.entity.DAO;
 import model.entity.address.Address;
 

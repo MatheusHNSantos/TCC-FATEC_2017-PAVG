@@ -5,12 +5,7 @@
  */
 package dao.entity.person;
 
-import dao.connection.ConnectionFactory;
 import model.entity.person.Person;
-
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
 
 /**
  *

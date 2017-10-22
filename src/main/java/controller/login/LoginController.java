@@ -3,6 +3,8 @@ package controller.login;
 import com.jfoenix.controls.JFXButton;
 import java.net.URL;
 import java.util.ResourceBundle;
+
+import controller.BaseController;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -10,18 +12,19 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
-import controller.controller.Controller;
+
 import java.io.IOException;
 import javafx.fxml.Initializable;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import util.fxml.Loader;
 
 /**
- * FXML Controller class
+ * FXML BaseController class
  *
  * @author LucasFsc
  */
-public class LoginController implements Initializable{
+public class LoginController extends BaseController implements Initializable{
     private Thread one;
     @FXML
     Button btn_sair;
@@ -80,6 +83,6 @@ public class LoginController implements Initializable{
     }
         
     public static Stage loader() throws IOException {
-        return Controller.loader(LoginController.class, StageStyle.UNDECORATED, "login.fxml", "Meucu");
+        return Loader.loader(LoginController.class, StageStyle.UNDECORATED, "login.fxml", "Meucu");
     }
 }

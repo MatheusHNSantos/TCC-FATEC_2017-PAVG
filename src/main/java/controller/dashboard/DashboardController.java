@@ -13,7 +13,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.input.MouseEvent;
 
 /**
- * FXML Controller class
+ * FXML BaseController class
  *
  * @author SAMSUNG
  */
