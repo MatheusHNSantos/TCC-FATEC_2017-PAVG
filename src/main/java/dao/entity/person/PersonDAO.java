@@ -41,7 +41,17 @@ abstract class PersonDAO implements DAO{
 
     }
 
-    public static boolean update(Person person){
-        return false;
+    public static boolean update(Person person) throws SQLException {
+        Connection conn = ConnectionFactory.getConnection();
+        String sql = "UPDATE person SET id_address = ?, name_person = ? WHERE id_person = ?";
+        PreparedStatement stmt = conn.prepareStatement(sql);
+
+        stmt.setInt(1, person.getAddress().getId());
+        stmt.setString(2, person.getName());
+        stmt.setInt(3, person.getId());
+
+        stmt.executeUpdate();
+        ConnectionFactory.closeConnection(conn, stmt);
+        return true;
     }
 }
