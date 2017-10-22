@@ -79,7 +79,7 @@ public class AddressDAO implements DAO {
         return a;
     }
 
-    public static ArrayList<Address> loadAll() throws SQLException {
+    public static ArrayList<Address> loadAll() throws SQLException, ClassNotFoundException {
 
         ArrayList<Address> addresses = new ArrayList<>();
 

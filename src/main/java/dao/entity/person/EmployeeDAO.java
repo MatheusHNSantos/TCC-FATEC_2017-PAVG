@@ -6,8 +6,6 @@
 package dao.entity.person;
 
 import dao.entity.address.AddressDAO;
-import model.entity.address.Address;
-import model.entity.person.Person;
 import model.entity.person.employee.Employee;
 import util.connection.ConnectionFactory;
 
@@ -27,7 +25,7 @@ public class EmployeeDAO extends PersonDAO {
     @Override
     public boolean create(){return false;}
 
-    public static boolean create(Employee employee) throws SQLException {
+    public static boolean create(Employee employee) throws SQLException, ClassNotFoundException {
         PersonDAO.create(employee);
         Connection conn = ConnectionFactory.getConnection();
         String sql = "INSERT INTO employee (role, id_person) VALUES (?, ?)";
@@ -47,7 +45,7 @@ public class EmployeeDAO extends PersonDAO {
     @Override
     public boolean update() {return false;}
 
-    public static boolean update(Employee employee) throws SQLException {
+    public static boolean update(Employee employee) throws SQLException, ClassNotFoundException {
         PersonDAO.update(employee);
 
         Connection conn = ConnectionFactory.getConnection();
@@ -72,7 +70,7 @@ public class EmployeeDAO extends PersonDAO {
     @Override
     public void createInstance() {return;}
 
-    public static Employee load(int id) throws SQLException {
+    public static Employee load(int id) throws SQLException, ClassNotFoundException {
         Connection conn = ConnectionFactory.getConnection();
 
         String sql = "SELECT " +
@@ -94,7 +92,7 @@ public class EmployeeDAO extends PersonDAO {
         return e;
     }
 
-    public static ArrayList<Employee> loadAll() throws SQLException {
+    public static ArrayList<Employee> loadAll() throws SQLException, ClassNotFoundException {
 
         ArrayList<Employee> employees = new ArrayList<>();
 

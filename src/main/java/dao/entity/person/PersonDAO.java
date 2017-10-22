@@ -24,7 +24,7 @@ abstract class PersonDAO implements DAO{
 
     public static int LAST_ID_INSERT = -1;
 
-    public static boolean create(Person person) throws SQLException {
+    public static boolean create(Person person) throws SQLException, ClassNotFoundException {
         Connection conn = ConnectionFactory.getConnection();
         String sql = "INSERT INTO person (id_address, name_person) VALUES (?, ?)";
 
@@ -41,7 +41,7 @@ abstract class PersonDAO implements DAO{
 
     }
 
-    public static boolean update(Person person) throws SQLException {
+    public static boolean update(Person person) throws SQLException, ClassNotFoundException {
         Connection conn = ConnectionFactory.getConnection();
         String sql = "UPDATE person SET id_address = ?, name_person = ? WHERE id_person = ?";
         PreparedStatement stmt = conn.prepareStatement(sql);
