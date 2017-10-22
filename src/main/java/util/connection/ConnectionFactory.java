@@ -16,7 +16,7 @@ public abstract class ConnectionFactory{
     /** @DRIVER
      * É responsável por definir a biblioteca de conexão.
      */
-    private static final String DRIVER = "com.mysql.jdbc.Driver";
+    private static final String DRIVER = "com.mysql.cj.jdbc.Driver";
     
     /**
      * @DATABASE
