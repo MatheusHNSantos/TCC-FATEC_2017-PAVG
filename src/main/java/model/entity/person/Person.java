@@ -18,19 +18,12 @@ import java.util.List;
  */
 public abstract class Person implements Entity{
 
-    protected int idPerson;
-    protected String name;
-    private int idAddress;
+    private int id = -1;
+    private String name;
+
     private Address address;
+
     private List<Phone> listPhone = new ArrayList();
-
-    public int getIdAddress() {
-        return idAddress;
-    }
-
-    public void setIdAddress(int idAddress) {
-        this.idAddress = idAddress;
-    }
 
     public Address getAddress() {
         return address;
@@ -39,14 +32,13 @@ public abstract class Person implements Entity{
     public void setAddress(Address address) {
         this.address = address;
     }
-    
-   
-    public int getIdPerson() {
-        return idPerson;
+
+    public int getId() {
+        return id;
     }
 
-    public void setIdPerson(int idPerson) {
-        this.idPerson = idPerson;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public List<Phone> getListPhone() {
@@ -65,8 +57,4 @@ public abstract class Person implements Entity{
         this.name = name;
     }
 
-    @Override
-    public void save() {
-
-    }
 }

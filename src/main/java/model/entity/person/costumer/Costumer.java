@@ -7,6 +7,8 @@ package model.entity.person.costumer;
 
 import model.entity.person.Person;
 
+import java.sql.SQLException;
+
 /**
  *
  * @author felipemantoan
@@ -38,5 +40,10 @@ public class Costumer extends Person {
     
     public boolean validateRG() {
         return false;
+    }
+
+    @Override
+    public void save() throws SQLException, ClassNotFoundException {
+
     }
 }

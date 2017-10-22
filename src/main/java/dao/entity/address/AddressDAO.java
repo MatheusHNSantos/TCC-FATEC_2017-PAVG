@@ -99,6 +99,11 @@ public class AddressDAO implements DAO {
     @Override
     public boolean delete() {return false;}
 
+    @Override
+    public void createInstance() {
+        return;
+    }
+
     protected static Address createInstance(ResultSet result) throws SQLException {
         Address address = new Address();
         address.setId(result.getInt("id_address"));

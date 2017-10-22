@@ -32,4 +32,9 @@ public class SupplierDAO extends PersonDAO {
     public boolean delete() {
         return false;
     }
+
+    @Override
+    public void createInstance() {
+
+    }
 }

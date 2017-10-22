@@ -7,6 +7,8 @@ package model.entity.person.supplier;
 
 import model.entity.person.Person;
 
+import java.sql.SQLException;
+
 /**
  *
  * @author felipemantoan
@@ -21,7 +23,10 @@ public class Supplier extends Person {
     public void setCNPJ(String CNPJ) {
         this.CNPJ = CNPJ;
     }
-    
-    
-    
+
+
+    @Override
+    public void save() throws SQLException, ClassNotFoundException {
+
+    }
 }

@@ -32,4 +32,9 @@ public class CostumerDAO extends PersonDAO {
     public boolean delete() {
         return false;
     }
+
+    @Override
+    public void createInstance() {
+
+    }
 }
