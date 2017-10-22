@@ -9,4 +9,5 @@ public interface DAO {
     public void load();
     public boolean delete();
 
+    public void createInstance();
 }
