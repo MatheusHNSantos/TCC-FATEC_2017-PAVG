@@ -4,7 +4,9 @@ import java.sql.SQLException;
 
 public interface Entity {
 
-    int id = -1;
+    public boolean isNew = false;
 
-    public void save() throws SQLException, ClassNotFoundException;
+    public boolean save() throws SQLException, ClassNotFoundException;
+
+    public boolean isNew();
 }

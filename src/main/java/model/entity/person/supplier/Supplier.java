@@ -16,6 +16,8 @@ import java.sql.SQLException;
 public class Supplier extends Person {
     private String CNPJ;
 
+    public static boolean isNew = false;
+
     public String getCNPJ() {
         return CNPJ;
     }
@@ -26,7 +28,12 @@ public class Supplier extends Person {
 
 
     @Override
-    public void save() throws SQLException, ClassNotFoundException {
+    public boolean save() throws SQLException, ClassNotFoundException {
+        return false;
+    }
 
+    @Override
+    public boolean isNew() {
+        return isNew;
     }
 }

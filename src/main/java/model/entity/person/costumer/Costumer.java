@@ -33,17 +33,14 @@ public class Costumer extends Person {
     public void setRG(String RG) {
         this.RG = RG;
     }
-    
-    public boolean validateCPF() {
-        return false;
-    }
-    
-    public boolean validateRG() {
+
+    @Override
+    public boolean save() throws SQLException, ClassNotFoundException {
         return false;
     }
 
     @Override
-    public void save() throws SQLException, ClassNotFoundException {
-
+    public boolean isNew() {
+        return false;
     }
 }

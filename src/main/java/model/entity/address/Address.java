@@ -21,6 +21,8 @@ public class Address implements Entity {
     private String neighborhood;
     private String cep;
 
+    public static boolean isNew = false;
+
     public int getId() {
         return id;
     }
@@ -62,13 +64,19 @@ public class Address implements Entity {
     }
 
     @Override
-    public void save() throws SQLException, ClassNotFoundException {
-        if (this.id > -1) {
-            AddressDAO.update(this);
-        }
-        else{
-            AddressDAO.create(this);
+    public boolean save() throws SQLException, ClassNotFoundException {
+
+        if (this.id == -1) {
+            boolean created  = isNew = AddressDAO.create(this);
             this.setId(AddressDAO.LAST_ID_INSERT);
+            return created;
         }
+
+        return AddressDAO.update(this);
+    }
+
+    @Override
+    public boolean isNew(){
+        return isNew;
     }
 }

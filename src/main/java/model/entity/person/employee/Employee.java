@@ -19,6 +19,8 @@ public class Employee extends Person implements Entity{
     private int idEmployee = -1;
     protected String role;
 
+    public boolean isNew = false;
+
     public int getId_employee() {
         return idEmployee;
     }
@@ -36,13 +38,18 @@ public class Employee extends Person implements Entity{
     }
 
     @Override
-    public void save() throws SQLException, ClassNotFoundException {
+    public boolean save() throws SQLException, ClassNotFoundException {
         if (idEmployee == -1) {
-            EmployeeDAO.create(this);
+            boolean created  = isNew = EmployeeDAO.create(this);
             this.setId_employee(EmployeeDAO.LAST_ID_INSERT);
+            return created;
         }
-        else{
-            EmployeeDAO.update(this);
-        }
+
+        return EmployeeDAO.update(this);
+    }
+
+    @Override
+    public boolean isNew() {
+        return isNew;
     }
 }
