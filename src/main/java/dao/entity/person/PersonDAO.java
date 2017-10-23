@@ -6,7 +6,6 @@
 package dao.entity.person;
 
 import dao.entity.DAO;
-import model.entity.address.Address;
 import model.entity.person.Person;
 import util.connection.ConnectionFactory;
 
@@ -32,13 +31,19 @@ abstract class PersonDAO implements DAO{
 
         stmt.setInt(1, person.getAddress().getId());
         stmt.setString(2, person.getName());
-        stmt.execute();
 
-        ResultSet rs = stmt.getGeneratedKeys();
-        LAST_ID_INSERT = rs.next() ? rs.getInt(1) : -1;
-        ConnectionFactory.closeConnection(conn, stmt, rs);
-        return true;
+        int affectedRows = stmt.executeUpdate();
 
+        if (affectedRows > 0) {
+            ResultSet rs = stmt.getGeneratedKeys();
+            rs.next();
+            LAST_ID_INSERT = rs.getInt(1);
+            ConnectionFactory.closeConnection(conn, stmt, rs);
+            return true;
+        }
+
+        ConnectionFactory.closeConnection(conn, stmt);
+        return false;
     }
 
     public static boolean update(Person person) throws SQLException, ClassNotFoundException {
@@ -50,8 +55,13 @@ abstract class PersonDAO implements DAO{
         stmt.setString(2, person.getName());
         stmt.setInt(3, person.getId());
 
-        stmt.executeUpdate();
+        int affectedRows = stmt.executeUpdate();
         ConnectionFactory.closeConnection(conn, stmt);
-        return true;
+
+        if (affectedRows > 0) {
+            return true;
+        }
+
+        return false;
     }
 }

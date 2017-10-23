@@ -34,12 +34,18 @@ public class EmployeeDAO extends PersonDAO {
 
         stmt.setString(1, employee.getRole());
         stmt.setInt(2, PersonDAO.LAST_ID_INSERT);
-        stmt.execute();
+        int affectedRows = stmt.executeUpdate();
 
-        ResultSet rs = stmt.getGeneratedKeys();
-        LAST_ID_INSERT = rs.next() ? rs.getInt(1) : -1;
-        ConnectionFactory.closeConnection(conn, stmt, rs);
-        return true;
+        if (affectedRows > 0) {
+            ResultSet rs = stmt.getGeneratedKeys();
+            rs.next();
+            LAST_ID_INSERT = rs.getInt(1);
+            ConnectionFactory.closeConnection(conn, stmt, rs);
+            return true;
+        }
+
+        ConnectionFactory.closeConnection(conn, stmt);
+        return false;
     }
 
     @Override
@@ -55,9 +61,14 @@ public class EmployeeDAO extends PersonDAO {
         stmt.setString(1, employee.getRole());
         stmt.setInt(2, employee.getId_employee());
 
-        stmt.executeUpdate();
+        int affectedRows = stmt.executeUpdate();
         ConnectionFactory.closeConnection(conn, stmt);
-        return true;
+
+        if (affectedRows > 0) {
+            return true;
+        }
+
+        return false;
     }
 
     @Override

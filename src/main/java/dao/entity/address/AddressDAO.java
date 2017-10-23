@@ -38,12 +38,19 @@ public class AddressDAO implements DAO {
         stmt.setInt(2, address.getNumber());
         stmt.setString(3, address.getNeighborhood());
         stmt.setString(4, address.getCep());
-        stmt.execute();
-        
-        ResultSet rs = stmt.getGeneratedKeys();
-        LAST_ID_INSERT = rs.next() ? rs.getInt(1) : -1;
-        ConnectionFactory.closeConnection(conn, stmt, rs);
-        return true;
+
+        int affectedRows = stmt.executeUpdate();
+
+        if (affectedRows > 0) {
+            ResultSet rs = stmt.getGeneratedKeys();
+            rs.next();
+            LAST_ID_INSERT = rs.getInt(1);
+            ConnectionFactory.closeConnection(conn, stmt, rs);
+            return true;
+        }
+
+        ConnectionFactory.closeConnection(conn, stmt);
+        return false;
     }
 
 
@@ -62,9 +69,15 @@ public class AddressDAO implements DAO {
         stmt.setString(3, address.getNeighborhood());
         stmt.setString(4, address.getCep());
         stmt.setInt(5, address.getId());
-        stmt.executeUpdate();
+
+        int affectedRows = stmt.executeUpdate();
         ConnectionFactory.closeConnection(conn, stmt);
-        return true;
+
+        if (affectedRows > 0) {
+            return true;
+        }
+
+        return false;
     }
 
     public static Address load(int id) throws ClassNotFoundException, SQLException {
