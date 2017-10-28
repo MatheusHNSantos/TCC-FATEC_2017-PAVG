@@ -93,6 +93,7 @@ public class EmployeeDAO extends PersonDAO {
         ArrayList<Employee> employees = new ArrayList<>();
 
         Connection conn = ConnectionFactory.getConnection();
+
         String sql = "SELECT " +
                 "employee.id_employee, employee.role, " +
                 "person.id_person, person.name_person, " +
@@ -101,6 +102,7 @@ public class EmployeeDAO extends PersonDAO {
                 "FROM employee " +
                 "INNER JOIN person ON person.id_person = employee.id_person " +
                 "INNER JOIN address ON address.id_address = person.id_address";
+
         PreparedStatement stmt = conn.prepareStatement(sql);
 
         ResultSet rs = stmt.executeQuery();

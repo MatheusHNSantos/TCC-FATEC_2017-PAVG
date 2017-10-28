@@ -14,6 +14,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 /**
  *
@@ -63,11 +64,11 @@ public class CostumerDAO extends PersonDAO {
         Connection conn = ConnectionFactory.getConnection();
 
         String sql = "SELECT costumer.rg, costumer.cpf, " +
-                "person.name_person, address.id_address, " +
+                "person.name_person, person.id_person, address.id_address, " +
                 "address.street, address.number,address.cep, " +
                 "address.neighborhood " +
-                "FROM costumer" +
-                " INNER JOIN person ON person.id_person = costumer.id_person " +
+                "FROM costumer " +
+                "INNER JOIN person ON person.id_person = costumer.id_person " +
                 "INNER JOIN address ON address.id_address = person.id_address " +
                 "WHERE costumer.id_person = ?";
 
@@ -79,30 +80,29 @@ public class CostumerDAO extends PersonDAO {
         ConnectionFactory.closeConnection(conn, stmt, rs);
         return c;
     }
-/*
-    public static ArrayList<Employee> loadAll() throws SQLException, ClassNotFoundException {
 
-        ArrayList<Employee> employees = new ArrayList<>();
+    public static ArrayList<Costumer> loadAll() throws SQLException, ClassNotFoundException {
+
+        ArrayList<Costumer> costumers = new ArrayList<>();
 
         Connection conn = ConnectionFactory.getConnection();
-        String sql = "SELECT " +
-                "employee.id_employee, employee.role, " +
-                "person.id_person, person.name_person, " +
-                "address.id_address, address.street, " +
-                "address.number, address.cep, address.neighborhood " +
-                "FROM employee " +
-                "INNER JOIN person ON person.id_person = employee.id_person " +
+        String sql = "SELECT costumer.rg, costumer.cpf, " +
+                "person.name_person, person.id_person ,address.id_address, " +
+                "address.street, address.number, " +
+                "address.cep, address.neighborhood " +
+                "FROM costumer " +
+                "INNER JOIN person ON person.id_person = costumer.id_person " +
                 "INNER JOIN address ON address.id_address = person.id_address";
         PreparedStatement stmt = conn.prepareStatement(sql);
 
         ResultSet rs = stmt.executeQuery();
 
         while(rs.next()) {
-            employees.add(EmployeeDAO.createInstance(rs));
+            costumers.add(CostumerDAO.createInstance(rs));
         }
-        return employees;
+        return costumers;
     }
-*/
+
     public static Costumer createInstance(ResultSet result) throws SQLException {
         Costumer costumer = new Costumer ();
 
