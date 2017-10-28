@@ -5,6 +5,7 @@
  */
 package model.entity.person.costumer;
 
+import dao.entity.person.CostumerDAO;
 import model.entity.person.Person;
 
 import java.sql.SQLException;
@@ -17,6 +18,7 @@ public class Costumer extends Person {
     
     private String CPF;
     private String RG;
+    private boolean isNew;
 
     public String getCPF() {
         return CPF;
@@ -36,11 +38,19 @@ public class Costumer extends Person {
 
     @Override
     public boolean save() throws SQLException, ClassNotFoundException {
-        return false;
+        if (this.getId() == -1) {
+            boolean created = CostumerDAO.create(this);
+            isNew = created;
+            this.setId(CostumerDAO.LAST_ID_INSERT);
+            return created;
+        }
+
+        return CostumerDAO.update(this);
     }
 
     @Override
     public boolean isNew() {
-        return false;
+        return isNew;
     }
+
 }
