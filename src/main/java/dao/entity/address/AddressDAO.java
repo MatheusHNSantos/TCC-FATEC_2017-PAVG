@@ -23,11 +23,6 @@ public class AddressDAO implements DAO {
 
     public static int LAST_ID_INSERT = -1;
 
-    @Override
-    public boolean create() {
-        return false;
-    }
-
     public static boolean create(Address address) throws ClassNotFoundException, SQLException {
         
         Connection conn = ConnectionFactory.getConnection();
@@ -50,12 +45,6 @@ public class AddressDAO implements DAO {
         }
 
         ConnectionFactory.closeConnection(conn, stmt);
-        return false;
-    }
-
-
-    @Override
-    public boolean update() {
         return false;
     }
 
@@ -104,17 +93,6 @@ public class AddressDAO implements DAO {
             addresses.add(AddressDAO.createInstance(rs));
         }
         return addresses;
-    }
-
-    @Override
-    public void load() {return;}
-
-    @Override
-    public boolean delete() {return false;}
-
-    @Override
-    public void createInstance() {
-        return;
     }
 
     public static Address createInstance(ResultSet result) throws SQLException {
