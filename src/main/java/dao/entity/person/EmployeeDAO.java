@@ -20,10 +20,8 @@ import java.util.ArrayList;
  * @author Matheus Henrique
  */
 public class EmployeeDAO extends PersonDAO {
-    public static int LAST_ID_INSERT = -1;
 
-    @Override
-    public boolean create(){return false;}
+    public static int LAST_ID_INSERT = -1;
 
     public static boolean create(Employee employee) throws SQLException, ClassNotFoundException {
         PersonDAO.create(employee);
@@ -48,9 +46,6 @@ public class EmployeeDAO extends PersonDAO {
         return false;
     }
 
-    @Override
-    public boolean update() {return false;}
-
     public static boolean update(Employee employee) throws SQLException, ClassNotFoundException {
         PersonDAO.update(employee);
 
@@ -70,16 +65,6 @@ public class EmployeeDAO extends PersonDAO {
 
         return false;
     }
-
-    @Override
-    public void load(){return;}
-
-
-    @Override
-    public boolean delete(){return false;}
-
-    @Override
-    public void createInstance() {return;}
 
     public static Employee load(int id) throws SQLException, ClassNotFoundException {
         Connection conn = ConnectionFactory.getConnection();

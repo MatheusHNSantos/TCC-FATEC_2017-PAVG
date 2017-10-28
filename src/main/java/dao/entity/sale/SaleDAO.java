@@ -5,10 +5,12 @@
  */
 package dao.entity.sale;
 
+import dao.entity.DAO;
+
 /**
  *
  * @author Matheus Henrique
  */
-public class SaleDAO {
+public class SaleDAO implements DAO {
     
 }

@@ -13,28 +13,6 @@ import dao.entity.person.PersonDAO;
  */
 public class SupplierDAO extends PersonDAO {
 
-    @Override
-    public boolean create() {
-        return false;
-    }
+    public static int LAST_ID_INSERT = -1;
 
-    @Override
-    public boolean update() {
-        return false;
-    }
-
-    @Override
-    public void load() {
-
-    }
-
-    @Override
-    public boolean delete() {
-        return false;
-    }
-
-    @Override
-    public void createInstance() {
-
-    }
 }
