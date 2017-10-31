@@ -2,6 +2,11 @@ package model.entity.person.user;
 
 import org.omg.CORBA.UserException;
 
+/**
+ *
+ * @author Matheus Henrique
+ */
+
 public class User {
     private String login;
     private String password;

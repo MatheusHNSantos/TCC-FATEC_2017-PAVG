@@ -7,7 +7,6 @@ package dao.entity.person;
  * and open the template in the editor.
  */
 
-import dao.entity.DAO;
 import model.entity.person.user.User;
 import org.omg.CORBA.UserException;
 import util.connection.ConnectionFactory;
