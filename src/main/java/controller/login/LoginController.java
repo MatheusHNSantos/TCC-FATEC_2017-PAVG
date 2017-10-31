@@ -8,6 +8,10 @@ import controller.BaseController;
 import controller.dashboard.DashboardController;
 import dao.entity.person.UserDAO;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
@@ -16,6 +20,9 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 
 import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 import javafx.fxml.Initializable;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
@@ -77,7 +84,26 @@ public class LoginController extends BaseController implements Initializable{
 
 
         if(userDAO.doLogin(user)){
-            System.out.println("Acesso Liberado!");
+
+
+
+            try {
+                Node node = (Node) event.getSource();
+
+                Stage stage = (Stage) node.getScene().getWindow();
+
+                URL url = getClass().getResource("/fxml/login.fxml");
+                Parent root = FXMLLoader.load(url);
+                Scene scene = new Scene(root);
+                stage.setTitle("FXML Welcome");
+                stage.setScene(scene);
+                stage.show();
+
+            } catch (IOException ex) {
+
+                Logger.getLogger(LoginController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
         }else{
             System.out.println("Acesso Negado!");
         }

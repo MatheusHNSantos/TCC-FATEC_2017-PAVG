@@ -6,18 +6,12 @@
 package controller.dashboard;
 
 import com.jfoenix.controls.JFXButton;
-
-import java.io.IOException;
-import java.net.URL;
-import java.util.ResourceBundle;
-
-import controller.login.LoginController;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.input.MouseEvent;
-import javafx.stage.Stage;
-import javafx.stage.StageStyle;
-import util.fxml.Loader;
+
+import java.net.URL;
+import java.util.ResourceBundle;
 
 /**
  * FXML BaseController class
@@ -39,7 +33,5 @@ public class DashboardController implements Initializable{
         System.exit(0);
     }
 
-    public static Stage loader() throws IOException {
-        return Loader.loader(LoginController.class, StageStyle.DECORATED, "dashboard.fxml", "asas");
-    }
+
 }

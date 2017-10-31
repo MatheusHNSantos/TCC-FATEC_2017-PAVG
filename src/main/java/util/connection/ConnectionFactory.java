@@ -34,9 +34,9 @@ public abstract class ConnectionFactory{
 
     /**
      * @EXTRAS
-     * Seta timezone regional
+     * Seta timezone regional e SLL = false
      */
-    private static final String EXTRAS = "?useTimezone=true&serverTimezone=UTC";
+    private static final String EXTRAS = "?useTimezone=true&serverTimezone=UTC&useSSL=false";
 
     /**
      * @URL
