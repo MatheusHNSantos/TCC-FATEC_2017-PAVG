@@ -27,7 +27,7 @@ public class DashboardController implements Initializable{
         btnTest.setOnMouseClicked(this::handlerClicked);
     }
     
-    
+
     public void handlerClicked(MouseEvent event) {
         System.exit(0);
     }
