@@ -65,13 +65,14 @@ public class LoginController extends BaseController implements Initializable{
             }
         };
 
-        btn_sair.setOnMouseClicked(this::handlerButtonActionEntrar);
+
         btn_entrar.setOnMouseClicked(this::handlerButtonActionEntrar);
+        btn_sair.setOnMouseClicked(this::handlerButtonActionSair);
     }
     
     @FXML
     private void handlerButtonActionEntrar(MouseEvent event) {
-        User user = new User("admin", "admin");
+        User user = new User(txt_login.getText(), txt_senha.getText());
         UserDAO userDAO = new UserDAO();
 
 
@@ -87,12 +88,8 @@ public class LoginController extends BaseController implements Initializable{
     @FXML
     private void handlerButtonActionSair(MouseEvent event) {
 
-        try {
-            one.start();
-
-        } catch (Exception e) {
-            System.out.println("Error: " + e);
-        }
+            Stage stage = (Stage) btn_sair.getScene().getWindow(); //Obtendo a janela atual
+            stage.close(); //Fechando o Stage
 
     }
         
