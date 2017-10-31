@@ -5,6 +5,8 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import controller.BaseController;
+import controller.dashboard.DashboardController;
+import dao.entity.person.UserDAO;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -17,7 +19,10 @@ import java.io.IOException;
 import javafx.fxml.Initializable;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import model.entity.person.user.User;
 import util.fxml.Loader;
+
+import javax.swing.*;
 
 /**
  * FXML BaseController class
@@ -66,7 +71,16 @@ public class LoginController extends BaseController implements Initializable{
     
     @FXML
     private void handlerButtonActionEntrar(MouseEvent event) {
-        System.out.println(txt_login.getText() + " " + txt_senha.getText());
+        User user = new User("admin", "admin");
+        UserDAO userDAO = new UserDAO();
+
+
+        if(userDAO.doLogin(user)){
+            System.out.println("Acesso Liberado!");
+        }else{
+            System.out.println("Acesso Negado!");
+        }
+
 
     }
 

@@ -12,51 +12,69 @@ import java.util.logging.Logger;
  * @author Matheus Henrique
  */
 public abstract class ConnectionFactory{
-    
+
+
+        /**
+     *
+     * @return Instância da classe Connection
+     * @throws SQLException
+     */
+
     /** @DRIVER
      * É responsável por definir a biblioteca de conexão.
      */
     private static final String DRIVER = "com.mysql.cj.jdbc.Driver";
-    
+
     /**
      * @DATABASE
      * Deve ser o nome do banco de dados
      */
     private static final String DATABASE = "apetitoso";
-    
+
+
+    /**
+     * @EXTRAS
+     * Seta timezone regional
+     */
+    private static final String EXTRAS = "?useTimezone=true&serverTimezone=UTC";
+
     /**
      * @URL
      * É o dns aonde o banco esta alocado
      */
-    private static final String URL = "jdbc:mysql://localhost:3306/" + DATABASE;
-    
+    private static final String URL = "jdbc:mysql://localhost:3306/" + DATABASE + EXTRAS;
+
     /**
      * @USER
      * Normalmente é o nome do usuário que acessa o BD
      */
     private static final String USER = "root";
-    
+
     /**
      * @PASS
      * É a senha do usuário banco de dados
      */
-    private static final String PASS = "toorroot";
-    
+
+    private static final String PASS = "";
+
+
+
     /**
-     * 
+     *
      * @return Instância da classe Connection
      */
-   public static Connection getConnection() {
-       try {
-           Class.forName(DRIVER);
-           return DriverManager.getConnection(URL, USER, PASS);
+    public static Connection getConnection() {
+        try {
+            Class.forName(DRIVER);
+            return DriverManager.getConnection(URL, USER, PASS);
 
-       } catch (ClassNotFoundException | SQLException ex) {
-           throw new RuntimeException("Erro na conexão: ", ex);
-       }
+        } catch (ClassNotFoundException | SQLException ex) {
+            throw new RuntimeException("Erro na conexão: ", ex);
+        }
 
-   }
-    
+    }
+
+
     /**
      * Este Método é responsável pelo fechamento da conexão
      * 
