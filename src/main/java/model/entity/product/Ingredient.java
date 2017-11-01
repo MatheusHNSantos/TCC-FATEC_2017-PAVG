@@ -31,7 +31,7 @@ public class Ingredient {
         this.name = name;
     }
 
-    public boolean isStatus() {
+    public boolean getStatus() {
         return status;
     }
 
