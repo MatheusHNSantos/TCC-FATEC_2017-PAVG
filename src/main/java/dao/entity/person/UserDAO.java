@@ -7,26 +7,33 @@ package dao.entity.person;
  * and open the template in the editor.
  */
 
+import model.entity.person.user.User;
+import org.omg.CORBA.UserException;
+import util.connection.ConnectionFactory;
+
+import javax.swing.*;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author Matheus Henrique
  */
-public class UserDAO{
-/*
-    public boolean doLogin(ModelInterface model) {
-     
-        *//*try { //Ativar para SQlite
-            ConnectionFactory.checkDatabase();
-        } catch (Exception ex) {
-            JOptionPane.showMessageDialog(null, "Falha ao verificar existencia de base de dados: " + ex.getMessage());
-        }*//*
+public class UserDAO {
+
+    public boolean doLogin(User user) {
             Connection con = ConnectionFactory.getConnection();
             PreparedStatement stmt = null;
             ResultSet rs = null;
             boolean validacao = false;
             
-            User user = (User) model;
-            
+
             try {
                 stmt = con.prepareStatement("select * from user where login = ? and password = ?");
                 stmt.setString(1, user.getLogin());
@@ -49,13 +56,12 @@ public class UserDAO{
             return validacao;
     } 
 
-    @Override
-    public boolean create(ModelInterface model) {
+
+    public boolean create(User user) {
         Connection con = ConnectionFactory.getConnection();
         PreparedStatement stmt = null;
         
-        User user = (User) model;
-  
+
         try {
             stmt = con.prepareStatement("insert into user values(login, password, id_employee) values(?,?,?)");
             stmt.setString(1, user.getLogin());
@@ -76,13 +82,12 @@ public class UserDAO{
        
     }
 
-    @Override
-    public ModelInterface read(ModelInterface model) {
+
+    public User read(User user) {
         Connection con = ConnectionFactory.getConnection();
         PreparedStatement stmt = null;
         ResultSet rs = null;
-        
-        User user = (User) model;
+
                 
         try {
             stmt = con.prepareStatement("select * from user where login = ? ");
@@ -105,13 +110,13 @@ public class UserDAO{
         return user;
     }
 
-    @Override
-     public List<ModelInterface> readAll(ModelInterface model) {
+
+     public List<User> readAll() {
         Connection con = ConnectionFactory.getConnection();
         PreparedStatement stmt = null;
         ResultSet rs = null;
         
-        List<ModelInterface> usuarios = new ArrayList<>();
+        List<User> usuarios = new ArrayList<>();
                 
         try {
             stmt = con.prepareStatement("select * from user");
@@ -138,13 +143,11 @@ public class UserDAO{
        
     }
 
-    @Override
-    public boolean update(ModelInterface model) {
+
+    public boolean update(User user) {
         Connection con = ConnectionFactory.getConnection();
         PreparedStatement stmt = null;
-        User user = (User) model;
-        
-        try {
+            try {
             stmt = con.prepareStatement("update Usuario set login = ?, password = ?, id_employee = ? where login = ?");
             stmt.setString(1, user.getLogin());
             stmt.setString(2, user.getPassword());
@@ -164,13 +167,12 @@ public class UserDAO{
       
     }
 
-    @Override
-    public boolean delete(ModelInterface model) {
+
+    public boolean delete(User user) {
         
         Connection con = ConnectionFactory.getConnection();
         PreparedStatement stmt = null;
-        User user = (User) model;
-        
+
         try {
             stmt = con.prepareStatement("delete from user where id_employee = ?");
             stmt.setInt(1, user.getIdEmployee());
@@ -185,6 +187,6 @@ public class UserDAO{
         finally{
             ConnectionFactory.closeConnection(con,stmt);
         }
-    }*/
-        
- }
+    }
+
+}

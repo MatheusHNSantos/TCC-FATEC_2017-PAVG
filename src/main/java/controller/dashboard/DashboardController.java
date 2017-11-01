@@ -6,11 +6,12 @@
 package controller.dashboard;
 
 import com.jfoenix.controls.JFXButton;
-import java.net.URL;
-import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.input.MouseEvent;
+
+import java.net.URL;
+import java.util.ResourceBundle;
 
 /**
  * FXML BaseController class
@@ -18,17 +19,19 @@ import javafx.scene.input.MouseEvent;
  * @author SAMSUNG
  */
 public class DashboardController implements Initializable{
-    
+
     @FXML
     JFXButton btnTest;
-    
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         btnTest.setOnMouseClicked(this::handlerClicked);
     }
-    
-    
+
+
     public void handlerClicked(MouseEvent event) {
         System.exit(0);
     }
+
+
 }
