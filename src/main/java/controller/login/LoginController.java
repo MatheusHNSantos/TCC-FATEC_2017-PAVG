@@ -85,4 +85,7 @@ public class LoginController extends BaseController implements Initializable{
     public static Stage loader() throws IOException {
         return Loader.loader(LoginController.class, StageStyle.UNDECORATED, "login.fxml", "Meucu");
     }
+
+
+
 }

@@ -5,9 +5,11 @@
  */
 package app;
 
+import controller.dashboard.DashboardController;
 import controller.login.LoginController;
 import javafx.stage.Stage;
 import javafx.application.Application;
+import util.fxml.Loader;
 
 /**
  *
@@ -18,7 +20,8 @@ public class Main extends Application {
     @Override
     public void start(Stage PrimaryStage) {
         try {
-           LoginController.loader().show();
+           //LoginController.loader().show();
+            DashboardController.loader().show();
         }
         catch (Exception e) {
             System.out.println(e.getMessage());
@@ -31,4 +34,6 @@ public class Main extends Application {
     public static void main(String[] args) {
         launch(app.Main.class, args);
     }
+
+
 }
