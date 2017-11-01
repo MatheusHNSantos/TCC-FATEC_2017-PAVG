@@ -69,7 +69,7 @@ public abstract class ConnectionFactory{
             return DriverManager.getConnection(URL, USER, PASS);
 
         } catch (ClassNotFoundException | SQLException ex) {
-            throw new RuntimeException("Erro na conexão: ", ex);
+            throw new RuntimeException("Erro na conexão: " + ex.getMessage());
         }
 
     }
