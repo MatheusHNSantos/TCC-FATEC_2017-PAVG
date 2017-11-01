@@ -27,37 +27,7 @@ import java.util.logging.Logger;
  */
 public class UserDAO {
 
-    public boolean doLogin(User user) {
-            Connection con = ConnectionFactory.getConnection();
-            PreparedStatement stmt = null;
-            ResultSet rs = null;
-            boolean validacao = false;
-            
-
-            try {
-                stmt = con.prepareStatement("select * from user where login = ? and password = ?");
-                stmt.setString(1, user.getLogin());
-                stmt.setString(2, user.getPassword());
-                
-                rs = stmt.executeQuery();
-                
-                if (rs.next()){
-                    validacao  = true;
-                }
-                stmt.close();
-                
-            } catch (SQLException ex) {
-                JOptionPane.showMessageDialog(null, "Falha ao verificar login: " + ex.getMessage());
-                validacao  = false;
-            }finally{
-                ConnectionFactory.closeConnection(con, stmt, rs);
-            }
-            
-            return validacao;
-    } 
-
-
-    public boolean create(User user) {
+   public boolean create(User user) {
         Connection con = ConnectionFactory.getConnection();
         PreparedStatement stmt = null;
         
