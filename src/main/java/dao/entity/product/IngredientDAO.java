@@ -6,7 +6,6 @@
 package dao.entity.product;
 
 import model.entity.product.Ingredient;
-import model.entity.product.ProductType;
 import util.connection.ConnectionFactory;
 
 import javax.swing.*;

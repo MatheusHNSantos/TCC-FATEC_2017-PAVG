@@ -6,8 +6,12 @@
 package app;
 
 import controller.login.LoginController;
+import dao.entity.address.AddressDAO;
 import javafx.stage.Stage;
 import javafx.application.Application;
+import model.entity.address.Address;
+
+import java.util.ArrayList;
 
 /**
  *
@@ -19,6 +23,7 @@ public class Main extends Application {
     public void start(Stage PrimaryStage) {
         try {
            LoginController.loader().show();
+
         }
         catch (Exception e) {
             System.out.println(e.getMessage());

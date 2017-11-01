@@ -5,10 +5,7 @@
  */
 package dao.entity.product;
 
-import dao.entity.person.UserDAO;
-import model.entity.person.user.User;
 import model.entity.product.ProductType;
-import org.omg.CORBA.UserException;
 import util.connection.ConnectionFactory;
 
 import javax.swing.*;
@@ -18,8 +15,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *

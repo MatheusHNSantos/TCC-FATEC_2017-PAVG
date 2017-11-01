@@ -5,7 +5,6 @@
  */
 package dao.entity.product;
 
-import model.entity.product.Ingredient;
 import model.entity.product.Product;
 import util.connection.ConnectionFactory;
 
