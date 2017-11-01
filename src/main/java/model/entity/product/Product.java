@@ -61,7 +61,7 @@ public class Product {
         this.weight = weight;
     }
 
-    public boolean getStatus() {
+    public boolean isStatus() {
         return status;
     }
 
