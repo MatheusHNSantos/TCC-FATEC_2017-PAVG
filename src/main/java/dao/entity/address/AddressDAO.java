@@ -14,6 +14,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -23,107 +25,170 @@ public class AddressDAO implements DAO {
 
     public static int LAST_ID_INSERT = -1;
 
-    @Override
-    public boolean create() {
-        return false;
-    }
-
-    public static boolean create(Address address) throws ClassNotFoundException, SQLException {
+    /**
+     *
+     * @param address
+     * @return
+     */
+    public static boolean create(Address address) {
         
         Connection conn = ConnectionFactory.getConnection();
         String sql = "INSERT INTO address (street, number, neighborhood, cep) VALUES (?, ?, ?, ?)";
-        PreparedStatement stmt = conn.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);
-        
-        stmt.setString(1, address.getStreet());
-        stmt.setInt(2, address.getNumber());
-        stmt.setString(3, address.getNeighborhood());
-        stmt.setString(4, address.getCep());
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
 
-        int affectedRows = stmt.executeUpdate();
+        try {
+            stmt = conn.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);
+            stmt.setString(1, address.getStreet());
+            stmt.setInt(2, address.getNumber());
+            stmt.setString(3, address.getNeighborhood());
+            stmt.setString(4, address.getCep());
+            stmt.executeUpdate();
 
-        if (affectedRows > 0) {
-            ResultSet rs = stmt.getGeneratedKeys();
+            rs = stmt.getGeneratedKeys();
             rs.next();
             LAST_ID_INSERT = rs.getInt(1);
-            ConnectionFactory.closeConnection(conn, stmt, rs);
             return true;
         }
+        catch (SQLException sqlE) {
+            Logger.getLogger(AddressDAO.class.getName()).log( Level.SEVERE, null, sqlE);
+        } finally {
+            ConnectionFactory.closeConnection(conn, stmt, rs);
+        }
 
-        ConnectionFactory.closeConnection(conn, stmt);
         return false;
     }
 
-
-    @Override
-    public boolean update() {
-        return false;
-    }
-
-    public static boolean update (Address address) throws ClassNotFoundException, SQLException {
+    /**
+     *
+     * @param address
+     * @return
+     */
+    public static boolean update (Address address) {
         Connection conn = ConnectionFactory.getConnection();
         String sql = "UPDATE address SET street = ?, number = ?, neighborhood = ?,  cep = ? WHERE id_address = ?";
-        PreparedStatement stmt = conn.prepareStatement(sql);
+        PreparedStatement stmt = null;
 
-        stmt.setString(1, address.getStreet());
-        stmt.setInt(2, address.getNumber());
-        stmt.setString(3, address.getNeighborhood());
-        stmt.setString(4, address.getCep());
-        stmt.setInt(5, address.getId());
-
-        int affectedRows = stmt.executeUpdate();
-        ConnectionFactory.closeConnection(conn, stmt);
-
-        if (affectedRows > 0) {
+        try {
+            stmt = conn.prepareStatement(sql);
+            stmt.setString(1, address.getStreet());
+            stmt.setInt(2, address.getNumber());
+            stmt.setString(3, address.getNeighborhood());
+            stmt.setString(4, address.getCep());
+            stmt.setInt(5, address.getId());
+            stmt.executeUpdate();
             return true;
+        }
+        catch (SQLException sqlE) {
+            Logger.getLogger(AddressDAO.class.getName()).log( Level.SEVERE, null, sqlE);
+        }
+        finally {
+            ConnectionFactory.closeConnection(conn, stmt);
         }
 
         return false;
     }
 
-    public static Address load(int id) throws ClassNotFoundException, SQLException {
+    /**
+     *
+     * @param id
+     * @return
+     */
+    public static Address read(int id) {
         Connection conn = ConnectionFactory.getConnection();
+
         String sql = "SELECT * FROM address WHERE id_address = ?";
-        PreparedStatement stmt = conn.prepareStatement(sql);
-        stmt.setInt(1, id);
-        ResultSet rs = stmt.executeQuery();
-        rs.next();
-        Address a = AddressDAO.createInstance(rs);
-        ConnectionFactory.closeConnection(conn, stmt, rs);
-        return a;
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+        Address address = null;
+
+        try {
+            stmt = conn.prepareStatement(sql);
+            stmt.setInt(1, id);
+            rs = stmt.executeQuery();
+            rs.next();
+            address = AddressDAO.createInstance(rs);
+        }
+        catch (SQLException sqlE) {
+            Logger.getLogger(AddressDAO.class.getName()).log( Level.SEVERE, null, sqlE);
+        }
+        finally {
+            ConnectionFactory.closeConnection(conn, stmt, rs);
+        }
+
+        return address;
     }
 
-    public static ArrayList<Address> loadAll() throws SQLException, ClassNotFoundException {
+    /**
+     *
+     * @return
+     * @throws SQLException
+     * @throws ClassNotFoundException
+     */
+    public static ArrayList<Address> readAll() throws SQLException, ClassNotFoundException {
 
         ArrayList<Address> addresses = new ArrayList<>();
 
         Connection conn = ConnectionFactory.getConnection();
         String sql = "SELECT * FROM address";
-        PreparedStatement stmt = conn.prepareStatement(sql);
-        ResultSet rs = stmt.executeQuery();
-        while(rs.next()) {
-            addresses.add(AddressDAO.createInstance(rs));
+
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+
+        try {
+            stmt = conn.prepareStatement(sql);
+            rs = stmt.executeQuery();
+            while(rs.next()) {
+                addresses.add(AddressDAO.createInstance(rs));
+            }
         }
+        catch (SQLException sqlE) {
+            Logger.getLogger(AddressDAO.class.getName()).log( Level.SEVERE, null, sqlE);
+        }
+        finally {
+            ConnectionFactory.closeConnection(conn, stmt, rs);
+        }
+
         return addresses;
     }
 
-    @Override
-    public void load() {return;}
-
-    @Override
-    public boolean delete() {return false;}
-
-    @Override
-    public void createInstance() {
-        return;
+    /**
+     * Método estático responsável por criar a instancia do Address(Model).
+     *
+     * @param result
+     * @return Address
+     * @throws SQLException
+     */
+    public static Address createInstance(ResultSet result) {
+        return createInstance( result, false);
     }
 
-    public static Address createInstance(ResultSet result) throws SQLException {
-        Address address = new Address();
-        address.setId(result.getInt("id_address"));
-        address.setStreet(result.getString("street"));
-        address.setNumber(result.getInt("number"));
-        address.setNeighborhood(result.getString("neighborhood"));
-        address.setCep(result.getString("cep"));
+    /**
+     *
+     * @param result
+     * @param isSelfClose
+     * @return
+     */
+    public static Address createInstance(ResultSet result, boolean isSelfClose) {
+
+        Address address = null;
+
+        try {
+            address = new Address();
+            address.setId(result.getInt("id_address"));
+            address.setStreet(result.getString("street"));
+            address.setNumber(result.getInt("number"));
+            address.setNeighborhood(result.getString("neighborhood"));
+            address.setCep(result.getString("cep"));
+
+            if (isSelfClose) {
+                result.close();
+            }
+        }
+        catch (SQLException sqlE) {
+            Logger.getLogger(AddressDAO.class.getName()).log( Level.SEVERE, null, sqlE);
+        }
+
         return address;
     }
 }
