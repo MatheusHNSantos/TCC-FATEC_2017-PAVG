@@ -25,6 +25,11 @@ public class EmployeeDAO extends PersonDAO {
 
     public static int LAST_ID_INSERT = -1;
 
+    /**
+     *
+     * @param employee
+     * @return
+     */
     public static boolean create(Employee employee) {
         PersonDAO.create(employee);
         Connection conn = ConnectionFactory.getConnection();
@@ -46,33 +51,46 @@ public class EmployeeDAO extends PersonDAO {
             Logger.getLogger(EmployeeDAO.class.getName()).log( Level.SEVERE, null, sqlE);
         }
         finally {
+            ConnectionFactory.closeConnection(conn, stmt, rs);
+        }
+
+        return false;
+    }
+
+    /**
+     *
+     * @param employee
+     * @return
+     */
+    public static boolean update(Employee employee) {
+        PersonDAO.update(employee);
+
+        Connection conn = ConnectionFactory.getConnection();
+        String sql = "UPDATE employee SET role = ? WHERE id_employee = ?";
+        PreparedStatement stmt = null;
+
+        try {
+            stmt = conn.prepareStatement(sql);
+            stmt.setString(1, employee.getRole());
+            stmt.setInt(2, employee.getId_employee());
+            stmt.executeUpdate();
+        }
+        catch (SQLException sqlE) {
+            Logger.getLogger(EmployeeDAO.class.getName()).log( Level.SEVERE, null, sqlE);
+        }
+        finally {
             ConnectionFactory.closeConnection(conn, stmt);
         }
 
         return false;
     }
 
-    public static boolean update(Employee employee) throws SQLException, ClassNotFoundException {
-        PersonDAO.update(employee);
-
-        Connection conn = ConnectionFactory.getConnection();
-        String sql = "UPDATE employee SET role = ? WHERE id_employee = ?";
-        PreparedStatement stmt = conn.prepareStatement(sql);
-
-        stmt.setString(1, employee.getRole());
-        stmt.setInt(2, employee.getId_employee());
-
-        int affectedRows = stmt.executeUpdate();
-        ConnectionFactory.closeConnection(conn, stmt);
-
-        if (affectedRows > 0) {
-            return true;
-        }
-
-        return false;
-    }
-
-    public static Employee load(int id) throws SQLException, ClassNotFoundException {
+    /**
+     *
+     * @param id
+     * @return
+     */
+    public static Employee read(int id) {
         Connection conn = ConnectionFactory.getConnection();
 
         String sql = "SELECT " +
@@ -84,18 +102,34 @@ public class EmployeeDAO extends PersonDAO {
             "INNER JOIN person ON person.id_person = employee.id_person " +
             "INNER JOIN address ON address.id_address = person.id_address " +
             "WHERE id_employee = ?";
-        PreparedStatement stmt = null;
 
-        stmt = conn.prepareStatement(sql);
-        stmt.setInt(1, id);
-        ResultSet rs = stmt.executeQuery();
-        rs.next();
-        Employee e = EmployeeDAO.createInstance(rs);
-        ConnectionFactory.closeConnection(conn, stmt, rs);
-        return e;
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+        Employee employee = null;
+
+        try {
+            stmt = conn.prepareStatement(sql);
+            stmt.setInt(1, id);
+            rs = stmt.executeQuery();
+            rs.next();
+            employee = EmployeeDAO.createInstance(rs);
+            ConnectionFactory.closeConnection(conn, stmt, rs);
+        }
+        catch (SQLException sqlE) {
+            Logger.getLogger(EmployeeDAO.class.getName()).log( Level.SEVERE, null, sqlE);
+        }
+        finally {
+            ConnectionFactory.closeConnection(conn, stmt, rs);
+        }
+
+        return employee;
     }
 
-    public static ArrayList<Employee> loadAll() throws SQLException, ClassNotFoundException {
+    /**
+     *
+     * @return
+     */
+    public static ArrayList<Employee> readAll() {
 
         ArrayList<Employee> employees = new ArrayList<>();
 
@@ -108,25 +142,49 @@ public class EmployeeDAO extends PersonDAO {
                 "FROM employee " +
                 "INNER JOIN person ON person.id_person = employee.id_person " +
                 "INNER JOIN address ON address.id_address = person.id_address";
-        PreparedStatement stmt = conn.prepareStatement(sql);
 
-        ResultSet rs = stmt.executeQuery();
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
 
-        while(rs.next()) {
-            employees.add(EmployeeDAO.createInstance(rs));
+        try {
+            stmt = conn.prepareStatement(sql);
+            rs = stmt.executeQuery();
+
+            while (rs.next()) {
+                employees.add(EmployeeDAO.createInstance(rs));
+            }
         }
+        catch (SQLException sqlE) {
+            Logger.getLogger(EmployeeDAO.class.getName()).log( Level.SEVERE, null, sqlE);
+        }
+        finally {
+            ConnectionFactory.closeConnection(conn, stmt, rs);
+        }
+
         return employees;
     }
 
-    public static Employee createInstance(ResultSet result) throws SQLException {
+    /**
+     *
+     * @param result
+     * @return
+     */
+    public static Employee createInstance (ResultSet result) {
+
         Employee employee = new Employee();
 
-        employee.setId(result.getInt("id_person"));
-        employee.setName(result.getString("name_person"));
-        employee.setAddress(AddressDAO.createInstance(result));
+        try {
+            employee.setId( result.getInt( "id_person" ) );
+            employee.setName( result.getString( "name_person" ) );
+            employee.setAddress( AddressDAO.createInstance( result ) );
 
-        employee.setId_employee(result.getInt("id_employee"));
-        employee.setRole(result.getString("role"));
+            employee.setId_employee( result.getInt( "id_employee" ) );
+            employee.setRole( result.getString( "role" ) );
+        }
+        catch (SQLException sqlE) {
+            Logger.getLogger(EmployeeDAO.class.getName()).log( Level.SEVERE, null, sqlE);
+        }
+
         return employee;
     }
 }
