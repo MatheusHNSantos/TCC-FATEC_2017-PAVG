@@ -5,7 +5,17 @@
  */
 package dao.entity.person;
 
-import dao.entity.person.PersonDAO;
+import dao.entity.address.AddressDAO;
+import model.entity.person.costumer.Costumer;
+import util.connection.ConnectionFactory;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -15,28 +25,118 @@ public class CostumerDAO extends PersonDAO {
 
     public static int LAST_ID_INSERT = -1;
 
-    @Override
-    public boolean create() {
+    public static boolean create(Costumer costumer) {
+        PersonDAO.create(costumer);
+        Connection conn = ConnectionFactory.getConnection();
+        String sql = "INSERT INTO costumer (rg, cpf, id_person) VALUES (?, ?, ?)";
+        PreparedStatement stmt = null;
+
+        try {
+            stmt = conn.prepareStatement(sql);
+            stmt.setString(1, costumer.getRG());
+            stmt.setString(2, costumer.getCPF());
+            stmt.setInt(3, PersonDAO.LAST_ID_INSERT);
+            stmt.execute();
+            return true;
+        }
+        catch (SQLException sqlE) {
+            Logger.getLogger(CostumerDAO.class.getName()).log( Level.SEVERE, null, sqlE);
+        }
+        finally {
+            ConnectionFactory.closeConnection(conn, stmt);
+        }
+
         return false;
     }
 
-    @Override
-    public boolean update() {
+    public static boolean update(Costumer costumer) {
+        PersonDAO.update(costumer);
+
+        Connection conn = ConnectionFactory.getConnection();
+        String sql = "UPDATE costumer SET rg = ?, cpf = ? WHERE id_person = ?";
+        PreparedStatement stmt = null;
+
+        try {
+            stmt = conn.prepareStatement(sql);
+            stmt.setString(1, costumer.getRG());
+            stmt.setString(2, costumer.getCPF());
+            stmt.setInt(3, costumer.getId());
+            stmt.executeUpdate();
+            return true;
+        }
+        catch (SQLException sqlE) {
+            Logger.getLogger(CostumerDAO.class.getName()).log( Level.SEVERE, null, sqlE);
+        }
+        finally {
+            ConnectionFactory.closeConnection(conn, stmt);
+        }
+
         return false;
     }
 
-    @Override
-    public void load() {
+    public static Costumer read(int id) {
+        Connection conn = ConnectionFactory.getConnection();
 
+        String sql = "SELECT costumer.rg, costumer.cpf, " +
+                "person.name_person, person.id_person, address.id_address, " +
+                "address.street, address.number,address.cep, " +
+                "address.neighborhood " +
+                "FROM costumer " +
+                "INNER JOIN person ON person.id_person = costumer.id_person " +
+                "INNER JOIN address ON address.id_address = person.id_address " +
+                "WHERE costumer.id_person = ?";
+
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+        Costumer costumer = null;
+
+        try {
+            stmt = conn.prepareStatement(sql);
+            stmt.setInt(1, id);
+            rs = stmt.executeQuery();
+            rs.next();
+            costumer = CostumerDAO.createInstance(rs);
+        }
+        catch (SQLException sqlE) {
+            Logger.getLogger(CostumerDAO.class.getName()).log( Level.SEVERE, null, sqlE);
+        }
+        finally {
+            ConnectionFactory.closeConnection(conn, stmt, rs);
+        }
+
+        return costumer;
     }
 
-    @Override
-    public boolean delete() {
-        return false;
+    public static ArrayList<Costumer> loadAll() throws SQLException {
+
+        ArrayList<Costumer> costumers = new ArrayList<>();
+
+        Connection conn = ConnectionFactory.getConnection();
+        String sql = "SELECT costumer.rg, costumer.cpf, " +
+                "person.name_person, person.id_person ,address.id_address, " +
+                "address.street, address.number, " +
+                "address.cep, address.neighborhood " +
+                "FROM costumer " +
+                "INNER JOIN person ON person.id_person = costumer.id_person " +
+                "INNER JOIN address ON address.id_address = person.id_address";
+        PreparedStatement stmt = conn.prepareStatement(sql);
+
+        ResultSet rs = stmt.executeQuery();
+
+        while(rs.next()) {
+            costumers.add(CostumerDAO.createInstance(rs));
+        }
+        return costumers;
     }
 
-    @Override
-    public void createInstance() {
+    public static Costumer createInstance(ResultSet result) throws SQLException {
+        Costumer costumer = new Costumer ();
 
+        costumer.setId(result.getInt("id_person"));
+        costumer.setName(result.getString("name_person"));
+        costumer.setAddress( AddressDAO.createInstance(result));
+        costumer.setCPF( result.getString( "cpf" ) );
+        costumer.setRG( result.getString( "rg" ) );
+        return costumer;
     }
 }
