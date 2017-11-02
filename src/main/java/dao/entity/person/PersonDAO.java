@@ -37,7 +37,7 @@ abstract class PersonDAO implements DAO{
             stmt.setInt(1, person.getAddress().getId());
             stmt.setString(2, person.getName());
             stmt.execute();
-            stmt.getGeneratedKeys();
+            rs = stmt.getGeneratedKeys();
             rs.next();
             LAST_ID_INSERT = rs.getInt(1);
             return true;
