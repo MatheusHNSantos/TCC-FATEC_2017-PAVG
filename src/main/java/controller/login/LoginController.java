@@ -27,6 +27,7 @@ import javafx.fxml.Initializable;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import model.entity.person.user.User;
+import util.dialogs.FxDialogs;
 import util.fxml.Loader;
 
 import javax.swing.*;
@@ -84,8 +85,9 @@ public class LoginController extends BaseController implements Initializable{
 
 
         if(userDAO.doLogin(user)){
-
+            lblWarning.setText("");
             JOptionPane.showMessageDialog(null, "Acesso Liberado!");
+            FxDialogs.showInformation("Acesso Liberado!", "Seja bem vindo!");
 
             /*try {
                 /*Node node = (Node) event.getSource();
@@ -107,7 +109,8 @@ public class LoginController extends BaseController implements Initializable{
             }*/
 
         }else{
-            System.out.println("Acesso Negado!");
+            FxDialogs.showError("Acesso Negado!","Usuário ou senha incorretos");
+            lblWarning.setText("Acesso Negado!");
         }
 
 

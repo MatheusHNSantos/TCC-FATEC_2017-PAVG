@@ -1,4 +1,7 @@
 package util.connection;
+import util.dialogs.FxDialogs;
+
+import javax.swing.*;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -70,6 +73,7 @@ public abstract class ConnectionFactory{
 
         } catch (ClassNotFoundException | SQLException ex) {
             throw new RuntimeException("Erro na conexão: " + ex.getMessage());
+
         }
 
     }

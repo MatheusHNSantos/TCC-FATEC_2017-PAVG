@@ -21,13 +21,12 @@ import java.util.List;
  * @author SAMSUNG
  */
 public class Main extends Application {
-    
+
     @Override
     public void start(Stage PrimaryStage) {
         try {
            LoginController.loader().show();
-
-          }
+        }
         catch (Exception e) {
             System.out.println(e.getMessage());
         }

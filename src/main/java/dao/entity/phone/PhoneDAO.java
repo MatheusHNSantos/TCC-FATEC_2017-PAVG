@@ -9,6 +9,7 @@ import model.entity.person.user.User;
 import model.entity.phone.Phone;
 import model.entity.product.ProductType;
 import util.connection.ConnectionFactory;
+import util.dialogs.FxDialogs;
 
 import javax.swing.*;
 import java.sql.Connection;
@@ -36,7 +37,7 @@ public class PhoneDAO {
 
             return true;
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Erro ao Salvar: " + ex.getMessage());
+            FxDialogs.showException("Erro de Gravação! " ,getClass().getSimpleName()+ " - " + ex.getMessage(),ex);
             return false;
         } finally {
             ConnectionFactory.closeConnection(con, stmt);
@@ -61,7 +62,7 @@ public class PhoneDAO {
 
 
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Falha ao consultar: " + ex.getMessage());
+            FxDialogs.showException("Erro de Leitura!",getClass().getSimpleName()+ " - " + ex.getMessage(),ex);
         }finally {
             ConnectionFactory.closeConnection(con, stmt, rs);
         }
@@ -88,7 +89,7 @@ public class PhoneDAO {
             }
 
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Falha ao consultar: " + ex.getMessage());
+            FxDialogs.showException("Erro de Leitura!",getClass().getSimpleName()+ " - " + ex.getMessage(),ex);
         } finally {
             ConnectionFactory.closeConnection(con, stmt, rs);
         }
@@ -109,7 +110,7 @@ public class PhoneDAO {
 
             return true;
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Erro ao Atualizar: " + ex.getMessage());
+            FxDialogs.showException("Erro de Atualização!",getClass().getSimpleName()+ " - " + ex.getMessage(),ex);
             return false;
         }
         finally{
@@ -131,7 +132,7 @@ public class PhoneDAO {
 
             return true;
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Erro ao Excluir: " + ex.getMessage());
+            FxDialogs.showException("Erro de Exclusão!",getClass().getSimpleName()+ " - " + ex.getMessage(),ex);
             return false;
         }
         finally{
