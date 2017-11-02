@@ -25,6 +25,11 @@ public class CostumerDAO extends PersonDAO {
 
     public static int LAST_ID_INSERT = -1;
 
+    /**
+     *
+     * @param costumer
+     * @return
+     */
     public static boolean create(Costumer costumer) {
         PersonDAO.create(costumer);
         Connection conn = ConnectionFactory.getConnection();
@@ -49,6 +54,11 @@ public class CostumerDAO extends PersonDAO {
         return false;
     }
 
+    /**
+     *
+     * @param costumer
+     * @return
+     */
     public static boolean update(Costumer costumer) {
         PersonDAO.update(costumer);
 
@@ -74,6 +84,11 @@ public class CostumerDAO extends PersonDAO {
         return false;
     }
 
+    /**
+     *
+     * @param id
+     * @return
+     */
     public static Costumer read(int id) {
         Connection conn = ConnectionFactory.getConnection();
 
@@ -107,7 +122,11 @@ public class CostumerDAO extends PersonDAO {
         return costumer;
     }
 
-    public static ArrayList<Costumer> loadAll() throws SQLException {
+    /**
+     *
+     * @return
+     */
+    public static ArrayList<Costumer> readAll () {
 
         ArrayList<Costumer> costumers = new ArrayList<>();
 
@@ -119,24 +138,42 @@ public class CostumerDAO extends PersonDAO {
                 "FROM costumer " +
                 "INNER JOIN person ON person.id_person = costumer.id_person " +
                 "INNER JOIN address ON address.id_address = person.id_address";
-        PreparedStatement stmt = conn.prepareStatement(sql);
 
-        ResultSet rs = stmt.executeQuery();
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
 
-        while(rs.next()) {
-            costumers.add(CostumerDAO.createInstance(rs));
+        try {
+            stmt = conn.prepareStatement(sql);
+            rs = stmt.executeQuery();
+            while(rs.next()) {
+                costumers.add(CostumerDAO.createInstance(rs));
+            }
         }
+        catch (SQLException sqlE) {
+            Logger.getLogger(CostumerDAO.class.getName()).log( Level.SEVERE, null, sqlE);
+        }
+        finally {
+            ConnectionFactory.closeConnection(conn, stmt, rs);
+        }
+
         return costumers;
     }
 
     public static Costumer createInstance(ResultSet result) throws SQLException {
+
         Costumer costumer = new Costumer ();
 
-        costumer.setId(result.getInt("id_person"));
-        costumer.setName(result.getString("name_person"));
-        costumer.setAddress( AddressDAO.createInstance(result));
-        costumer.setCPF( result.getString( "cpf" ) );
-        costumer.setRG( result.getString( "rg" ) );
+        try {
+            costumer.setId(result.getInt("id_person"));
+            costumer.setName(result.getString("name_person"));
+            costumer.setAddress( AddressDAO.createInstance(result));
+            costumer.setCPF( result.getString( "cpf" ) );
+            costumer.setRG( result.getString( "rg" ) );
+        }
+        catch (SQLException sqlE) {
+            Logger.getLogger(CostumerDAO.class.getName()).log( Level.SEVERE, null, sqlE);
+        }
+
         return costumer;
     }
 }
