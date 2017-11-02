@@ -25,6 +25,11 @@ abstract class PersonDAO implements DAO{
 
     public static int LAST_ID_INSERT = -1;
 
+    /**
+     *
+     * @param person
+     * @return
+     */
     public static boolean create(Person person) {
 
         Connection conn = ConnectionFactory.getConnection();
@@ -52,6 +57,11 @@ abstract class PersonDAO implements DAO{
         return false;
     }
 
+    /**
+     *
+     * @param person
+     * @return
+     */
     public static boolean update(Person person) {
 
         Connection conn = ConnectionFactory.getConnection();
