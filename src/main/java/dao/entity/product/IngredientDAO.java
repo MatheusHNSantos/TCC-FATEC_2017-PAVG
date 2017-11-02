@@ -5,6 +5,7 @@
  */
 package dao.entity.product;
 
+import dao.entity.DAO;
 import model.entity.product.Ingredient;
 import util.connection.ConnectionFactory;
 
@@ -15,35 +16,45 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
  * @author Matheus Henrique
  */
-public class IngredientDAO {
+public class IngredientDAO  implements DAO {
+
+    public static int LAST_ID_INSERT = -1;
 
     public boolean create(Ingredient ingredient) {
-        Connection con = ConnectionFactory.getConnection();
-        PreparedStatement stmt = null;
 
+        Connection con = ConnectionFactory.getConnection();
+        String sql = "INSERT INTO ingredient (name_ingredient, status_ingredient, price) VALUES (?, ?, ?)";
+
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
 
         try {
-            stmt = con.prepareStatement("insert into ingredient values(name_ingredient,status_ingredient,price) values(?,?,?)");
+            stmt = con.prepareStatement(sql);
             stmt.setString(1, ingredient.getName());
             stmt.setBoolean(2, ingredient.getStatus());
             stmt.setFloat(3, ingredient.getPrice());
-
             stmt.executeUpdate();
 
+            rs = stmt.getGeneratedKeys();
+            rs.next();
+            LAST_ID_INSERT = rs.getInt(1);
             return true;
-        } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Erro ao Salvar: " + ex.getMessage());
-            return false;
-        } finally {
-            ConnectionFactory.closeConnection(con, stmt);
-
+        }
+        catch (SQLException sqlE) {
+            Logger.getLogger(IngredientDAO.class.getName()).log( Level.SEVERE, null, sqlE);
+        }
+        finally {
+            ConnectionFactory.closeConnection(con, stmt, rs);
         }
 
+        return false;
     }
 
     public Ingredient read(Ingredient ingredient) {
