@@ -14,42 +14,43 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
  * @author Matheus Henrique
  */
 public class EmployeeDAO extends PersonDAO {
+
     public static int LAST_ID_INSERT = -1;
 
-    @Override
-    public boolean create(){return false;}
-
-    public static boolean create(Employee employee) throws SQLException, ClassNotFoundException {
+    public static boolean create(Employee employee) {
         PersonDAO.create(employee);
         Connection conn = ConnectionFactory.getConnection();
         String sql = "INSERT INTO employee (role, id_person) VALUES (?, ?)";
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
 
-        PreparedStatement stmt = conn.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);
-
-        stmt.setString(1, employee.getRole());
-        stmt.setInt(2, PersonDAO.LAST_ID_INSERT);
-        int affectedRows = stmt.executeUpdate();
-
-        if (affectedRows > 0) {
-            ResultSet rs = stmt.getGeneratedKeys();
+        try {
+            stmt = conn.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);
+            stmt.setString(1, employee.getRole());
+            stmt.setInt(2, PersonDAO.LAST_ID_INSERT);
+            stmt.execute();
+            rs = stmt.getGeneratedKeys();
             rs.next();
             LAST_ID_INSERT = rs.getInt(1);
-            ConnectionFactory.closeConnection(conn, stmt, rs);
             return true;
         }
+        catch (SQLException sqlE) {
+            Logger.getLogger(EmployeeDAO.class.getName()).log( Level.SEVERE, null, sqlE);
+        }
+        finally {
+            ConnectionFactory.closeConnection(conn, stmt);
+        }
 
-        ConnectionFactory.closeConnection(conn, stmt);
         return false;
     }
-
-    @Override
-    public boolean update() {return false;}
 
     public static boolean update(Employee employee) throws SQLException, ClassNotFoundException {
         PersonDAO.update(employee);
@@ -71,16 +72,6 @@ public class EmployeeDAO extends PersonDAO {
         return false;
     }
 
-    @Override
-    public void load(){return;}
-
-
-    @Override
-    public boolean delete(){return false;}
-
-    @Override
-    public void createInstance() {return;}
-
     public static Employee load(int id) throws SQLException, ClassNotFoundException {
         Connection conn = ConnectionFactory.getConnection();
 
@@ -93,8 +84,9 @@ public class EmployeeDAO extends PersonDAO {
             "INNER JOIN person ON person.id_person = employee.id_person " +
             "INNER JOIN address ON address.id_address = person.id_address " +
             "WHERE id_employee = ?";
+        PreparedStatement stmt = null;
 
-        PreparedStatement stmt = conn.prepareStatement(sql);
+        stmt = conn.prepareStatement(sql);
         stmt.setInt(1, id);
         ResultSet rs = stmt.executeQuery();
         rs.next();
