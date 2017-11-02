@@ -28,7 +28,7 @@ public class ProductTypeDAO {
 
 
         try {
-            stmt = con.prepareStatement("insert into product_type values(name_product_type) values(?)");
+            stmt = con.prepareStatement("insert into product_type (name_product_type) values(?)");
             stmt.setString(1, productType.getName());
 
             stmt.executeUpdate();
@@ -54,7 +54,7 @@ public class ProductTypeDAO {
             stmt = con.prepareStatement("select * from product_type where id_product_type = ? ");
             stmt.setInt(1, productType.getId());
             rs = stmt.executeQuery();
-
+            rs.next();
             productType.setId(rs.getInt("id_product_type"));
             productType.setName(rs.getString("name_product_type"));
 

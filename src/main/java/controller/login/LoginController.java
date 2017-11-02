@@ -85,10 +85,10 @@ public class LoginController extends BaseController implements Initializable{
 
         if(userDAO.doLogin(user)){
 
+            JOptionPane.showMessageDialog(null, "Acesso Liberado!");
 
-
-            try {
-                Node node = (Node) event.getSource();
+            /*try {
+                /*Node node = (Node) event.getSource();
 
                 Stage stage = (Stage) node.getScene().getWindow();
 
@@ -99,10 +99,12 @@ public class LoginController extends BaseController implements Initializable{
                 stage.setScene(scene);
                 stage.show();
 
+
+
             } catch (IOException ex) {
 
                 Logger.getLogger(LoginController.class.getName()).log(Level.SEVERE, null, ex);
-            }
+            }*/
 
         }else{
             System.out.println("Acesso Negado!");

@@ -60,7 +60,7 @@ public class UserDAO {
         
 
         try {
-            stmt = con.prepareStatement("insert into user values(login, password, id_employee) values(?,?,?)");
+            stmt = con.prepareStatement("insert into user (login, password, id_employee) values(?,?,?)");
             stmt.setString(1, user.getLogin());
             stmt.setString(2, user.getPassword());
             stmt.setInt(3, user.getIdEmployee());
@@ -90,7 +90,7 @@ public class UserDAO {
             stmt = con.prepareStatement("select * from user where login = ? ");
             stmt.setString(1, user.getLogin());
             rs = stmt.executeQuery();
-   
+            rs.next();
             user.setLogin(rs.getString("login"));
             user.setPassword(rs.getString("password"));
             user.setIdEmployee(rs.getInt("id_emplyoee"));

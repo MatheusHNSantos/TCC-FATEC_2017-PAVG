@@ -5,8 +5,13 @@
  */
 package model.entity.sale;
 
+import model.entity.phone.Phone;
+import model.entity.product.Product;
+
 import java.sql.Date;
 import java.sql.Time;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -16,9 +21,19 @@ public class Sale {
     private int idSale;
     private int idUser;
     private int idCostumer;
+    private float saleTotal;
     private java.sql.Time saleTime;
     private java.sql.Date saleDate;
-    private int saleTimeEstimate;
+    private java.sql.Time saleTimeEstimate;
+    private List<Product> productsList = new ArrayList();
+
+    public List<Product> getItemsSaleList() {
+        return productsList;
+    }
+
+    public void setItemsSaleList(List<Product> productsList) {
+        this.productsList = productsList;
+    }
 
     public int getIdSale() {
         return idSale;
@@ -60,13 +75,19 @@ public class Sale {
         this.saleDate = saleDate;
     }
 
-    public int getSaleTimeEstimate() {
+    public float getSaleTotal() {
+        return saleTotal;
+    }
+
+    public void setSaleTotal(float saleTotal) {
+        this.saleTotal = saleTotal;
+    }
+
+    public Time getSaleTimeEstimate() {
         return saleTimeEstimate;
     }
 
-    public void setSaleTimeEstimate(int saleTimeEstimate) {
+    public void setSaleTimeEstimate(Time saleTimeEstimate) {
         this.saleTimeEstimate = saleTimeEstimate;
     }
-    
-    
 }

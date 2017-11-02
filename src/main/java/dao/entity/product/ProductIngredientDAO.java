@@ -30,9 +30,32 @@ public class ProductIngredientDAO {
 
 
         try {
-            stmt = con.prepareStatement("insert into product_ingredient values(id_product,id_ingredient) values(?,?)");
+            stmt = con.prepareStatement("insert into product_ingredient (id_product,id_ingredient) values(?,?)");
             stmt.setInt(1, productIngredient.getIdProduct());
             stmt.setInt(2, productIngredient.getIdIngredient());
+
+            stmt.executeUpdate();
+
+            return true;
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Erro ao Salvar: " + ex.getMessage());
+            return false;
+        } finally {
+            ConnectionFactory.closeConnection(con, stmt);
+
+        }
+
+    }
+
+    public boolean create(int id_product, int id_ingredient) {
+        Connection con = ConnectionFactory.getConnection();
+        PreparedStatement stmt = null;
+
+
+        try {
+            stmt = con.prepareStatement("insert into product_ingredient (id_product,id_ingredient) values(?,?)");
+            stmt.setInt(1, id_product);
+            stmt.setInt(2, id_ingredient);
 
             stmt.executeUpdate();
 
@@ -77,7 +100,7 @@ public class ProductIngredientDAO {
         return productIngredientList;
     }
 
-    public List<Ingredient> readAll(Product product) {
+    public List<Ingredient> readAllIngredients(int id_product) {
         Connection con = ConnectionFactory.getConnection();
         PreparedStatement stmt = null;
         ResultSet rs = null;
@@ -87,7 +110,7 @@ public class ProductIngredientDAO {
         try {
             stmt = con.prepareStatement("select * from ingredient I, product_ingredient PI " +
                                            "where I.id_ingredient = PI.id_ingredient and PI.id_product = ?");
-            stmt.setInt(1, product.getId());
+            stmt.setInt(1, id_product);
             rs = stmt.executeQuery();
 
             while (rs.next()) {
@@ -119,6 +142,27 @@ public class ProductIngredientDAO {
             stmt = con.prepareStatement("delete from product_ingredient where id_product_ingredient = ?");
             stmt.setInt(1, productIngredient.getId());
 
+            stmt.executeUpdate();
+
+            return true;
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Erro ao Excluir: " + ex.getMessage());
+            return false;
+        }
+        finally{
+            ConnectionFactory.closeConnection(con,stmt);
+        }
+    }
+
+    public boolean delete(int id_product, int id_ingredient) {
+
+        Connection con = ConnectionFactory.getConnection();
+        PreparedStatement stmt = null;
+
+        try {
+            stmt = con.prepareStatement("delete from product_ingredient where id_product = ? and id_ingredient = ?");
+            stmt.setInt(1, id_product);
+            stmt.setInt(1, id_ingredient);
             stmt.executeUpdate();
 
             return true;

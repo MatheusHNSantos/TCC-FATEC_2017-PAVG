@@ -28,7 +28,7 @@ public class IngredientDAO {
 
 
         try {
-            stmt = con.prepareStatement("insert into ingredient values(name_ingredient,status_ingredient,price) values(?,?,?)");
+            stmt = con.prepareStatement("insert into ingredient (name_ingredient,status_ingredient,price) values(?,?,?)");
             stmt.setString(1, ingredient.getName());
             stmt.setBoolean(2, ingredient.getStatus());
             stmt.setFloat(3, ingredient.getPrice());
@@ -56,7 +56,7 @@ public class IngredientDAO {
             stmt = con.prepareStatement("select * from ingredient where id_ingredient = ? ");
             stmt.setInt(1, ingredient.getId());
             rs = stmt.executeQuery();
-
+            rs.next();
             ingredient.setId(rs.getInt("id_ingredient"));
             ingredient.setName(rs.getString("name_ingredient"));
             ingredient.setStatus(rs.getBoolean("status_ingredient"));

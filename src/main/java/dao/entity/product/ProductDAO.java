@@ -28,7 +28,7 @@ public class ProductDAO {
 
 
         try {
-            stmt = con.prepareStatement("insert into product values(name_product,final_price_product,weight_product,status_product,id_product_type) values(?,?,?,?,?)");
+            stmt = con.prepareStatement("insert into product (name_product,final_price_product,weight_product,status_product,id_product_type) values(?,?,?,?,?)");
             stmt.setString(1, product.getName());
             stmt.setFloat(2, product.getFinalPrice());
             stmt.setFloat(3, product.getWeight());
@@ -56,16 +56,18 @@ public class ProductDAO {
 
 
         try {
-            stmt = con.prepareStatement("select * from ingredient where id_ingredient = ? ");
+            stmt = con.prepareStatement("select * from product where id_ingredient = ? ");
             stmt.setInt(1, product.getId());
             rs = stmt.executeQuery();
-
+            rs.next();
             product.setId(rs.getInt("id_product"));
             product.setName(rs.getString("name_product"));
             product.setFinalPrice(rs.getFloat("final_price_product"));
             product.setWeight(rs.getFloat("weight_product"));
             product.setStatus(rs.getBoolean("status_product"));
             product.setIdProductType(rs.getInt("id_product_type"));
+            ProductIngredientDAO ingredients = new ProductIngredientDAO();
+            product.setListIngredients(ingredients.readAllIngredients(product.getId()));
 
 
 
@@ -87,7 +89,7 @@ public class ProductDAO {
         List<Product> products = new ArrayList<>();
 
         try {
-            stmt = con.prepareStatement("select * from ingredient");
+            stmt = con.prepareStatement("select * from product");
             rs = stmt.executeQuery();
 
             while (rs.next()) {
@@ -98,6 +100,8 @@ public class ProductDAO {
                 product.setWeight(rs.getFloat("weight_product"));
                 product.setStatus(rs.getBoolean("status_product"));
                 product.setIdProductType(rs.getInt("id_product_type"));
+                ProductIngredientDAO ingredients = new ProductIngredientDAO();
+                product.setListIngredients(ingredients.readAllIngredients(product.getId()));
                 products.add(product);
 
 
