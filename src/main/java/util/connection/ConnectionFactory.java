@@ -72,6 +72,7 @@ public abstract class ConnectionFactory{
             return DriverManager.getConnection(URL, USER, PASS);
 
         } catch (ClassNotFoundException | SQLException ex) {
+            FxDialogs.showException("Falha na conexão com o banco de dados!", ex.getMessage(),ex);
             throw new RuntimeException("Erro na conexão: " + ex.getMessage());
 
         }
@@ -90,7 +91,8 @@ public abstract class ConnectionFactory{
                 con.close();
             }
         } catch (SQLException ex) {
-            Logger.getLogger(ConnectionFactory.class.getName()).log(Level.SEVERE, null, ex);
+            FxDialogs.showException("Falha ao encerrar conexão com o banco de dados!",ex.getMessage(),ex);
+            //Logger.getLogger(ConnectionFactory.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
     
@@ -107,7 +109,8 @@ public abstract class ConnectionFactory{
                 stmt.close();
             }
         } catch (SQLException ex) {
-            Logger.getLogger(ConnectionFactory.class.getName()).log(Level.SEVERE, null, ex);
+            FxDialogs.showException("Falha ao encerrar conexão com o banco de dados!",ex.getMessage(),ex);
+            //Logger.getLogger(ConnectionFactory.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
     
@@ -125,7 +128,8 @@ public abstract class ConnectionFactory{
                 rs.close();
             }
         } catch (SQLException ex) {
-            Logger.getLogger(ConnectionFactory.class.getName()).log(Level.SEVERE, null, ex);
+            FxDialogs.showException("Falha ao encerrar conexão com o banco de dados!",ex.getMessage(),ex);
+            //Logger.getLogger(ConnectionFactory.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
    
