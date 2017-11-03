@@ -7,11 +7,6 @@ package controller.dashboard;
 
 
 import controller.Controller;
-
-import java.io.IOException;
-import java.net.URL;
-import java.util.ResourceBundle;
-
 import controller.login.LoginController;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -25,6 +20,10 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import model.entity.DataModelTest;
+
+import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 
 /**
  * FXML Controller class
@@ -100,6 +99,7 @@ public class DashboardController implements Initializable {
         row2.setCellValueFactory(new PropertyValueFactory<>("nome"));
         row3.setCellValueFactory(new PropertyValueFactory<>("preco"));
         tableView.setItems(data);
+
         
 
     }

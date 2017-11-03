@@ -5,7 +5,6 @@
  */
 package model.entity.sale;
 
-import model.entity.phone.Phone;
 import model.entity.product.Product;
 
 import java.sql.Date;

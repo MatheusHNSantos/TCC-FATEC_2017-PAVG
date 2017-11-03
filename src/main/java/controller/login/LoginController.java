@@ -1,33 +1,29 @@
 package controller.login;
 
 import com.jfoenix.controls.JFXButton;
-import java.net.URL;
-import java.util.ResourceBundle;
-
 import controller.Controller;
 import controller.dashboard.DashboardController;
 import dao.entity.person.UserDAO;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-import javafx.scene.input.KeyCode;
-import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
-
-import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-
-import javafx.fxml.Initializable;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import model.entity.person.user.User;
 import util.dialogs.FxDialogs;
 import util.exception.UserException;
+
+import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  * FXML Controller class
@@ -56,10 +52,17 @@ public class LoginController implements Initializable{
     Label lblWarning;
     @FXML
     JFXButton btn_entrar;
-    
-    
-    
-    
+
+    private int mandioca;
+
+    public int getMandioca() {
+        return mandioca;
+    }
+
+    public void setMandioca(int mandioca) {
+        this.mandioca = mandioca;
+    }
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         

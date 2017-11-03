@@ -5,8 +5,6 @@
  */
 package dao.entity.person;
 
-import dao.entity.person.PersonDAO;
-
 /**
  *
  * @author Matheus Henrique

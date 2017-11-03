@@ -9,7 +9,6 @@ import model.entity.product.Product;
 import util.connection.ConnectionFactory;
 import util.dialogs.FxDialogs;
 
-import javax.swing.*;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;

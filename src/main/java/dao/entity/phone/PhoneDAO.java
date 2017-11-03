@@ -5,13 +5,10 @@
  */
 package dao.entity.phone;
 
-import model.entity.person.user.User;
 import model.entity.phone.Phone;
-import model.entity.product.ProductType;
 import util.connection.ConnectionFactory;
 import util.dialogs.FxDialogs;
 
-import javax.swing.*;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;

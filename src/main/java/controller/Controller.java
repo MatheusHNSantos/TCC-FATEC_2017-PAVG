@@ -5,15 +5,18 @@
  */
 package controller;
 
-import javafx.event.Event;
-import javafx.scene.Node;
-import java.io.IOException;
 import javafx.application.Platform;
+import javafx.event.Event;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import model.entity.person.user.User;
+import model.entity.phone.Phone;
+
+import java.io.IOException;
 
 /**
  *

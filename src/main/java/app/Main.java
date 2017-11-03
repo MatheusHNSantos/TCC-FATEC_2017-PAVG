@@ -5,11 +5,10 @@
  */
 package app;
 
-import controller.dashboard.DashboardController;
 import controller.login.LoginController;
+import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.stage.Stage;
-import javafx.application.Application;
 
 /**
  *

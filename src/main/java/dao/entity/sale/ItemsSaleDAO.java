@@ -7,11 +7,9 @@ package dao.entity.sale;
 
 import model.entity.product.Product;
 import model.entity.sale.ItemsSale;
-import model.entity.sale.Sale;
 import util.connection.ConnectionFactory;
 import util.dialogs.FxDialogs;
 
-import javax.swing.*;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;

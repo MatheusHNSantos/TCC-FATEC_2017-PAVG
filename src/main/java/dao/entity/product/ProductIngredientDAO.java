@@ -6,13 +6,10 @@
 package dao.entity.product;
 
 import model.entity.product.Ingredient;
-import model.entity.product.Product;
 import model.entity.product.ProductIngredient;
-import model.entity.product.ProductType;
 import util.connection.ConnectionFactory;
 import util.dialogs.FxDialogs;
 
-import javax.swing.*;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;

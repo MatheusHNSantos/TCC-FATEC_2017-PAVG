@@ -5,9 +5,9 @@
  */
 package dao.entity.address;
 
-import util.connection.ConnectionFactory;
 import dao.entity.DAO;
 import model.entity.address.Address;
+import util.connection.ConnectionFactory;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
