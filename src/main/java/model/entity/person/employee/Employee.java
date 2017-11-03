@@ -36,13 +36,20 @@ public class Employee extends Person implements Entity{
     }
 
     @Override
-    public void save() throws SQLException, ClassNotFoundException {
+    public boolean save() {
         if (idEmployee == -1) {
-            EmployeeDAO.create(this);
-            this.setId_employee(EmployeeDAO.LAST_ID_INSERT);
+            if (EmployeeDAO.create(this)) {
+                this.setId_employee(EmployeeDAO.LAST_ID_INSERT);
+                return true;
+            }
+
+            return false;
         }
-        else{
-            EmployeeDAO.update(this);
+
+        if (EmployeeDAO.update(this)) {
+            return true;
         }
+
+        return false;
     }
 }
