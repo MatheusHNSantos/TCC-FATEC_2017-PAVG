@@ -65,7 +65,7 @@ CREATE TABLE IF NOT EXISTS product_type(
 );
 
 CREATE TABLE IF NOT EXISTS ingredient(
-  id_ingredient int not null,
+  id_ingredient int auto_increment not null,
   name_ingredient varchar(255) not null,
   status_ingredient char(1) not null,
   CONSTRAINT PRK_ID_INGREDIENT PRIMARY KEY (id_ingredient)
