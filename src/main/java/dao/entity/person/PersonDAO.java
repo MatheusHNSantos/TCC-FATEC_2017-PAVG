@@ -30,7 +30,7 @@ abstract class PersonDAO implements DAO{
      * @param person
      * @return
      */
-    public static boolean create(Person person) {
+    public boolean create(Person person) {
 
         Connection conn = ConnectionFactory.getConnection();
         String sql = "INSERT INTO person (id_address, name_person) VALUES (?, ?)";
@@ -62,7 +62,7 @@ abstract class PersonDAO implements DAO{
      * @param person
      * @return
      */
-    public static boolean update(Person person) {
+    public boolean update(Person person) {
 
         Connection conn = ConnectionFactory.getConnection();
         String sql = "UPDATE person SET id_address = ?, name_person = ? WHERE id_person = ?";

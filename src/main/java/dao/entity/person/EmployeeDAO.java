@@ -30,8 +30,8 @@ public class EmployeeDAO extends PersonDAO {
      * @param employee
      * @return
      */
-    public static boolean create(Employee employee) {
-        PersonDAO.create(employee);
+    public boolean create(Employee employee) {
+        super.create(employee);
         Connection conn = ConnectionFactory.getConnection();
         String sql = "INSERT INTO employee (role, id_person) VALUES (?, ?)";
         PreparedStatement stmt = null;
@@ -62,8 +62,8 @@ public class EmployeeDAO extends PersonDAO {
      * @param employee
      * @return
      */
-    public static boolean update(Employee employee) {
-        PersonDAO.update(employee);
+    public boolean update(Employee employee) {
+        super.update(employee);
 
         Connection conn = ConnectionFactory.getConnection();
         String sql = "UPDATE employee SET role = ? WHERE id_employee = ?";
@@ -90,7 +90,7 @@ public class EmployeeDAO extends PersonDAO {
      * @param id
      * @return
      */
-    public static Employee read(int id) {
+    public Employee read(int id) {
         Connection conn = ConnectionFactory.getConnection();
 
         String sql = "SELECT " +
@@ -129,7 +129,7 @@ public class EmployeeDAO extends PersonDAO {
      *
      * @return
      */
-    public static ArrayList<Employee> readAll() {
+    public ArrayList<Employee> readAll() {
 
         ArrayList<Employee> employees = new ArrayList<>();
 

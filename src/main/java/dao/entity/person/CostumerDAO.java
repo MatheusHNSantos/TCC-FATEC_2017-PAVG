@@ -30,8 +30,8 @@ public class CostumerDAO extends PersonDAO {
      * @param costumer
      * @return
      */
-    public static boolean create(Costumer costumer) {
-        PersonDAO.create(costumer);
+    public boolean create(Costumer costumer) {
+        super.create(costumer);
         Connection conn = ConnectionFactory.getConnection();
         String sql = "INSERT INTO costumer (rg, cpf, id_person) VALUES (?, ?, ?)";
         PreparedStatement stmt = null;
@@ -59,8 +59,8 @@ public class CostumerDAO extends PersonDAO {
      * @param costumer
      * @return
      */
-    public static boolean update(Costumer costumer) {
-        PersonDAO.update(costumer);
+    public boolean update(Costumer costumer) {
+        super.update(costumer);
 
         Connection conn = ConnectionFactory.getConnection();
         String sql = "UPDATE costumer SET rg = ?, cpf = ? WHERE id_person = ?";
@@ -89,7 +89,7 @@ public class CostumerDAO extends PersonDAO {
      * @param id
      * @return
      */
-    public static Costumer read(int id) {
+    public Costumer read(int id) {
         Connection conn = ConnectionFactory.getConnection();
 
         String sql = "SELECT costumer.rg, costumer.cpf, " +
@@ -126,7 +126,7 @@ public class CostumerDAO extends PersonDAO {
      *
      * @return
      */
-    public static ArrayList<Costumer> readAll () {
+    public ArrayList<Costumer> readAll () {
 
         ArrayList<Costumer> costumers = new ArrayList<>();
 
