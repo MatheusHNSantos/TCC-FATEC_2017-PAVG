@@ -26,7 +26,7 @@ public class Supplier extends Person {
 
 
     @Override
-    public void save() throws SQLException, ClassNotFoundException {
-
+    public boolean save(){
+        return false;
     }
 }
