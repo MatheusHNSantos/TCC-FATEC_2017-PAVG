@@ -16,7 +16,9 @@ import java.sql.SQLException;
  * @author felipemantoan
  */
 public class Employee extends Person implements Entity{
+
     private int idEmployee = -1;
+
     protected String role;
 
     private EmployeeDAO dao;
