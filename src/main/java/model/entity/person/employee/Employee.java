@@ -19,6 +19,12 @@ public class Employee extends Person implements Entity{
     private int idEmployee = -1;
     protected String role;
 
+    private EmployeeDAO dao;
+
+    public Employee () {
+        this.dao = new EmployeeDAO();
+    }
+
     public int getId_employee() {
         return idEmployee;
     }
@@ -38,7 +44,7 @@ public class Employee extends Person implements Entity{
     @Override
     public boolean save() {
         if (idEmployee == -1) {
-            if (EmployeeDAO.create(this)) {
+            if (this.dao.create(this)) {
                 this.setId_employee(EmployeeDAO.LAST_ID_INSERT);
                 return true;
             }
@@ -46,7 +52,7 @@ public class Employee extends Person implements Entity{
             return false;
         }
 
-        if (EmployeeDAO.update(this)) {
+        if (this.dao.update(this)) {
             return true;
         }
 

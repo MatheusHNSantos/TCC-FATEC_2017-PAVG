@@ -23,7 +23,7 @@ public abstract class Person implements Entity{
 
     private Address address;
 
-    private List<Phone> listPhone = new ArrayList();
+    private ArrayList<Phone> listPhone = new ArrayList();
 
     public Address getAddress() {
         return address;
@@ -45,7 +45,7 @@ public abstract class Person implements Entity{
         return listPhone;
     }
 
-    public void setListPhone(List<Phone> listPhone) {
+    public void setListPhone(ArrayList<Phone> listPhone) {
         this.listPhone = listPhone;
     }
 
