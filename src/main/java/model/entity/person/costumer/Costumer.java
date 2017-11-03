@@ -43,7 +43,7 @@ public class Costumer extends Person {
     }
 
     @Override
-    public void save() throws SQLException, ClassNotFoundException {
-
+    public boolean save() {
+        return false;
     }
 }
