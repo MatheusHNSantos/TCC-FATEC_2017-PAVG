@@ -73,11 +73,6 @@ public class SupplierDAO extends PersonDAO {
         return false;
     }
 
-    /**
-     *
-     * @param id
-     * @return
-     */
     public Supplier read(int id) {
         Connection conn = ConnectionFactory.getConnection();
 
