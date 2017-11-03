@@ -23,11 +23,11 @@ import java.util.logging.Logger;
  *
  * @author Matheus Henrique
  */
-public class IngredientDAO  implements DAO {
+public class IngredientDAO implements DAO {
 
     public static int LAST_ID_INSERT = -1;
 
-    public boolean create(Ingredient ingredient) {
+    public static boolean create(Ingredient ingredient) {
 
         Connection con = ConnectionFactory.getConnection();
         String sql = "INSERT INTO ingredient (name_ingredient, status_ingredient, price) VALUES (?, ?, ?)";
@@ -36,7 +36,7 @@ public class IngredientDAO  implements DAO {
         ResultSet rs = null;
 
         try {
-            stmt = con.prepareStatement(sql);
+            stmt = con.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);
             stmt.setString(1, ingredient.getName());
             stmt.setBoolean(2, ingredient.getStatus());
             stmt.setFloat(3, ingredient.getPrice());
@@ -61,10 +61,10 @@ public class IngredientDAO  implements DAO {
         Connection con = ConnectionFactory.getConnection();
         PreparedStatement stmt = null;
         ResultSet rs = null;
-
+        String sql = "SELECT * FROM ingredient WHERE id_ingredient = ?";
 
         try {
-            stmt = con.prepareStatement("select * from ingredient where id_ingredient = ? ");
+            stmt = con.prepareStatement(sql);
             stmt.setInt(1, ingredient.getId());
             rs = stmt.executeQuery();
 
