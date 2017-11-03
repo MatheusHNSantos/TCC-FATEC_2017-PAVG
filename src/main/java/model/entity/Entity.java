@@ -6,5 +6,5 @@ public interface Entity {
 
     int id = -1;
 
-    public void save() throws SQLException, ClassNotFoundException;
+    public boolean save();
 }
