@@ -5,6 +5,7 @@
  */
 package model.entity.person.costumer;
 
+import dao.entity.person.CostumerDAO;
 import model.entity.person.Person;
 
 import java.sql.SQLException;
@@ -17,6 +18,11 @@ public class Costumer extends Person {
     
     private String CPF;
     private String RG;
+    private CostumerDAO dao;
+
+    public Costumer() {
+        this.dao = new CostumerDAO();
+    }
 
     public String getCPF() {
         return CPF;
@@ -44,6 +50,19 @@ public class Costumer extends Person {
 
     @Override
     public boolean save() {
+        if (super.getId() == -1) {
+            if (this.dao.create(this)) {
+                super.setId( CostumerDAO.LAST_ID_INSERT );
+                return true;
+            }
+
+            return false;
+        }
+
+        if (this.dao.update(this)) {
+            return true;
+        }
+
         return false;
     }
 }
