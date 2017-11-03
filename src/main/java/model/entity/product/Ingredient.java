@@ -5,11 +5,14 @@
  */
 package model.entity.product;
 
+import dao.entity.product.IngredientDAO;
+import model.entity.Entity;
+
 /**
  *
  * @author Matheus Henrique
  */
-public class Ingredient {
+public class Ingredient implements Entity {
     private int id;
     private String name;
     private boolean status;
@@ -46,6 +49,13 @@ public class Ingredient {
     public void setPrice(float price) {
         this.price = price;
     }
-    
-    
+
+    @Override
+    public boolean save() {
+        if (IngredientDAO.create(this) ) {
+            this.setId( IngredientDAO.LAST_ID_INSERT );
+            return true;
+        }
+        return false;
+    }
 }
