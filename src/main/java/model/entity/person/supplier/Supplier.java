@@ -5,6 +5,7 @@
  */
 package model.entity.person.supplier;
 
+import dao.entity.person.SupplierDAO;
 import model.entity.person.Person;
 
 import java.sql.SQLException;
@@ -14,7 +15,14 @@ import java.sql.SQLException;
  * @author felipemantoan
  */
 public class Supplier extends Person {
+
     private String CNPJ;
+
+    private SupplierDAO dao;
+
+    public Supplier () {
+        this.dao = new SupplierDAO();
+    }
 
     public String getCNPJ() {
         return CNPJ;
@@ -27,6 +35,19 @@ public class Supplier extends Person {
 
     @Override
     public boolean save(){
+        if (super.getId() == -1) {
+            if (this.dao.create(this)) {
+                super.setId( SupplierDAO.LAST_ID_INSERT );
+                return true;
+            }
+
+            return false;
+        }
+
+        if (this.dao.update(this)) {
+            return true;
+        }
+
         return false;
     }
 }
