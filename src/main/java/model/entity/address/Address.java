@@ -8,8 +8,6 @@ package model.entity.address;
 import dao.entity.address.AddressDAO;
 import model.entity.Entity;
 
-import java.sql.SQLException;
-
 /**
  *
  * @author Matheus Henrique
@@ -20,6 +18,12 @@ public class Address implements Entity {
     private int number;
     private String neighborhood;
     private String cep;
+
+    private AddressDAO dao;
+
+    public Address(){
+        this.dao = new AddressDAO();
+    }
 
     public int getId() {
         return id;
@@ -63,15 +67,16 @@ public class Address implements Entity {
 
     @Override
     public boolean save() {
+
         if (this.id > -1) {
-            if (AddressDAO.update( this )) {
+            if (this.dao.update( this )) {
                 return true;
             }
 
             return false;
         }
 
-        if (AddressDAO.create(this)) {
+        if (this.dao.create(this)) {
             this.setId(AddressDAO.LAST_ID_INSERT);
             return true;
         }

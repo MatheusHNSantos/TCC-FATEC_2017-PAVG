@@ -30,7 +30,7 @@ public class AddressDAO implements DAO {
      * @param address
      * @return
      */
-    public static boolean create(Address address) {
+    public boolean create(Address address) {
         
         Connection conn = ConnectionFactory.getConnection();
         String sql = "INSERT INTO address (street, number, neighborhood, cep) VALUES (?, ?, ?, ?)";
@@ -64,7 +64,7 @@ public class AddressDAO implements DAO {
      * @param address
      * @return
      */
-    public static boolean update (Address address) {
+    public boolean update (Address address) {
         Connection conn = ConnectionFactory.getConnection();
         String sql = "UPDATE address SET street = ?, number = ?, neighborhood = ?,  cep = ? WHERE id_address = ?";
         PreparedStatement stmt = null;
@@ -94,7 +94,7 @@ public class AddressDAO implements DAO {
      * @param id
      * @return
      */
-    public static Address read(int id) {
+    public Address read(int id) {
         Connection conn = ConnectionFactory.getConnection();
 
         String sql = "SELECT * FROM address WHERE id_address = ?";
@@ -125,7 +125,7 @@ public class AddressDAO implements DAO {
      * @throws SQLException
      * @throws ClassNotFoundException
      */
-    public static ArrayList<Address> readAll() throws SQLException, ClassNotFoundException {
+    public ArrayList<Address> readAll() throws SQLException, ClassNotFoundException {
 
         ArrayList<Address> addresses = new ArrayList<>();
 
