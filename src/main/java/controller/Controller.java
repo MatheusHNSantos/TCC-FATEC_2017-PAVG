@@ -7,15 +7,36 @@ package controller;
 
 import javafx.event.Event;
 import javafx.scene.Node;
+import java.io.IOException;
 import javafx.application.Platform;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 /**
  *
  * @author SAMSUNG
  */
-public class BaseController {
+public class Controller {
     
+    private static final String sPathControl = "fxml/";
+    
+    public static Stage loader(Class<?> Class, StageStyle style, String path, String title) throws IOException {
+        Stage stage = createStageInstance(sPathControl + path, Class);
+        stage.initStyle(style);
+        stage.setTitle(title);
+        return stage;
+    }
+
+    public static Stage createStageInstance(String path, Class<?> Class) throws IOException {
+        Parent root = FXMLLoader.load(Class.getClassLoader().getResource(path));
+        Stage stage = new Stage();
+        stage.setScene(new Scene(root));
+        return stage;
+    }
+
     public void closeApplication() {
         Platform.exit();
     }

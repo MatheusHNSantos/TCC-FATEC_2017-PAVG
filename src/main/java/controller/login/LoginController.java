@@ -4,18 +4,17 @@ import com.jfoenix.controls.JFXButton;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import controller.BaseController;
+import controller.Controller;
 import controller.dashboard.DashboardController;
 import dao.entity.person.UserDAO;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 
@@ -28,16 +27,18 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import model.entity.person.user.User;
 import util.dialogs.FxDialogs;
-import util.fxml.Loader;
-
-import javax.swing.*;
+import util.exception.UserException;
 
 /**
- * FXML BaseController class
+ * FXML Controller class
  *
  * @author LucasFsc
  */
-public class LoginController extends BaseController implements Initializable{
+public class LoginController implements Initializable{
+    
+    private static final String path = "login.fxml";
+    private static final String title = "PAVG Apetitoso - Login";
+    
     private Thread one;
     @FXML
     Button btn_sair;
@@ -55,7 +56,10 @@ public class LoginController extends BaseController implements Initializable{
     Label lblWarning;
     @FXML
     JFXButton btn_entrar;
-
+    
+    
+    
+    
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         
@@ -73,38 +77,35 @@ public class LoginController extends BaseController implements Initializable{
             }
         };
 
-
-        btn_entrar.setOnMouseClicked(this::handlerButtonActionEntrar);
         btn_sair.setOnMouseClicked(this::handlerButtonActionSair);
+        btn_entrar.setOnMouseClicked(this::handlerButtonActionEntrar);
     }
-    
+
     @FXML
     private void handlerButtonActionEntrar(MouseEvent event) {
-        User user = new User(txt_login.getText(), txt_senha.getText());
+        User user = null;
+        try {
+            user = new User(txt_login.getText(), txt_senha.getText());
+
         UserDAO userDAO = new UserDAO();
 
 
         if(userDAO.doLogin(user)){
             lblWarning.setText("");
-            JOptionPane.showMessageDialog(null, "Acesso Liberado!");
-            FxDialogs.showInformation("Acesso Liberado!", "Seja bem vindo!");
-
+            //JOptionPane.showMessageDialog(null, "Acesso Liberado!");
+            //FxDialogs.showInformation("Acesso Liberado!", "Seja bem vindo!");
+            ((Node) (event.getSource())).getScene().getWindow().hide();
+            DashboardController.loader().show();
             /*try {
                 /*Node node = (Node) event.getSource();
-
                 Stage stage = (Stage) node.getScene().getWindow();
-
                 URL url = getClass().getResource("/fxml/login.fxml");
                 Parent root = FXMLLoader.load(url);
                 Scene scene = new Scene(root);
                 stage.setTitle("FXML Welcome");
                 stage.setScene(scene);
                 stage.show();
-
-
-
             } catch (IOException ex) {
-
                 Logger.getLogger(LoginController.class.getName()).log(Level.SEVERE, null, ex);
             }*/
 
@@ -112,19 +113,23 @@ public class LoginController extends BaseController implements Initializable{
             FxDialogs.showError("Acesso Negado!","Usuário ou senha incorretos");
             lblWarning.setText("Acesso Negado!");
         }
-
+        } catch (UserException ex) {
+            FxDialogs.showWarning(ex.getMessage(), "Tente novamente.");
+        } catch (IOException ex) {
+            Logger.getLogger(LoginController.class.getName()).log(Level.SEVERE, null, ex);
+        }
 
     }
 
     @FXML
     private void handlerButtonActionSair(MouseEvent event) {
 
-            Stage stage = (Stage) btn_sair.getScene().getWindow(); //Obtendo a janela atual
-            stage.close(); //Fechando o Stage
+        Stage stage = (Stage) btn_sair.getScene().getWindow(); //Obtendo a janela atual
+        stage.close(); //Fechando o Stage
 
     }
-        
+    
     public static Stage loader() throws IOException {
-        return Loader.loader(LoginController.class, StageStyle.UNDECORATED, "login.fxml", "Meucu");
+        return Controller.loader(LoginController.class, StageStyle.UNDECORATED, path, title);
     }
 }

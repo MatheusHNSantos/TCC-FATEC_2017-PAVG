@@ -1,6 +1,7 @@
 package model.entity.person.user;
 
-import org.omg.CORBA.UserException;
+
+import util.exception.UserException;
 
 /**
  *
@@ -12,10 +13,19 @@ public class User {
     private String password;
     private int idEmployee;
 
-    public User(String login, String password) {
+    public User(String login, String password) throws UserException {
+        if(login.isEmpty() && password.isEmpty()){
+            throw new UserException("Digite um login e uma senha!") {};
+        }else if (login.isEmpty()) {
+            throw new UserException("Digite um login!") {};
+        }else if (password.isEmpty()) {
+            throw new UserException("Digite uma senha!") {};
+        }else{
             this.login = login;
             this.password = password;
         }
+
+    }
 
     public int getIdEmployee() {
         return idEmployee;
@@ -33,7 +43,7 @@ public class User {
 
     public void setLogin(String login) throws UserException {
         if (login.isEmpty()) {
-            throw new UserException("O login nao pode ser nulo!") {};
+            throw new UserException("Login não pode ser nulo") {};
         }
 
         this.login = login;
@@ -46,7 +56,7 @@ public class User {
     public void setPassword(String password) throws UserException {
 
         if (password.isEmpty()) {
-            throw new UserException("A senha nao pode ser nula!") {};
+            throw new UserException("Password não pode ser nulo") {};
         }
 
         this.password = password;

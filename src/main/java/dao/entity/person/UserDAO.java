@@ -8,8 +8,9 @@ package dao.entity.person;
  */
 
 import model.entity.person.user.User;
-import org.omg.CORBA.UserException;
 import util.connection.ConnectionFactory;
+import util.dialogs.FxDialogs;
+import util.exception.UserException;
 
 import javax.swing.*;
 import java.sql.Connection;
@@ -46,9 +47,9 @@ public class UserDAO {
             stmt.close();
 
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Falha ao verificar login: " + ex.getMessage());
+            FxDialogs.showException("Falha ao verificar login!",getClass().getSimpleName()+ " - " + ex.getMessage(),ex);
             validacao  = false;
-        }finally{
+        } finally{
             ConnectionFactory.closeConnection(con, stmt, rs);
         }
 
@@ -69,7 +70,7 @@ public class UserDAO {
             
             return true;
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Erro ao Salvar: " + ex.getMessage());
+            FxDialogs.showException("Erro de Gravação! " ,getClass().getSimpleName()+ " - " + ex.getMessage(),ex);
             return false;
         }
         finally{
@@ -98,9 +99,9 @@ public class UserDAO {
                 
             
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Falha ao consultar: " + ex.getMessage());
+            FxDialogs.showException("Erro de Leitura!",getClass().getSimpleName()+ " - " + ex.getMessage(),ex);
         } catch (UserException ex) {
-            Logger.getLogger(UserDAO.class.getName()).log(Level.SEVERE, null, ex);
+            FxDialogs.showException("Erro no usuário ou senha!",getClass().getSimpleName()+ " - " + ex.getMessage(),ex);
         }finally{
             ConnectionFactory.closeConnection(con, stmt, rs);
         }
@@ -131,8 +132,10 @@ public class UserDAO {
             }
             
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Falha ao consultar: " + ex.getMessage());
-        }finally{
+            FxDialogs.showException("Erro de Leitura!",getClass().getSimpleName()+ " - " + ex.getMessage(),ex);
+        } catch (UserException ex) {
+            FxDialogs.showException("Erro ao ler login e senha!",getClass().getSimpleName()+ " - " + ex.getMessage(),ex);
+        } finally{
             ConnectionFactory.closeConnection(con, stmt, rs);
         }
         
@@ -155,7 +158,7 @@ public class UserDAO {
             
             return true;
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Erro ao Atualizar: " + ex.getMessage());
+                FxDialogs.showException("Erro de Atualização!",getClass().getSimpleName()+ " - " + ex.getMessage(),ex);
             return false;
         }
         finally{
@@ -178,7 +181,7 @@ public class UserDAO {
             
             return true;
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Erro ao Excluir: " + ex.getMessage());
+            FxDialogs.showException("Erro de Exclusão!",getClass().getSimpleName()+ " - " + ex.getMessage(),ex);
             return false;
         }
         finally{

@@ -5,16 +5,11 @@
  */
 package app;
 
+import controller.dashboard.DashboardController;
 import controller.login.LoginController;
-import dao.entity.address.AddressDAO;
-import dao.entity.phone.PhoneDAO;
+import javafx.application.Platform;
 import javafx.stage.Stage;
 import javafx.application.Application;
-import model.entity.address.Address;
-import model.entity.phone.Phone;
-
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  *
@@ -22,13 +17,18 @@ import java.util.List;
  */
 public class Main extends Application {
 
+    public void closeApplication() {
+        Platform.exit();
+    }
+
     @Override
     public void start(Stage PrimaryStage) {
         try {
            LoginController.loader().show();
+            //DashboardController.loader().show();
         }
         catch (Exception e) {
-            System.out.println(e.getMessage());
+            System.out.println(e);
         }
     }
 
