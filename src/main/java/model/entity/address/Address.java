@@ -62,13 +62,20 @@ public class Address implements Entity {
     }
 
     @Override
-    public void save() throws SQLException, ClassNotFoundException {
+    public boolean save() {
         if (this.id > -1) {
-            AddressDAO.update(this);
+            if (AddressDAO.update( this )) {
+                return true;
+            }
+
+            return false;
         }
-        else{
-            AddressDAO.create(this);
+
+        if (AddressDAO.create(this)) {
             this.setId(AddressDAO.LAST_ID_INSERT);
+            return true;
         }
+
+        return false;
     }
 }
