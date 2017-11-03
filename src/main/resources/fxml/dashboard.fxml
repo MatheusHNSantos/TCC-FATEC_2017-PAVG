@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.JFXTabPane?>
 <?import com.jfoenix.controls.JFXToggleButton?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Tab?>
-<?import javafx.scene.control.TabPane?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextArea?>
@@ -17,7 +17,7 @@
 
 <AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" stylesheets="@../css/main.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.dashboard.DashboardController">
    <children>
-      <TabPane id="tabPane" fx:id="paneTab" prefHeight="283.0" prefWidth="388.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+       <JFXTabPane id="tabPane" fx:id="paneTab" prefHeight="283.0" prefWidth="388.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <tabs>
           <Tab fx:id="welcomeTab" text="Bem vindo!">
             <content>
@@ -142,45 +142,45 @@
               <content>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <TabPane prefHeight="695.0" prefWidth="1280.0" tabClosingPolicy="UNAVAILABLE">
+                         <JFXTabPane fx:id="tablePaneAdm" nodeOrientation="RIGHT_TO_LEFT" prefHeight="695.0" prefWidth="1280.0" tabClosingPolicy="UNAVAILABLE">
                           <tabs>
-                            <Tab text="Mapa">
-                              <content>
-                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="651.0" prefWidth="1274.0" />
-                              </content>
-                            </Tab>
-                              <Tab text="Fornecedores">
+                              <Tab closable="false" text="Log">
                                 <content>
                                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
                                 </content>
                               </Tab>
-                            <Tab text="Usuários">
+                              <Tab closable="false" text="Vendas">
+                                <content>
+                                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                                </content>
+                              </Tab>
+                            <Tab closable="false" text="Usuários">
                               <content>
                                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
                               </content>
                             </Tab>
-                              <Tab text="Funcionários">
+                              <Tab closable="false" text="Funcionários">
                                 <content>
                                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
                                 </content>
                               </Tab>
-                              <Tab text="Vendas">
+                              <Tab closable="false" text="Fornecedores">
                                 <content>
                                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
                                 </content>
                               </Tab>
-                              <Tab text="Log">
-                                <content>
-                                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
-                                </content>
-                              </Tab>
+                            <Tab closable="false" text="Mapa">
+                              <content>
+                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="651.0" prefWidth="1274.0" />
+                              </content>
+                            </Tab>
                           </tabs>
-                        </TabPane>
+                        </JFXTabPane>
                      </children>
                   </AnchorPane>
               </content>
             </Tab>
         </tabs>
-      </TabPane>
+      </JFXTabPane>
    </children>
 </AnchorPane>

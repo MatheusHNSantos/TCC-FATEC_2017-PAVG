@@ -6,6 +6,7 @@
 package controller.dashboard;
 
 
+import com.jfoenix.controls.JFXTabPane;
 import controller.Controller;
 import controller.login.LoginController;
 import javafx.collections.FXCollections;
@@ -17,6 +18,7 @@ import javafx.scene.control.TabPane;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.Background;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import model.entity.DataModelTest;
@@ -27,7 +29,7 @@ import java.util.ResourceBundle;
 
 /**
  * FXML Controller class
- *
+ * JtablePaneAdm
  * @author SAMSUNG
  */
 public class DashboardController implements Initializable {
@@ -36,7 +38,7 @@ public class DashboardController implements Initializable {
     private static final String title = "PAVG Apetitoso - v1.0.1117";
 
     @FXML
-    private TabPane paneTab;
+    private JFXTabPane paneTab;
 
     @FXML
     private Tab welcomeTab;
@@ -58,7 +60,9 @@ public class DashboardController implements Initializable {
     
     @FXML
     private TableColumn<DataModelTest, String> row3;
-    
+
+    @FXML
+    private JFXTabPane tablePaneAdm;
     
     //this ObservableList will be filled with database data, creating a method like:
     /**
@@ -100,7 +104,7 @@ public class DashboardController implements Initializable {
         row3.setCellValueFactory(new PropertyValueFactory<>("preco"));
         tableView.setItems(data);
 
-        
+
 
     }
 

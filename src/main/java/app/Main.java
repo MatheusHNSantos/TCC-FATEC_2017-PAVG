@@ -5,6 +5,7 @@
  */
 package app;
 
+import controller.dashboard.DashboardController;
 import controller.login.LoginController;
 import javafx.application.Application;
 import javafx.application.Platform;
@@ -23,8 +24,8 @@ public class Main extends Application {
     @Override
     public void start(Stage PrimaryStage) {
         try {
-           LoginController.loader().show();
-            //DashboardController.loader().show();
+           //LoginController.loader().show()
+            DashboardController.loader().show();
         }
         catch (Exception e) {
             System.out.println(e);

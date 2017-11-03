@@ -61,3 +61,35 @@
     -fx-background-color: snow;
     -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);
 }
+
+
+
+
+
+/*CSS JFXTablePane */
+/* ---------------------------------------*/
+
+/*
+.jfx-tab-pane
+{
+-fx-padding: 1px;
+-fx-background-color: blue, -fx-control-inner-background;
+-fx-background-insets: 0, 1;
+}
+*/
+
+.jfx-tab-pane .headers-region
+{
+-fx-background-color: #2E8B57;
+}
+
+.jfx-tab-pane .tab-header-background
+{
+-fx-background-color: #2E8B57;
+}
+
+.jfx-tab-pane .tab-selected-line {
+    -fx-background-color: #FF8C00;
+}
+
+/* ---------------------------------------*/

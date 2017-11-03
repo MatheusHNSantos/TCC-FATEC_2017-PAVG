@@ -1,16 +1,14 @@
 package controller.login;
 
 import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXTabPane;
 import controller.Controller;
 import controller.dashboard.DashboardController;
 import dao.entity.person.UserDAO;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
@@ -82,6 +80,7 @@ public class LoginController implements Initializable{
 
         btn_sair.setOnMouseClicked(this::handlerButtonActionSair);
         btn_entrar.setOnMouseClicked(this::handlerButtonActionEntrar);
+
     }
 
     @FXML
