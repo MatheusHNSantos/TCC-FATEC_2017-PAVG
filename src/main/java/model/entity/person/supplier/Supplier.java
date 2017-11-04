@@ -21,7 +21,8 @@ public class Supplier extends Person {
     private SupplierDAO dao;
 
     public Supplier () {
-        this.dao = new SupplierDAO();
+        this.dao= new SupplierDAO();
+
     }
 
     public String getCNPJ() {
@@ -37,7 +38,7 @@ public class Supplier extends Person {
     public boolean save(){
         if (super.getId() == -1) {
             if (this.dao.create(this)) {
-                super.setId( SupplierDAO.LAST_ID_INSERT );
+                this.setId( SupplierDAO.LAST_ID_INSERT );
                 return true;
             }
 
