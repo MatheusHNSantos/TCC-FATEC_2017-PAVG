@@ -41,6 +41,7 @@ public class CostumerDAO extends PersonDAO {
             stmt.setString(1, costumer.getRG());
             stmt.setString(2, costumer.getCPF());
             stmt.setInt(3, PersonDAO.LAST_ID_INSERT);
+            LAST_ID_INSERT = PersonDAO.LAST_ID_INSERT;
             stmt.execute();
             return true;
         }
