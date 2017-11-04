@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/fxml/dashboard.fxml" afterPath="$PROJECT_DIR$/src/main/resources/fxml/dashboard.fxml" />
     </list>
     <ignored path="JavaFxApplication.iws" />
@@ -66,7 +65,38 @@
     <favorites_list name="JavaFxApplication" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="dashboard.fxml" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/fxml/dashboard.fxml">
+          <provider editor-type-id="text-editor">
+            <state relative-caret-position="573">
+              <caret line="223" column="60" lean-forward="true" selection-start-line="223" selection-start-column="60" selection-end-line="223" selection-end-column="60" />
+              <folding>
+                <marker date="1509812868520" expanded="true" signature="15332:15344" ph="..." />
+                <marker date="1509812868520" expanded="true" signature="15332:15385" ph="..." />
+                <marker date="1509812868520" expanded="true" signature="15332:15420" ph="..." />
+                <marker date="1509812868520" expanded="true" signature="15332:15454" ph="..." />
+                <marker date="1509812868520" expanded="true" signature="15332:15492" ph="..." />
+                <marker date="1509812868520" expanded="true" signature="15332:15525" ph="..." />
+                <marker date="1509812868520" expanded="true" signature="15332:15557" ph="..." />
+                <marker date="1509812868520" expanded="true" signature="15332:15582" ph="..." />
+                <marker date="1509812868520" expanded="true" signature="15332:15601" ph="..." />
+                <marker date="1509812868520" expanded="true" signature="15332:15617" ph="..." />
+                <marker date="1509812868520" expanded="true" signature="15332:15637" ph="..." />
+                <marker date="1509812868520" expanded="true" signature="15332:16501" ph="..." />
+                <marker date="1509812868520" expanded="true" signature="15332:16515" ph="..." />
+                <marker date="1509812868520" expanded="true" signature="15344:15385" ph="..." />
+                <marker date="1509812868520" expanded="true" signature="15835:16486" ph="..." />
+                <marker date="1509812868520" expanded="true" signature="15855:16473" ph="..." />
+              </folding>
+            </state>
+          </provider>
+          <provider selected="true" editor-type-id="JavaFX-Scene-Builder">
+            <state />
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -162,7 +192,7 @@
     </option>
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="-7" />
     <option name="width" value="974" />
     <option name="height" value="1057" />
@@ -298,51 +328,6 @@
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="entity" type="462c0819:PsiDirectoryNode" />
               <item name="person" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="tcc-reborn" type="b2602c69:ProjectViewProjectNode" />
-              <item name="TCC-FATEC_2017-PAVG" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="entity" type="462c0819:PsiDirectoryNode" />
-              <item name="phone" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="tcc-reborn" type="b2602c69:ProjectViewProjectNode" />
-              <item name="TCC-FATEC_2017-PAVG" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="entity" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="tcc-reborn" type="b2602c69:ProjectViewProjectNode" />
-              <item name="TCC-FATEC_2017-PAVG" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="entity" type="462c0819:PsiDirectoryNode" />
-              <item name="address" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="tcc-reborn" type="b2602c69:ProjectViewProjectNode" />
-              <item name="TCC-FATEC_2017-PAVG" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="entity" type="462c0819:PsiDirectoryNode" />
-              <item name="person" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="tcc-reborn" type="b2602c69:ProjectViewProjectNode" />
-              <item name="TCC-FATEC_2017-PAVG" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="entity" type="462c0819:PsiDirectoryNode" />
-              <item name="person" type="462c0819:PsiDirectoryNode" />
-              <item name="costumer" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="tcc-reborn" type="b2602c69:ProjectViewProjectNode" />
@@ -613,7 +598,8 @@
     <option name="totallyTimeSpent" value="1302000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1066" extended-state="7" />
+    <frame x="-8" y="-8" width="1936" height="1066" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -623,12 +609,12 @@
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19412382" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.19412382" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18072917" sideWeight="0.6703755" order="3" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18072917" sideWeight="0.6703755" order="3" side_tool="false" content_ui="combo" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -996,45 +982,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/fxml/dashboard.fxml">
-      <provider selected="true" editor-type-id="JavaFX-Scene-Builder">
-        <state />
-      </provider>
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="766">
-          <caret line="238" column="13" lean-forward="true" selection-start-line="238" selection-start-column="13" selection-end-line="238" selection-end-column="13" />
-          <folding>
-            <marker date="1509810021010" expanded="true" signature="11513:12366" ph="..." />
-            <marker date="1509810021010" expanded="true" signature="11535:12349" ph="..." />
-            <marker date="1509810021010" expanded="true" signature="11630:12326" ph="..." />
-            <marker date="1509810021010" expanded="true" signature="11662:12313" ph="..." />
-            <marker date="1509810021010" expanded="true" signature="11902:12280" ph="..." />
-            <marker date="1509810021010" expanded="true" signature="11939:12243" ph="..." />
-            <marker date="1509810021010" expanded="true" signature="12422:14890" ph="..." />
-            <marker date="1509810021010" expanded="true" signature="12446:14871" ph="..." />
-            <marker date="1509810021010" expanded="true" signature="12543:14846" ph="..." />
-            <marker date="1509810021010" expanded="true" signature="12575:14814" ph="..." />
-            <marker date="1509810021010" expanded="true" signature="12850:14781" ph="..." />
-            <marker date="1509810021010" expanded="true" signature="12883:14743" ph="..." />
-            <marker date="1509810021010" expanded="true" signature="12947:13186" ph="..." />
-            <marker date="1509810021010" expanded="true" signature="12989:13149" ph="..." />
-            <marker date="1509810021010" expanded="true" signature="13253:13492" ph="..." />
-            <marker date="1509810021010" expanded="true" signature="13295:13455" ph="..." />
-            <marker date="1509810021010" expanded="true" signature="13559:13790" ph="..." />
-            <marker date="1509810021010" expanded="true" signature="13599:13755" ph="..." />
-            <marker date="1509810021010" expanded="true" signature="13714:13755" ph="..." />
-            <marker date="1509810021010" expanded="true" signature="13863:14102" ph="..." />
-            <marker date="1509810021010" expanded="true" signature="13905:14065" ph="..." />
-            <marker date="1509810021010" expanded="true" signature="14175:14414" ph="..." />
-            <marker date="1509810021010" expanded="true" signature="14217:14377" ph="..." />
-            <marker date="1509810021010" expanded="true" signature="14477:14709" ph="..." />
-            <marker date="1509810021010" expanded="true" signature="14517:14674" ph="..." />
-            <marker date="1509810021010" expanded="true" signature="15124:15775" ph="..." />
-            <marker date="1509810021010" expanded="true" signature="15144:15762" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/model/entity/phone/Phone.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -1064,6 +1011,34 @@
         <state relative-caret-position="153">
           <caret line="16" column="33" lean-forward="false" selection-start-line="16" selection-start-column="33" selection-end-line="16" selection-end-column="33" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/fxml/dashboard.fxml">
+      <provider selected="true" editor-type-id="JavaFX-Scene-Builder">
+        <state />
+      </provider>
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="573">
+          <caret line="223" column="60" lean-forward="true" selection-start-line="223" selection-start-column="60" selection-end-line="223" selection-end-column="60" />
+          <folding>
+            <marker date="1509812868520" expanded="true" signature="15332:15344" ph="..." />
+            <marker date="1509812868520" expanded="true" signature="15332:15385" ph="..." />
+            <marker date="1509812868520" expanded="true" signature="15332:15420" ph="..." />
+            <marker date="1509812868520" expanded="true" signature="15332:15454" ph="..." />
+            <marker date="1509812868520" expanded="true" signature="15332:15492" ph="..." />
+            <marker date="1509812868520" expanded="true" signature="15332:15525" ph="..." />
+            <marker date="1509812868520" expanded="true" signature="15332:15557" ph="..." />
+            <marker date="1509812868520" expanded="true" signature="15332:15582" ph="..." />
+            <marker date="1509812868520" expanded="true" signature="15332:15601" ph="..." />
+            <marker date="1509812868520" expanded="true" signature="15332:15617" ph="..." />
+            <marker date="1509812868520" expanded="true" signature="15332:15637" ph="..." />
+            <marker date="1509812868520" expanded="true" signature="15332:16501" ph="..." />
+            <marker date="1509812868520" expanded="true" signature="15332:16515" ph="..." />
+            <marker date="1509812868520" expanded="true" signature="15344:15385" ph="..." />
+            <marker date="1509812868520" expanded="true" signature="15835:16486" ph="..." />
+            <marker date="1509812868520" expanded="true" signature="15855:16473" ph="..." />
+          </folding>
         </state>
       </provider>
     </entry>

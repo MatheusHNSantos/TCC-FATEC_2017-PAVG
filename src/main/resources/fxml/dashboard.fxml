@@ -6,6 +6,9 @@
 <?import com.jfoenix.controls.JFXTextField?>
 <?import com.jfoenix.controls.JFXToggleButton?>
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.chart.BarChart?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.NumberAxis?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TableColumn?>
@@ -22,7 +25,7 @@
    <children>
        <JFXTabPane id="tabPane" fx:id="paneTab" prefHeight="702.0" prefWidth="1280.0" AnchorPane.bottomAnchor="18.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <tabs>
-          <Tab fx:id="welcomeTab" text="Bem vindo!">
+          <Tab fx:id="welcomeTab" text="Inicio">
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="190.0" prefWidth="250.0">
                      <children>
@@ -171,20 +174,11 @@
                      </children></AnchorPane>
               </content>
             </Tab>
-          <Tab fx:id="salesTab" closable="false" text="Vendas">
-            <content>
-              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                     <children>
-                        <TableView fx:id="tableView" layoutX="14.0" layoutY="14.0" prefHeight="669.0" prefWidth="1258.0" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="14.0">
-                           <columns>
-                              <TableColumn fx:id="row1" prefWidth="241.0" text="ID" />
-                              <TableColumn fx:id="row2" prefWidth="601.0" text="Nome" />
-                              <TableColumn fx:id="row3" prefWidth="409.0" text="Preço" />
-                           </columns>
-                        </TableView>
-                     </children></AnchorPane>
-            </content>
-          </Tab>
+            <Tab text="Produtos">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+              </content>
+            </Tab>
             <Tab closable="false" text="Administração">
               <content>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
@@ -196,11 +190,21 @@
                                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
                                 </content>
                               </Tab>
-                              <Tab closable="false" text="Vendas">
-                                <content>
-                                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
-                                </content>
-                              </Tab>
+                            <Tab fx:id="salesTab" closable="false" text="Vendas">
+                              <content>
+                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                       <children>
+                                          <TableView fx:id="tableView" layoutX="14.0" layoutY="14.0" prefHeight="669.0" prefWidth="1258.0" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="14.0">
+                                             <columns>
+                                                <TableColumn fx:id="row1" prefWidth="241.0" text="ID" />
+                                                <TableColumn fx:id="row2" prefWidth="601.0" text="Nome" />
+                                                <TableColumn fx:id="row3" prefWidth="409.0" text="Preço" />
+                                             </columns>
+                                          </TableView>
+                                       </children>
+                                    </AnchorPane>
+                              </content>
+                            </Tab>
                             <Tab closable="false" text="Usuários">
                               <content>
                                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
@@ -216,9 +220,19 @@
                                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
                                 </content>
                               </Tab>
-                            <Tab closable="false" text="Mapa">
+                            <Tab closable="false" text="Faturamento">
                               <content>
-                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="651.0" prefWidth="1274.0" />
+                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="651.0" prefWidth="1274.0">
+                                       <children>
+                                          <BarChart layoutX="86.0" layoutY="94.0">
+                                            <xAxis>
+                                              <CategoryAxis side="BOTTOM" />
+                                            </xAxis>
+                                            <yAxis>
+                                              <NumberAxis side="LEFT" />
+                                            </yAxis>
+                                          </BarChart>
+                                       </children></AnchorPane>
                               </content>
                             </Tab>
                           </tabs>
