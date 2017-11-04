@@ -28,9 +28,12 @@ public class Main extends Application {
             DashboardController.loader().show();
         }
         catch (Exception e) {
-            System.out.println(e);
+            System.out.println(e.getCause());
         }
+
+
     }
+
 
     /**
      * @param args the command line arguments

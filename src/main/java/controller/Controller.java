@@ -11,10 +11,9 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
-import model.entity.person.user.User;
-import model.entity.phone.Phone;
 
 import java.io.IOException;
 
@@ -28,8 +27,16 @@ public class Controller {
     
     public static Stage loader(Class<?> Class, StageStyle style, String path, String title) throws IOException {
         Stage stage = createStageInstance(sPathControl + path, Class);
+        Controller ls = new Controller();
+        stage = ls.icons(stage);
         stage.initStyle(style);
         stage.setTitle(title);
+
+        return stage;
+    }
+
+    public Stage icons(Stage stage){
+        stage.getIcons().add(new Image(getClass().getResourceAsStream("/img/icon.jpg")));
         return stage;
     }
 

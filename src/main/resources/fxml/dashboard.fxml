@@ -184,9 +184,9 @@
       </JFXTabPane>
       <AnchorPane layoutY="702.0" prefHeight="20.0" prefWidth="1280.0" style="-fx-background-color: #2E8B57;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
          <children>
-            <Label alignment="CENTER" layoutX="8.0" layoutY="2.0" prefHeight="17.0" prefWidth="64.0" text="00/00/0000" textFill="WHITE" AnchorPane.leftAnchor="1.0" />
-            <Label alignment="CENTER" contentDisplay="RIGHT" layoutX="1217.0" layoutY="2.0" prefHeight="17.0" prefWidth="57.0" text="00:00:00" textFill="WHITE" AnchorPane.rightAnchor="1.0" />
-            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="620.0" layoutY="2.0" text="User" textFill="WHITE" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+            <Label fx:id="label_date" alignment="CENTER" layoutX="8.0" layoutY="2.0" prefHeight="17.0" prefWidth="64.0" text="00/00/0000" textFill="WHITE" AnchorPane.leftAnchor="1.0" />
+            <Label fx:id="label_time" alignment="CENTER" contentDisplay="RIGHT" layoutX="1217.0" layoutY="2.0" prefHeight="17.0" prefWidth="52.0" text="00:00:00" textFill="WHITE" AnchorPane.rightAnchor="1.0" />
+            <Label fx:id="label_user" alignment="CENTER" contentDisplay="CENTER" layoutX="620.0" layoutY="2.0" text="User" textFill="WHITE" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
          </children></AnchorPane>
    </children>
 </AnchorPane>
