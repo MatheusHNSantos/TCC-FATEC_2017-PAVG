@@ -27,6 +27,7 @@ public class SupplierDAO extends PersonDAO {
     public static int LAST_ID_INSERT = -1;
 
     public boolean create (Supplier supplier) {
+
         super.create(supplier);
         Connection conn = ConnectionFactory.getConnection();
         String sql = "INSERT INTO supplier (cnpj, id_person) VALUES (?, ?)";
@@ -36,6 +37,7 @@ public class SupplierDAO extends PersonDAO {
             stmt = conn.prepareStatement(sql);
             stmt.setString(1, supplier.getCNPJ());
             stmt.setInt(2, PersonDAO.LAST_ID_INSERT);
+            LAST_ID_INSERT = PersonDAO.LAST_ID_INSERT;
             stmt.execute();
             return true;
         }
