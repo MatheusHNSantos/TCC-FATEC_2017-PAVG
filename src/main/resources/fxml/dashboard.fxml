@@ -17,7 +17,7 @@
 
 <AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" stylesheets="@../css/main.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.dashboard.DashboardController">
    <children>
-       <JFXTabPane id="tabPane" fx:id="paneTab" prefHeight="283.0" prefWidth="388.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+       <JFXTabPane id="tabPane" fx:id="paneTab" prefHeight="702.0" prefWidth="1280.0" AnchorPane.bottomAnchor="18.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <tabs>
           <Tab fx:id="welcomeTab" text="Bem vindo!">
             <content>
@@ -142,7 +142,7 @@
               <content>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                         <JFXTabPane fx:id="tablePaneAdm" nodeOrientation="RIGHT_TO_LEFT" prefHeight="695.0" prefWidth="1280.0" tabClosingPolicy="UNAVAILABLE">
+                         <JFXTabPane fx:id="tablePaneAdm" nodeOrientation="RIGHT_TO_LEFT" prefHeight="665.0" prefWidth="1280.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="18.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                           <tabs>
                               <Tab closable="false" text="Log">
                                 <content>
@@ -182,5 +182,11 @@
             </Tab>
         </tabs>
       </JFXTabPane>
+      <AnchorPane layoutY="702.0" prefHeight="20.0" prefWidth="1280.0" style="-fx-background-color: #2E8B57;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+         <children>
+            <Label alignment="CENTER" layoutX="8.0" layoutY="2.0" prefHeight="17.0" prefWidth="64.0" text="00/00/0000" textFill="WHITE" AnchorPane.leftAnchor="1.0" />
+            <Label alignment="CENTER" contentDisplay="RIGHT" layoutX="1217.0" layoutY="2.0" prefHeight="17.0" prefWidth="57.0" text="00:00:00" textFill="WHITE" AnchorPane.rightAnchor="1.0" />
+            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="620.0" layoutY="2.0" text="User" textFill="WHITE" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+         </children></AnchorPane>
    </children>
 </AnchorPane>
