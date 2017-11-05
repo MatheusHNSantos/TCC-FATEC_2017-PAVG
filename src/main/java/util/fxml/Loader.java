@@ -11,7 +11,7 @@ import javafx.stage.WindowEvent;
 import java.io.IOException;
 
 public class Loader {
-    private static final String sPathControl = "fxml/";
+    private static final String sPathControl = "";
 
     public Loader() {
         super();

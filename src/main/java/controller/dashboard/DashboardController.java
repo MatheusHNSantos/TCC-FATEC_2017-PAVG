@@ -41,7 +41,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
  */
 public class DashboardController implements Initializable {
 
-    private static final String path = "dashboard/dashboard.fxml";
+    private static final String path = "fxml/dashboard.fxml";
     private static final String title = "Welcome!";
 
     @FXML
@@ -114,7 +114,7 @@ public class DashboardController implements Initializable {
 
 
     public static Stage loader() throws IOException {
-        return Loader.loader(DashboardController.class, StageStyle.DECORATED, "dashboard.fxml", title);
+        return Loader.loader(DashboardController.class, StageStyle.DECORATED, "./dashboard.fxml", title);
     }
 
 }
