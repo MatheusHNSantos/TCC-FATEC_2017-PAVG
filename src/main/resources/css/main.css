@@ -37,7 +37,7 @@
     -fx-text-fill: #ffffff;
 }
 
-.text-field {
+#txt_senha, #txt_login {
     -fx-border-radius: 1px;
     -fx-background-radius: 1px;
     -fx-font-size: 13px;
@@ -45,7 +45,7 @@
     -fx-border-color: #c2c2c2;
 }
 
-.text-field:focused {
+#txt_senha:focused, #txt_login:focused {
     -fx-border-color: #555555;
     -fx-faint-focus-color: #f2f2f2;
     -fx-effect: dropshadow(two-pass-box, rgba(204,204,204,0.2), 2, 0, 0, 0);

@@ -2,6 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/css/main.css" afterPath="$PROJECT_DIR$/src/main/resources/css/main.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/fxml/dashboard.fxml" afterPath="$PROJECT_DIR$/src/main/resources/fxml/dashboard.fxml" />
     </list>
     <ignored path="JavaFxApplication.iws" />
@@ -66,33 +68,13 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="dashboard.fxml" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/fxml/dashboard.fxml">
-          <provider editor-type-id="text-editor">
-            <state relative-caret-position="573">
-              <caret line="223" column="60" lean-forward="true" selection-start-line="223" selection-start-column="60" selection-end-line="223" selection-end-column="60" />
-              <folding>
-                <marker date="1509812868520" expanded="true" signature="15332:15344" ph="..." />
-                <marker date="1509812868520" expanded="true" signature="15332:15385" ph="..." />
-                <marker date="1509812868520" expanded="true" signature="15332:15420" ph="..." />
-                <marker date="1509812868520" expanded="true" signature="15332:15454" ph="..." />
-                <marker date="1509812868520" expanded="true" signature="15332:15492" ph="..." />
-                <marker date="1509812868520" expanded="true" signature="15332:15525" ph="..." />
-                <marker date="1509812868520" expanded="true" signature="15332:15557" ph="..." />
-                <marker date="1509812868520" expanded="true" signature="15332:15582" ph="..." />
-                <marker date="1509812868520" expanded="true" signature="15332:15601" ph="..." />
-                <marker date="1509812868520" expanded="true" signature="15332:15617" ph="..." />
-                <marker date="1509812868520" expanded="true" signature="15332:15637" ph="..." />
-                <marker date="1509812868520" expanded="true" signature="15332:16501" ph="..." />
-                <marker date="1509812868520" expanded="true" signature="15332:16515" ph="..." />
-                <marker date="1509812868520" expanded="true" signature="15344:15385" ph="..." />
-                <marker date="1509812868520" expanded="true" signature="15835:16486" ph="..." />
-                <marker date="1509812868520" expanded="true" signature="15855:16473" ph="..." />
-              </folding>
+      <file leaf-file-name="main.css" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/css/main.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1005">
+              <caret line="84" column="0" lean-forward="true" selection-start-line="84" selection-start-column="0" selection-end-line="84" selection-end-column="0" />
+              <folding />
             </state>
-          </provider>
-          <provider selected="true" editor-type-id="JavaFX-Scene-Builder">
-            <state />
           </provider>
         </entry>
       </file>
@@ -171,7 +153,6 @@
         <option value="$PROJECT_DIR$/src/main/java/model/entity/person/user/User.java" />
         <option value="$PROJECT_DIR$/src/main/java/util/validation/ValidationInterface.java" />
         <option value="$PROJECT_DIR$/src/main/resources/fxml/login.fxml" />
-        <option value="$PROJECT_DIR$/src/main/resources/css/main.css" />
         <option value="$PROJECT_DIR$/src/main/java/util/exceptions/UserException.java" />
         <option value="$PROJECT_DIR$/src/main/java/util/exception/LoginFailException.java" />
         <option value="$PROJECT_DIR$/src/main/java/controller/Controller.java" />
@@ -181,6 +162,7 @@
         <option value="$PROJECT_DIR$/src/main/java/controller/dashboard/DashboardController.java" />
         <option value="$PROJECT_DIR$/lib/jfoenix-1.9.1.jar!/com/jfoenix/controls/JFXTabPane.class" />
         <option value="$PROJECT_DIR$/src/main/resources/fxml/dashboard.fxml" />
+        <option value="$PROJECT_DIR$/src/main/resources/css/main.css" />
       </list>
     </option>
   </component>
@@ -192,7 +174,7 @@
     </option>
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="-7" />
     <option name="width" value="974" />
     <option name="height" value="1057" />
@@ -237,8 +219,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
-      <pane id="Scope" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -408,8 +389,9 @@
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
       <pane id="AndroidView" />
+      <pane id="Scope" />
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -598,7 +580,7 @@
     <option name="totallyTimeSpent" value="1302000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1066" extended-state="6" />
+    <frame x="-8" y="-8" width="1936" height="1066" extended-state="7" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
@@ -609,7 +591,7 @@
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.19412382" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19412382" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -898,13 +880,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/css/main.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="172">
-          <caret line="68" column="21" lean-forward="true" selection-start-line="68" selection-start-column="21" selection-end-line="68" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/controller/login/LoginController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="833">
@@ -924,11 +899,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="6">
           <caret line="72" column="20" lean-forward="true" selection-start-line="72" selection-start-column="20" selection-end-line="72" selection-end-column="20" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#5002#5349#0" expanded="false" />
-            <element signature="e#5348#5349#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -954,9 +924,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1003">
           <caret line="65" column="21" lean-forward="true" selection-start-line="65" selection-start-column="21" selection-end-line="65" selection-end-column="21" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -971,22 +938,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/fxml/login.fxml">
-      <provider selected="true" editor-type-id="JavaFX-Scene-Builder">
-        <state />
-      </provider>
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="20" column="17" lean-forward="true" selection-start-line="20" selection-start-column="17" selection-end-line="20" selection-end-column="17" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/model/entity/phone/Phone.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -994,7 +949,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="4" column="3" lean-forward="true" selection-start-line="4" selection-start-column="3" selection-end-line="4" selection-end-column="3" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1002,7 +956,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="187">
           <caret line="17" column="23" lean-forward="true" selection-start-line="17" selection-start-column="23" selection-end-line="17" selection-end-column="23" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1010,35 +963,38 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="153">
           <caret line="16" column="33" lean-forward="false" selection-start-line="16" selection-start-column="33" selection-end-line="16" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/fxml/login.fxml">
+      <provider editor-type-id="JavaFX-Scene-Builder">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="19" column="49" lean-forward="true" selection-start-line="19" selection-start-column="49" selection-end-line="19" selection-end-column="49" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/fxml/dashboard.fxml">
-      <provider selected="true" editor-type-id="JavaFX-Scene-Builder">
+      <provider editor-type-id="JavaFX-Scene-Builder">
         <state />
       </provider>
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="573">
-          <caret line="223" column="60" lean-forward="true" selection-start-line="223" selection-start-column="60" selection-end-line="223" selection-end-column="60" />
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="675">
+          <caret line="152" column="106" lean-forward="false" selection-start-line="152" selection-start-column="106" selection-end-line="152" selection-end-column="106" />
           <folding>
-            <marker date="1509812868520" expanded="true" signature="15332:15344" ph="..." />
-            <marker date="1509812868520" expanded="true" signature="15332:15385" ph="..." />
-            <marker date="1509812868520" expanded="true" signature="15332:15420" ph="..." />
-            <marker date="1509812868520" expanded="true" signature="15332:15454" ph="..." />
-            <marker date="1509812868520" expanded="true" signature="15332:15492" ph="..." />
-            <marker date="1509812868520" expanded="true" signature="15332:15525" ph="..." />
-            <marker date="1509812868520" expanded="true" signature="15332:15557" ph="..." />
-            <marker date="1509812868520" expanded="true" signature="15332:15582" ph="..." />
-            <marker date="1509812868520" expanded="true" signature="15332:15601" ph="..." />
-            <marker date="1509812868520" expanded="true" signature="15332:15617" ph="..." />
-            <marker date="1509812868520" expanded="true" signature="15332:15637" ph="..." />
-            <marker date="1509812868520" expanded="true" signature="15332:16501" ph="..." />
-            <marker date="1509812868520" expanded="true" signature="15332:16515" ph="..." />
-            <marker date="1509812868520" expanded="true" signature="15344:15385" ph="..." />
-            <marker date="1509812868520" expanded="true" signature="15835:16486" ph="..." />
-            <marker date="1509812868520" expanded="true" signature="15855:16473" ph="..." />
+            <marker date="1509850761866" expanded="true" signature="15525:15537" ph="..." />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/css/main.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1005">
+          <caret line="84" column="0" lean-forward="true" selection-start-line="84" selection-start-column="0" selection-end-line="84" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>

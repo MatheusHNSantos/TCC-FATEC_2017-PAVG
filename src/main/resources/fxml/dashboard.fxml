@@ -138,30 +138,30 @@
                               <TableColumn prefWidth="135.0" text="CPF" />
                           </columns>
                         </TableView>
-                        <JFXComboBox layoutX="7.0" layoutY="17.0" prefHeight="25.0" prefWidth="99.0" />
-                        <JFXTextField layoutX="115.0" layoutY="17.0" prefHeight="28.0" prefWidth="553.0" />
+                        <JFXComboBox focusColor="DARKORANGE" layoutX="7.0" layoutY="19.0" prefHeight="25.0" prefWidth="99.0" unFocusColor="SEAGREEN" />
+                        <JFXTextField focusColor="DARKORANGE" layoutX="115.0" layoutY="17.0" prefHeight="28.0" prefWidth="553.0" unFocusColor="SEAGREEN" />
                         <JFXButton layoutX="674.0" layoutY="14.0" mnemonicParsing="false" text="Pesquisar" />
                         <Label layoutX="771.0" layoutY="91.0" text="Nome:" />
                         <Label layoutX="789.0" layoutY="128.0" text="RG:" />
                         <Label layoutX="1021.0" layoutY="128.0" text="CPF:" />
-                        <JFXTextField disable="true" layoutX="815.0" layoutY="87.0" prefHeight="28.0" prefWidth="435.0" />
-                        <JFXTextField disable="true" layoutX="815.0" layoutY="122.0" prefHeight="28.0" prefWidth="197.0" />
-                        <JFXTextField disable="true" layoutX="1051.0" layoutY="122.0" prefHeight="28.0" prefWidth="199.0" />
+                        <JFXTextField disable="true" focusColor="DARKORANGE" layoutX="815.0" layoutY="87.0" prefHeight="28.0" prefWidth="435.0" unFocusColor="SEAGREEN" />
+                        <JFXTextField disable="true" focusColor="DARKORANGE" layoutX="815.0" layoutY="122.0" prefHeight="28.0" prefWidth="197.0" unFocusColor="SEAGREEN" />
+                        <JFXTextField disable="true" focusColor="DARKORANGE" layoutX="1051.0" layoutY="122.0" prefHeight="28.0" prefWidth="199.0" unFocusColor="SEAGREEN" />
                         <Label layoutX="761.0" layoutY="57.0" text="Dados pessoais" />
                         <Label layoutX="764.0" layoutY="186.0" text="Endereço" />
                         <Label layoutX="787.0" layoutY="219.0" text="CEP:" />
-                        <JFXTextField disable="true" layoutX="815.0" layoutY="213.0" prefHeight="28.0" prefWidth="163.0" />
+                        <JFXTextField disable="true" focusColor="DARKORANGE" layoutX="815.0" layoutY="213.0" prefHeight="28.0" prefWidth="163.0" unFocusColor="SEAGREEN" />
                         <Label layoutX="987.0" layoutY="219.0" text="Bairro:" />
-                        <JFXTextField disable="true" layoutX="1025.0" layoutY="212.0" prefHeight="28.0" prefWidth="227.0" />
+                        <JFXTextField disable="true" focusColor="DARKORANGE" layoutX="1025.0" layoutY="212.0" prefHeight="28.0" prefWidth="227.0" unFocusColor="SEAGREEN" />
                         <Label layoutX="787.0" layoutY="255.0" text="Rua:" />
-                        <JFXTextField disable="true" layoutX="815.0" layoutY="249.0" prefHeight="28.0" prefWidth="303.0" />
+                        <JFXTextField disable="true" focusColor="DARKORANGE" layoutX="815.0" layoutY="249.0" prefHeight="28.0" prefWidth="303.0" unFocusColor="SEAGREEN" />
                         <Label layoutX="1127.0" layoutY="255.0" text="Número:" />
-                        <JFXTextField disable="true" layoutX="1179.0" layoutY="249.0" prefHeight="28.0" prefWidth="71.0" />
+                        <JFXTextField disable="true" focusColor="DARKORANGE" layoutX="1179.0" layoutY="249.0" prefHeight="28.0" prefWidth="71.0" unFocusColor="SEAGREEN" />
                         <Label layoutX="766.0" layoutY="317.0" text="Telefone" />
                         <Label layoutX="802.0" layoutY="349.0" text="1:" />
-                        <JFXTextField disable="true" layoutX="815.0" layoutY="345.0" prefHeight="28.0" prefWidth="204.0" />
+                        <JFXTextField disable="true" focusColor="DARKORANGE" layoutX="815.0" layoutY="345.0" prefHeight="28.0" prefWidth="204.0" unFocusColor="SEAGREEN" />
                         <Label layoutX="1039.0" layoutY="351.0" text="2:" />
-                        <JFXTextField disable="true" layoutX="1055.0" layoutY="344.0" prefHeight="28.0" prefWidth="192.0" />
+                        <JFXTextField disable="true" focusColor="DARKORANGE" layoutX="1055.0" layoutY="344.0" prefHeight="28.0" prefWidth="192.0" unFocusColor="SEAGREEN" />
                         <Label layoutX="760.0" layoutY="23.0" text="Pontuação:" />
                         <Label layoutX="826.0" layoutY="22.0" prefHeight="20.0" prefWidth="52.0" text="0" />
                         <Label layoutX="1109.0" layoutY="24.0" text="Status:" />
@@ -171,7 +171,8 @@
                         <JFXButton disable="true" layoutX="1119.0" layoutY="618.0" text="Calcelar" />
                         <JFXButton layoutX="834.0" layoutY="618.0" text="Alterar" />
                         <JFXButton layoutX="977.0" layoutY="618.0" text="Adicionar" />
-                     </children></AnchorPane>
+                     </children>
+                  </AnchorPane>
               </content>
             </Tab>
             <Tab text="Produtos">
