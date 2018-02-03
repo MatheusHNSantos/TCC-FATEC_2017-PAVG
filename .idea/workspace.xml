@@ -88,11 +88,21 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="apetitoso.sql" pinned="false" current-in-tab="true">
+      <file leaf-file-name="apetitoso.sql" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/apetitoso.sql">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="400">
               <caret line="20" column="26" lean-forward="false" selection-start-line="20" selection-start-column="26" selection-end-line="20" selection-end-column="26" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Main.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/app/Main.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="60">
+              <caret line="7" column="48" lean-forward="false" selection-start-line="7" selection-start-column="48" selection-end-line="7" selection-end-column="48" />
               <folding />
             </state>
           </provider>
@@ -160,7 +170,6 @@
         <option value="$PROJECT_DIR$/src/main/java/model/entity/product/Product.java" />
         <option value="$PROJECT_DIR$/src/main/java/model/entity/product/ProductType.java" />
         <option value="$PROJECT_DIR$/src/main/java/model/entity/product/Ingredient.java" />
-        <option value="$PROJECT_DIR$/src/main/java/app/Main.java" />
         <option value="$PROJECT_DIR$/src/main/java/controller/dashboard/EditIngredientsController.java" />
         <option value="$PROJECT_DIR$/src/main/java/model/entity/product/ProductIngredient.java" />
         <option value="$PROJECT_DIR$/src/main/java/controller/dashboard/ManageUsersController.java" />
@@ -169,6 +178,7 @@
         <option value="$PROJECT_DIR$/src/main/java/util/connection/ConnectionFactory.java" />
         <option value="$USER_HOME$/Downloads/DashboardController (3).java" />
         <option value="$PROJECT_DIR$/src/main/java/controller/dashboard/DashboardController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/app/Main.java" />
       </list>
     </option>
   </component>
@@ -846,14 +856,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/app/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="420">
-          <caret line="44" column="0" lean-forward="false" selection-start-line="44" selection-start-column="0" selection-end-line="44" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/controller/dashboard/DashboardController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="856">
@@ -876,6 +878,14 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="400">
           <caret line="20" column="26" lean-forward="false" selection-start-line="20" selection-start-column="26" selection-end-line="20" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/app/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="7" column="48" lean-forward="false" selection-start-line="7" selection-start-column="48" selection-end-line="7" selection-end-column="48" />
           <folding />
         </state>
       </provider>
