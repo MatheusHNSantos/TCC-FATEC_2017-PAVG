@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import com.jfoenix.controls.JFXToggleButton?>
+<?import javafx.scene.Group?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.dashboard.ManageUsersController">
+   <children>
+      <TableView fx:id="tview_users" layoutX="10.0" layoutY="43.0" prefHeight="197.0" prefWidth="623.0">
+         <columns>
+            <TableColumn fx:id="columnUserLogin" prefWidth="174.0" text="Usuário" />
+            <TableColumn fx:id="columnUserLevel" minWidth="0.0" prefWidth="151.0" text="Nível" />
+            <TableColumn fx:id="columnUserEmployee" prefWidth="164.0" text="Funcionário" />
+            <TableColumn fx:id="columnUserStatus" prefWidth="125.0" text="Status" />
+         </columns>
+      </TableView>
+      <Label focusTraversable="false" layoutX="31.0" layoutY="14.0" text="Modo de exibição:" />
+      <JFXComboBox fx:id="cbox_exibitionModeUser" focusColor="DARKORANGE" focusTraversable="false" layoutX="135.0" layoutY="10.0" prefHeight="25.0" prefWidth="99.0" unFocusColor="SEAGREEN" />
+      <Group fx:id="group_dataUserBtnSaveCancel" disable="true" layoutX="487.0" layoutY="441.0">
+         <children>
+            <JFXButton fx:id="btn_saveUser" focusTraversable="false" layoutX="74.0" text="Salvar" />
+            <JFXButton fx:id="btn_cancelUser" focusTraversable="false" text="Calcelar" />
+         </children>
+      </Group>
+      <JFXButton fx:id="btn_editUser" focusTraversable="false" layoutX="20.0" layoutY="441.0" text="Alterar" />
+      <Label focusTraversable="false" layoutX="72.0" layoutY="319.0" text="Usuário:" />
+      <Label focusTraversable="false" layoutX="72.0" layoutY="370.0" text="Senha:" />
+      <Label focusTraversable="false" layoutX="371.0" layoutY="316.0" text="Nível:" />
+      <Group fx:id="group_dataUser" disable="true" layoutX="115.0" layoutY="312.0">
+         <children>
+            <JFXTextField fx:id="txt_userLogin" focusColor="DARKORANGE" focusTraversable="false" layoutX="4.0" layoutY="2.0" prefHeight="28.0" prefWidth="132.0" unFocusColor="SEAGREEN" />
+            <JFXTextField fx:id="txt_passUser" focusColor="DARKORANGE" focusTraversable="false" layoutY="53.0" prefHeight="28.0" prefWidth="132.0" unFocusColor="SEAGREEN" />
+            <JFXComboBox fx:id="cbox_levelUser" focusColor="DARKORANGE" focusTraversable="false" layoutX="296.0" prefHeight="25.0" prefWidth="134.0" unFocusColor="SEAGREEN" />
+         </children>
+      </Group>
+      <Separator layoutX="14.0" layoutY="427.0" prefHeight="0.0" prefWidth="616.0" />
+      <Separator layoutX="12.0" layoutY="253.0" prefHeight="3.0" prefWidth="616.0" />
+      <Label layoutX="72.0" layoutY="269.0" text="Funcionário:" />
+      <Label layoutX="417.0" layoutY="266.0" text="Função:" />
+      <Label fx:id="lbl_nameEmployee" layoutX="153.0" layoutY="269.0" text="#funcionario" />
+      <Label fx:id="lbl_roleEmployee" layoutX="473.0" layoutY="266.0" text="#funcao" />
+      <Label focusTraversable="false" layoutX="371.0" layoutY="382.0" text="Status:" />
+      <JFXToggleButton fx:id="tbtn_statusUser" focusTraversable="false" layoutX="417.0" layoutY="362.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="123.0" text="Inativo" />
+   </children>
+</AnchorPane>

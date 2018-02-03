@@ -1,4 +1,9 @@
-/build/
-/dist/
+/target/
 *.log
 *.mwb.bak
+src/main/java/controller/exception/
+src/main/java/dao/exception/
+src/main/java/model/exception/
+src/main/java/util/exception/
+src/test/
+src/main/java/util/connection/ConnectionFactory.java
