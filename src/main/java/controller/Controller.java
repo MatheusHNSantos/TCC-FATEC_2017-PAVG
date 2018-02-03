@@ -14,6 +14,7 @@ import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import javafx.stage.Window;
 
 import java.io.IOException;
 
@@ -24,6 +25,8 @@ import java.io.IOException;
 public class Controller {
     
     private static final String sPathControl = "fxml/";
+
+    private static Class<? extends Window> controlledStage;
     
     public static Stage loader(Class<?> Class, StageStyle style, String path, String title) throws IOException {
         Stage stage = createStageInstance(sPathControl + path, Class);
@@ -32,6 +35,7 @@ public class Controller {
         stage.initStyle(style);
         stage.setTitle(title);
 
+        controlledStage = stage.getClass();
         return stage;
     }
 
@@ -70,5 +74,9 @@ public class Controller {
         Stage stage = (Stage) ((Node) e.getTarget()).getScene().getWindow();
         stage.setTitle(title);
         stage.notify();
+    }
+
+    public static Object getControlledStage(){
+        return controlledStage.getClass();
     }
 }

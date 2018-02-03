@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.Group?>
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TitledPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="308.0" prefWidth="404.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.dashboard.EditProductTypeController">
+   <children>
+      <AnchorPane layoutX="14.0" layoutY="275.0">
+         <children>
+            <Group fx:id="group_PTBtnSaveCancel" disable="true" layoutX="255.0">
+               <children>
+                  <JFXButton fx:id="btn_saveProductType" layoutX="74.0" text="Salvar" />
+                  <JFXButton fx:id="btn_cancelProductType" text="Calcelar" />
+               </children>
+            </Group>
+            <Group fx:id="group_PTBtnEditAdd">
+               <children>
+                  <JFXButton fx:id="btn_editProductType" focusTraversable="false" text="Alterar" />
+                  <JFXButton fx:id="btn_newProductType" layoutX="52.0" text="Adicionar" />
+               </children>
+            </Group>
+            <JFXButton fx:id="btn_dropProductType" disable="true" layoutX="155.0" text="Remover" visible="false" />
+         </children>
+      </AnchorPane>
+      <Label layoutX="28.0" layoutY="232.0" text="Nome:" />
+      <JFXTextField fx:id="txt_nameProductType" disable="true" focusColor="DARKORANGE" layoutX="71.0" layoutY="228.0" prefHeight="25.0" prefWidth="132.0" unFocusColor="SEAGREEN" />
+      <Separator layoutX="6.0" layoutY="265.0" prefHeight="3.0" prefWidth="385.0" />
+      <TitledPane animated="false" collapsible="false" layoutX="14.0" layoutY="13.0" text="Imagem">
+         <content>
+            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+               <children>
+                  <ImageView fx:id="imageview_PT" fitHeight="144.0" fitWidth="154.0" layoutX="28.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../img/no-image.jpg" />
+                     </image>
+                  </ImageView>
+                  <Hyperlink fx:id="btn_editPhotoPT" layoutX="34.0" layoutY="155.0" text="Alterar" />
+                  <Hyperlink fx:id="btn_removePhotoPT" layoutX="114.0" layoutY="155.0" text="Remover" />
+               </children>
+            </AnchorPane>
+         </content>
+      </TitledPane>
+      <TableView fx:id="tview_productType" layoutX="222.0" layoutY="13.0" prefHeight="246.0" prefWidth="169.0">
+         <columns>
+            <TableColumn fx:id="columnProductTypeName" prefWidth="168.0" text="Categorias" />
+         </columns>
+      </TableView>
+   </children>
+</AnchorPane>

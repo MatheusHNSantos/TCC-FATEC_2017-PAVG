@@ -1,14 +1,16 @@
 package controller.login;
 
 import com.jfoenix.controls.JFXButton;
-import com.jfoenix.controls.JFXTabPane;
 import controller.Controller;
 import controller.dashboard.DashboardController;
-import dao.entity.person.UserDAO;
+import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
-import javafx.scene.control.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.PasswordField;
+import javafx.scene.control.TextField;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
@@ -81,55 +83,76 @@ public class LoginController implements Initializable{
         btn_sair.setOnMouseClicked(this::handlerButtonActionSair);
         btn_entrar.setOnMouseClicked(this::handlerButtonActionEntrar);
 
+        txt_login.setOnKeyPressed(this::handlerKeyPressedActionEnter);
+        txt_senha.setOnKeyPressed(this::handlerKeyPressedActionEnter);
+    }
+
+    @FXML
+    private void handlerKeyPressedActionEnter(KeyEvent event){
+
+        if(event.getCode().toString().equals("ENTER")){
+            executeLogin(event);
+        }
+
     }
 
     @FXML
     private void handlerButtonActionEntrar(MouseEvent event) {
-        User user = null;
-        try {
-            user = new User(txt_login.getText(), txt_senha.getText());
-
-        UserDAO userDAO = new UserDAO();
-
-
-        if(userDAO.doLogin(user)){
-            lblWarning.setText("");
-            //JOptionPane.showMessageDialog(null, "Acesso Liberado!");
-            //FxDialogs.showInformation("Acesso Liberado!", "Seja bem vindo!");
-            ((Node) (event.getSource())).getScene().getWindow().hide();
-            DashboardController.loader().show();
-            /*try {
-                /*Node node = (Node) event.getSource();
-                Stage stage = (Stage) node.getScene().getWindow();
-                URL url = getClass().getResource("/fxml/login.fxml");
-                Parent root = FXMLLoader.load(url);
-                Scene scene = new Scene(root);
-                stage.setTitle("FXML Welcome");
-                stage.setScene(scene);
-                stage.show();
-            } catch (IOException ex) {
-                Logger.getLogger(LoginController.class.getName()).log(Level.SEVERE, null, ex);
-            }*/
-
-        }else{
-            FxDialogs.showError("Acesso Negado!","Usuário ou senha incorretos");
-            lblWarning.setText("Acesso Negado!");
-        }
-        } catch (UserException ex) {
-            FxDialogs.showWarning(ex.getMessage(), "Tente novamente.");
-        } catch (IOException ex) {
-            Logger.getLogger(LoginController.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
+        /*MODULARIZAR METODOS NAO DEIXAR CODIGO CRITICO DENTRO DE BOTOES PORQUE MAIS METODOS PODEM UTILIZAR O MESMO
+        NESTE CASO VOU COLOCAR EVENT KEYLISTENER PRO ENTER NOS CAMPOS AI CHAMA O MESMO METODO DE LOGIN POUPANDO CODIGO*/
+        executeLogin(event);
     }
 
     @FXML
     private void handlerButtonActionSair(MouseEvent event) {
 
+        /* ISSO PODE SER SUBSTITUIDO POR ISSO
         Stage stage = (Stage) btn_sair.getScene().getWindow(); //Obtendo a janela atual
         stage.close(); //Fechando o Stage
+        */
 
+        Controller.closeApplication(event);
     }
+
+    private void executeLogin(Event event){
+
+        //User user = null; -> SIMPLIFICAR
+        User user;
+
+        try {
+            user = new User(txt_login.getText(), txt_senha.getText());
+
+            if(user.doLogin()){
+                user = new User(txt_login.getText());
+                if(user.getStatus()) {
+                    lblWarning.setText("");
+
+                    //((Node) (event.getSource())).getScene().getWindow().hide();
+                    //da pra trocar isso aqui por
+                    Controller.hideApplication(event);
+                    //Controller.closeApplication(event);
+
+                    DashboardController.setUser(user);
+                    DashboardController.loader().show();
+                    /*DashboardController ds = new DashboardController();
+                    ds.setUser(user);
+                    ds.loader().show();*/
+                }else{
+                    FxDialogs.showError("Acesso Negado!","Login inativo!");
+                    lblWarning.setText("Acesso Negado!");
+                }
+
+            }else{
+                FxDialogs.showError("Acesso Negado!","Usuário ou senha incorretos");
+                lblWarning.setText("Acesso Negado!");
+            }
+        } catch (UserException ex) {
+            FxDialogs.showWarning(ex.getMessage(), "Tente novamente.");
+        } catch (IOException ex) {
+            Logger.getLogger(LoginController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
     
     public static Stage loader() throws IOException {
         return Controller.loader(LoginController.class, StageStyle.UNDECORATED, path, title);

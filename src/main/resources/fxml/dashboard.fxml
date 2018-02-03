@@ -2,230 +2,293 @@
 
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXDatePicker?>
+<?import com.jfoenix.controls.JFXListView?>
+<?import com.jfoenix.controls.JFXPasswordField?>
 <?import com.jfoenix.controls.JFXTabPane?>
 <?import com.jfoenix.controls.JFXTextField?>
 <?import com.jfoenix.controls.JFXToggleButton?>
 <?import javafx.geometry.Insets?>
+<?import javafx.geometry.Point3D?>
+<?import javafx.geometry.Rectangle2D?>
+<?import javafx.scene.Group?>
 <?import javafx.scene.chart.BarChart?>
 <?import javafx.scene.chart.CategoryAxis?>
 <?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.chart.PieChart?>
+<?import javafx.scene.control.Hyperlink?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.TitledPane?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" stylesheets="@../css/main.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.dashboard.DashboardController">
+<AnchorPane stylesheets="@../css/main.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.dashboard.DashboardController">
    <children>
-       <JFXTabPane id="tabPane" fx:id="paneTab" prefHeight="702.0" prefWidth="1280.0" AnchorPane.bottomAnchor="18.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+       <JFXTabPane id="tabPane" fx:id="paneTab" prefHeight="720.0" prefWidth="1280.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <tabs>
           <Tab fx:id="welcomeTab" text="Inicio">
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="190.0" prefWidth="250.0">
                      <children>
-                        <Text layoutX="531.0" layoutY="488.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ola bem vindo &quot;User&quot; o que deseja fazer?" />
-                        <ImageView fitHeight="278.0" fitWidth="291.0" layoutX="527.0" layoutY="165.0" pickOnBounds="true" preserveRatio="true">
+                        <Text layoutX="628.0" layoutY="85.0" strokeType="OUTSIDE" strokeWidth="0.0" text="O que deseja fazer?" wrappingWidth="144.875">
+                           <font>
+                              <Font size="16.0" />
+                           </font></Text>
+                        <ImageView fitHeight="671.0" fitWidth="614.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="7.0">
                            <image>
                               <Image url="@../img/Apetitoso.png" />
                            </image>
+                           <viewport>
+                              <Rectangle2D />
+                           </viewport>
                         </ImageView>
+                        <Hyperlink fx:id="hl_finish" layoutX="1238.0" layoutY="14.0" text="Sair" />
+                        <Hyperlink fx:id="hl_logout" layoutX="1184.0" layoutY="14.0" text="Logout" />
+                        <Label layoutX="277.0" layoutY="618.0" text="PAVG">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="628.0" layoutY="14.0" text="Bem Vindo User!">
+                           <font>
+                              <Font size="37.0" />
+                           </font>
+                        </Label>
+                        <Separator layoutX="614.0" layoutY="5.0" orientation="VERTICAL" prefHeight="653.0" prefWidth="2.0" />
+                        <Separator layoutX="623.0" layoutY="96.0" prefHeight="3.0" prefWidth="644.0" />
                      </children>
                   </AnchorPane>
             </content>
           </Tab>
-            <Tab closable="false" text="Pedido">
+            <Tab fx:id="tabOrder" closable="false" text="Pedido">
               <content>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="691.0" prefWidth="1091.0">
                      <children>
-                        <VBox layoutX="45.0" layoutY="47.0" prefHeight="670.0" prefWidth="100.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="10.0">
+                        <TableView fx:id="tViewOrderProducts" layoutX="283.0" layoutY="14.0" prefHeight="591.0" prefWidth="296.0">
+                          <columns>
+                            <TableColumn fx:id="columnOrderProductName" prefWidth="180.0" text="Produto" />
+                            <TableColumn fx:id="columnOrderProductPrice" prefWidth="114.0" text="Valor" />
+                          </columns>
+                        </TableView>
+                        <AnchorPane layoutX="14.0" layoutY="59.0" prefHeight="201.0" prefWidth="249.0">
                            <children>
-                              <ImageView fitHeight="64.0" fitWidth="64.0" pickOnBounds="true" preserveRatio="true" smooth="false">
+                              <Label layoutX="24.0" layoutY="5.0" text="Codigo do pedido:" />
+                              <Label layoutX="1.0" layoutY="38.0" text="Nome" />
+                              <TextField fx:id="tfield_name" layoutX="1.0" layoutY="55.0" prefHeight="28.0" prefWidth="255.0" />
+                              <Label layoutX="1.0" layoutY="83.0" text="Telefone">
+                                 <padding>
+                                    <Insets top="10.0" />
+                                 </padding>
+                              </Label>
+                              <TextField fx:id="tfield_telephone" layoutX="1.0" layoutY="110.0" prefHeight="27.0" prefWidth="255.0" />
+                              <Label layoutX="1.0" layoutY="135.0" text="Endreço">
+                                 <padding>
+                                    <Insets top="10.0" />
+                                 </padding>
+                              </Label>
+                              <TextField fx:id="tfield_adress" layoutX="1.0" layoutY="162.0" prefHeight="31.0" prefWidth="255.0" />
+                              <Label fx:id="lbl_codeOfOrder" layoutX="138.0" layoutY="-1.0" text="000000">
+                                 <font>
+                                    <Font size="20.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </AnchorPane>
+                        <JFXButton fx:id="btn_newOrder" alignment="TOP_LEFT" layoutY="5.0" prefHeight="47.0" prefWidth="122.0" text="Novo Pedido">
+                           <graphic>
+                              <ImageView fitHeight="27.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true" smooth="false">
                                  <image>
                                     <Image url="@../img/plus.png" />
                                  </image>
                               </ImageView>
-                              <ImageView fitHeight="64.0" fitWidth="64.0" pickOnBounds="true" preserveRatio="true">
+                           </graphic>
+                        </JFXButton>
+                        <JFXButton fx:id="btn_clearOrderProducts" alignment="TOP_LEFT" layoutX="4.0" layoutY="613.0" prefHeight="47.0" prefWidth="129.0" text="Limpar Pedido">
+                           <graphic>
+                              <ImageView fitHeight="27.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true" smooth="false">
                                  <image>
                                     <Image url="@../img/brush.png" />
                                  </image>
-                                 <VBox.margin>
-                                    <Insets top="10.0" />
-                                 </VBox.margin>
                               </ImageView>
-                              <ImageView fitHeight="64.0" fitWidth="64.0" pickOnBounds="true" preserveRatio="true">
-                                 <VBox.margin>
-                                    <Insets top="10.0" />
-                                 </VBox.margin>
+                           </graphic>
+                        </JFXButton>
+                        <JFXButton fx:id="btn_finishSale" alignment="TOP_LEFT" layoutX="1135.0" layoutY="613.0" prefHeight="47.0" prefWidth="142.0" text="Finalizar Pedido">
+                           <graphic>
+                              <ImageView fitHeight="27.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true" smooth="false">
                                  <image>
                                     <Image url="@../img/checked.png" />
                                  </image>
                               </ImageView>
-                              <ImageView fitHeight="64.0" fitWidth="64.0" pickOnBounds="true" preserveRatio="true">
-                                 <VBox.margin>
-                                    <Insets top="10.0" />
-                                 </VBox.margin>
+                           </graphic>
+                        </JFXButton>
+                        <TitledPane animated="false" layoutX="14.0" layoutY="493.0" prefHeight="112.0" prefWidth="255.0" text="Observações do pedido">
+                          <content>
+                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="205.0" prefWidth="541.0">
+                                 <children>
+                                    <TextArea layoutX="-1.0" layoutY="-2.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="89.0" prefWidth="255.0" />
+                                 </children>
+                              </AnchorPane>
+                          </content>
+                        </TitledPane>
+                        <Separator layoutX="4.0" layoutY="609.0" prefHeight="7.0" prefWidth="579.0" />
+                        <Separator layoutX="586.0" layoutY="13.0" orientation="VERTICAL" prefHeight="645.0" prefWidth="2.0" />
+                        <JFXListView fx:id="listView_products" layoutX="605.0" layoutY="327.0" prefHeight="196.0" prefWidth="661.0" />
+                        <JFXListView fx:id="listView_categories" layoutX="605.0" layoutY="84.0" prefHeight="172.0" prefWidth="661.0" />
+                        <Label layoutX="605.0" layoutY="281.0" text="Produtos">
+                           <font>
+                              <Font size="25.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="605.0" layoutY="43.0" text="Categorias">
+                           <font>
+                              <Font size="25.0" />
+                           </font>
+                        </Label>
+                        <JFXButton fx:id="btn_addProductOnOrder" alignment="TOP_LEFT" layoutX="1160.0" layoutY="526.0" prefHeight="47.0" prefWidth="106.0" text="Adicionar">
+                           <graphic>
+                              <ImageView fitHeight="27.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true" smooth="false">
+                                 <image>
+                                    <Image url="@../img/plus.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </JFXButton>
+                        <JFXButton fx:id="btn_removeProductOnOrder" alignment="TOP_LEFT" disable="true" layoutX="604.0" layoutY="526.0" prefHeight="47.0" prefWidth="102.0" text="Remover">
+                           <graphic>
+                              <ImageView fitHeight="27.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true" smooth="false">
                                  <image>
                                     <Image url="@../img/cancel.png" />
                                  </image>
                               </ImageView>
-                           </children>
-                        </VBox>
-                        <TableView layoutX="749.0" layoutY="451.0" prefHeight="660.0" prefWidth="630.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="650.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
-                          <columns>
-                            <TableColumn prefWidth="75.0" text="C1" />
-                            <TableColumn prefWidth="75.0" text="C2" />
-                          </columns>
-                        </TableView>
-                        <TextArea layoutX="412.0" layoutY="478.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="181.0" prefWidth="520.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="120.0" AnchorPane.topAnchor="500.0" />
-                        <Label layoutX="125.0" layoutY="458.0" text="Observações do pedido" AnchorPane.topAnchor="458.0" />
-                        <VBox layoutX="110.0" layoutY="14.0" prefHeight="440.0" prefWidth="255.0" AnchorPane.leftAnchor="120.0" AnchorPane.topAnchor="10.0">
+                           </graphic>
+                        </JFXButton>
+                        <Label layoutX="335.0" layoutY="618.0" text="Total:">
+                           <font>
+                              <Font size="27.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="411.0" layoutY="621.0" text="R$">
+                           <font>
+                              <Font size="22.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="lbl_total" layoutX="444.0" layoutY="607.0" text="0000,00">
+                           <font>
+                              <Font size="39.0" />
+                           </font>
+                        </Label>
+                        <AnchorPane layoutX="36.0" layoutY="267.0">
                            <children>
-                              <Label text="Codigo do pedido" />
-                              <TextField editable="false" text="num">
-                                 <VBox.margin>
-                                    <Insets />
-                                 </VBox.margin>
-                              </TextField>
-                              <Label text="Nome">
-                                 <VBox.margin>
-                                    <Insets top="10.0" />
-                                 </VBox.margin>
-                              </Label>
-                              <TextField prefHeight="28.0" prefWidth="308.0">
-                                 <VBox.margin>
-                                    <Insets />
-                                 </VBox.margin>
-                              </TextField>
-                              <Label text="Telefone">
-                                 <padding>
-                                    <Insets top="10.0" />
-                                 </padding>
-                              </Label>
-                              <TextField />
-                              <Label text="Endreço">
-                                 <padding>
-                                    <Insets top="10.0" />
-                                 </padding>
-                              </Label>
-                              <TextField />
+                              <ImageView fitHeight="213.0" fitWidth="212.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../img/no-image.jpg" />
+                                 </image>
+                              </ImageView>
                            </children>
-                        </VBox>
-                        <VBox layoutX="380.0" layoutY="14.0" prefHeight="440.0" prefWidth="255.0" AnchorPane.leftAnchor="385.0" AnchorPane.topAnchor="10.0">
-                           <children>
-                              <JFXToggleButton prefHeight="56.0" prefWidth="273.0" text="Gerar cupom fiscal" />
-                           </children>
-                        </VBox>
+                        </AnchorPane>
+                        <JFXToggleButton fx:id="toggleButton_gerarCupomFiscal" layoutX="591.0" layoutY="610.0" prefHeight="56.0" prefWidth="180.0" text="Gerar cupom fiscal" />
+                        <Hyperlink fx:id="hl_historicCostumer" layoutX="1086.0" layoutY="13.0" text="Histórico de Compras do Cliente" />
+                        <Label layoutX="592.0" layoutY="16.0" text="Pontuação:" />
+                        <Label fx:id="lbl_score" layoutX="655.0" layoutY="15.0" prefHeight="20.0" prefWidth="52.0" text="0" />
+                        <Separator layoutX="592.0" layoutY="611.0" prefHeight="3.0" prefWidth="685.0" />
+                        <Hyperlink fx:id="hyperlinkVerifyRegister" layoutX="168.0" layoutY="14.0" text="Verificar Cadastro" />
                      </children>
                   </AnchorPane>
               </content>
             </Tab>
-            <Tab closable="false" text="Clientes">
+            <Tab fx:id="tabCustomer" closable="false" text="Clientes">
               <content>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <TableView layoutX="7.0" layoutY="57.0" prefHeight="601.0" prefWidth="741.0">
+                        <TableView fx:id="tview_costumer" layoutX="7.0" layoutY="57.0" prefHeight="601.0" prefWidth="741.0">
                           <columns>
-                            <TableColumn prefWidth="290.0" text="Nome" />
-                            <TableColumn minWidth="0.0" prefWidth="107.0" text="Telefone 1" />
-                              <TableColumn prefWidth="97.0" text="Telefone 2" />
-                              <TableColumn prefWidth="110.0" text="CEP" />
-                              <TableColumn prefWidth="135.0" text="CPF" />
+                            <TableColumn fx:id="columnCostumerName" prefWidth="290.0" text="Nome" />
+                            <TableColumn fx:id="columnCostumerPhone1" minWidth="0.0" prefWidth="107.0" text="Telefone 1" />
+                              <TableColumn fx:id="columnCostumerPhone2" prefWidth="97.0" text="Telefone 2" />
+                              <TableColumn fx:id="columnCostumerCep" prefWidth="110.0" text="CEP" />
+                              <TableColumn fx:id="columnCostumerCpf" prefWidth="135.0" text="CPF" />
                           </columns>
                         </TableView>
-                        <JFXComboBox focusColor="DARKORANGE" layoutX="7.0" layoutY="19.0" prefHeight="25.0" prefWidth="99.0" unFocusColor="SEAGREEN" />
-                        <JFXTextField focusColor="DARKORANGE" layoutX="115.0" layoutY="17.0" prefHeight="28.0" prefWidth="553.0" unFocusColor="SEAGREEN" />
-                        <JFXButton layoutX="674.0" layoutY="14.0" mnemonicParsing="false" text="Pesquisar" />
-                        <Label layoutX="771.0" layoutY="91.0" text="Nome:" />
-                        <Label layoutX="789.0" layoutY="128.0" text="RG:" />
-                        <Label layoutX="1021.0" layoutY="128.0" text="CPF:" />
-                        <JFXTextField disable="true" focusColor="DARKORANGE" layoutX="815.0" layoutY="87.0" prefHeight="28.0" prefWidth="435.0" unFocusColor="SEAGREEN" />
-                        <JFXTextField disable="true" focusColor="DARKORANGE" layoutX="815.0" layoutY="122.0" prefHeight="28.0" prefWidth="197.0" unFocusColor="SEAGREEN" />
-                        <JFXTextField disable="true" focusColor="DARKORANGE" layoutX="1051.0" layoutY="122.0" prefHeight="28.0" prefWidth="199.0" unFocusColor="SEAGREEN" />
-                        <Label layoutX="761.0" layoutY="57.0" text="Dados pessoais" />
-                        <Label layoutX="764.0" layoutY="186.0" text="Endereço" />
-                        <Label layoutX="787.0" layoutY="219.0" text="CEP:" />
-                        <JFXTextField disable="true" focusColor="DARKORANGE" layoutX="815.0" layoutY="213.0" prefHeight="28.0" prefWidth="163.0" unFocusColor="SEAGREEN" />
-                        <Label layoutX="987.0" layoutY="219.0" text="Bairro:" />
-                        <JFXTextField disable="true" focusColor="DARKORANGE" layoutX="1025.0" layoutY="212.0" prefHeight="28.0" prefWidth="227.0" unFocusColor="SEAGREEN" />
-                        <Label layoutX="787.0" layoutY="255.0" text="Rua:" />
-                        <JFXTextField disable="true" focusColor="DARKORANGE" layoutX="815.0" layoutY="249.0" prefHeight="28.0" prefWidth="303.0" unFocusColor="SEAGREEN" />
-                        <Label layoutX="1127.0" layoutY="255.0" text="Número:" />
-                        <JFXTextField disable="true" focusColor="DARKORANGE" layoutX="1179.0" layoutY="249.0" prefHeight="28.0" prefWidth="71.0" unFocusColor="SEAGREEN" />
-                        <Label layoutX="766.0" layoutY="317.0" text="Telefone" />
-                        <Label layoutX="802.0" layoutY="349.0" text="1:" />
-                        <JFXTextField disable="true" focusColor="DARKORANGE" layoutX="815.0" layoutY="345.0" prefHeight="28.0" prefWidth="204.0" unFocusColor="SEAGREEN" />
-                        <Label layoutX="1039.0" layoutY="351.0" text="2:" />
-                        <JFXTextField disable="true" focusColor="DARKORANGE" layoutX="1055.0" layoutY="344.0" prefHeight="28.0" prefWidth="192.0" unFocusColor="SEAGREEN" />
-                        <Label layoutX="760.0" layoutY="23.0" text="Pontuação:" />
-                        <Label layoutX="826.0" layoutY="22.0" prefHeight="20.0" prefWidth="52.0" text="0" />
-                        <Label layoutX="1109.0" layoutY="24.0" text="Status:" />
-                        <JFXToggleButton layoutX="1127.0" layoutY="5.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="123.0" text="Inativo" />
-                        <JFXButton disable="true" layoutX="1193.0" layoutY="618.0" text="Salvar" />
-                        <JFXButton disable="true" layoutX="777.0" layoutY="618.0" text="Excluir" />
-                        <JFXButton disable="true" layoutX="1119.0" layoutY="618.0" text="Calcelar" />
-                        <JFXButton layoutX="834.0" layoutY="618.0" text="Alterar" />
-                        <JFXButton layoutX="977.0" layoutY="618.0" text="Adicionar" />
+                        <JFXComboBox fx:id="cbox_typeSearchCostumer" focusColor="DARKORANGE" layoutX="7.0" layoutY="19.0" prefHeight="25.0" prefWidth="99.0" unFocusColor="SEAGREEN" />
+                        <JFXTextField fx:id="txt_searchCostumer" focusColor="DARKORANGE" layoutX="115.0" layoutY="17.0" prefHeight="28.0" prefWidth="553.0" unFocusColor="SEAGREEN" />
+                        <JFXButton fx:id="btn_searchCostumer" layoutX="674.0" layoutY="14.0" mnemonicParsing="false" text="Pesquisar" />
+                        <AnchorPane layoutX="767.0" layoutY="88.0">
+                           <children>
+                              <Label layoutX="10.0" layoutY="86.0" text="Nome:" />
+                              <Label layoutX="28.0" layoutY="123.0" text="RG:" visible="false" />
+                              <Group fx:id="group_dataCostumer" disable="true" layoutX="54.0" layoutY="82.0">
+                                 <children>
+                                    <JFXTextField fx:id="txt_nameCostumer" focusColor="DARKORANGE" prefHeight="28.0" prefWidth="435.0" unFocusColor="SEAGREEN" />
+                                    <JFXTextField fx:id="txt_rgCostumer" focusColor="DARKORANGE" layoutY="35.0" prefHeight="28.0" prefWidth="197.0" unFocusColor="SEAGREEN" visible="false" />
+                                    <JFXTextField fx:id="txt_cepCostumer" focusColor="DARKORANGE" layoutY="126.0" prefHeight="28.0" prefWidth="163.0" unFocusColor="SEAGREEN" />
+                                    <JFXTextField fx:id="txt_bairroCostumer" focusColor="DARKORANGE" layoutX="210.0" layoutY="125.0" prefHeight="28.0" prefWidth="227.0" unFocusColor="SEAGREEN" />
+                                    <JFXTextField fx:id="txt_streetCostumer" focusColor="DARKORANGE" layoutY="162.0" prefHeight="28.0" prefWidth="303.0" unFocusColor="SEAGREEN" />
+                                    <JFXTextField fx:id="txt_numberCostumer" focusColor="DARKORANGE" layoutX="364.0" layoutY="162.0" prefHeight="28.0" prefWidth="71.0" unFocusColor="SEAGREEN" />
+                                    <JFXTextField fx:id="txt_phone1Costumer" focusColor="DARKORANGE" layoutY="258.0" prefHeight="28.0" prefWidth="204.0" unFocusColor="SEAGREEN" />
+                                    <JFXTextField fx:id="txt_phone2Costumer" focusColor="DARKORANGE" layoutX="240.0" layoutY="257.0" prefHeight="28.0" prefWidth="192.0" unFocusColor="SEAGREEN" />
+                                    <JFXTextField fx:id="txt_cpfCostumer" focusColor="DARKORANGE" layoutX="239.0" layoutY="36.0" prefHeight="28.0" prefWidth="199.0" unFocusColor="SEAGREEN" visible="false" />
+                                 </children>
+                              </Group>
+                              <Label layoutY="52.0" text="Dados pessoais" />
+                              <Label layoutX="3.0" layoutY="181.0" text="Endereço" />
+                              <Label layoutX="26.0" layoutY="214.0" text="CEP:" />
+                              <Label layoutX="226.0" layoutY="214.0" text="Bairro:" />
+                              <Label layoutX="26.0" layoutY="250.0" text="Rua:" />
+                              <Label layoutX="366.0" layoutY="250.0" text="Número:" />
+                              <Label layoutX="5.0" layoutY="312.0" text="Telefone" />
+                              <Label layoutX="41.0" layoutY="344.0" text="1:" />
+                              <Label layoutX="278.0" layoutY="346.0" text="2:" />
+                              <Label layoutX="263.0" layoutY="124.0" text="CPF:" visible="false" />
+                           </children>
+                        </AnchorPane>
+                        <Label layoutX="769.0" layoutY="79.0" text="Pontuação:" />
+                        <Label fx:id="lbl_pointsCostumer" layoutX="835.0" layoutY="78.0" prefHeight="20.0" prefWidth="52.0" text="0" />
+                        <AnchorPane layoutX="777.0" layoutY="618.0">
+                           <children>
+                              <Group fx:id="group_dataCostumerBtnSaveCancel" disable="true" layoutX="342.0">
+                                 <children>
+                                    <JFXButton fx:id="btn_saveCostumer" layoutX="74.0" text="Salvar" />
+                                    <JFXButton fx:id="btn_cancelCostumer" text="Calcelar" />
+                                 </children>
+                              </Group>
+                              <JFXButton disable="true" text="Excluir" />
+                              <Group fx:id="group_costumerBtnEditNew" layoutX="57.0">
+                                 <children>
+                                    <JFXButton fx:id="btn_editCostumer" text="Editar" />
+                                    <JFXButton fx:id="btn_newCostumer" layoutX="143.0" text="Adicionar" />
+                                 </children>
+                              </Group>
+                           </children>
+                        </AnchorPane>
+                        <Separator layoutX="757.0" layoutY="5.0" orientation="VERTICAL" prefHeight="657.0" prefWidth="6.0" />
+                        <Separator layoutX="767.0" layoutY="600.0" prefHeight="0.0" prefWidth="500.0" />
+                        <Label layoutX="950.0" layoutY="23.0" text="Status:" />
+                        <JFXToggleButton fx:id="tbtn_statusCostumer" layoutX="968.0" layoutY="4.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="123.0" text="Inativo" />
+                        <Separator layoutX="769.0" layoutY="59.0" prefHeight="2.0" prefWidth="502.0" />
                      </children>
                   </AnchorPane>
-              </content>
-            </Tab>
-            <Tab text="Produtos">
-              <content>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
               </content>
             </Tab>
             <Tab closable="false" text="Administração">
               <content>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                         <JFXTabPane fx:id="tablePaneAdm" nodeOrientation="RIGHT_TO_LEFT" prefHeight="665.0" prefWidth="1280.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="18.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                         <JFXTabPane fx:id="tablePaneAdm" nodeOrientation="LEFT_TO_RIGHT" prefHeight="666.0" prefWidth="1280.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                           <tabs>
-                              <Tab closable="false" text="Log">
-                                <content>
-                                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
-                                </content>
-                              </Tab>
-                            <Tab fx:id="salesTab" closable="false" text="Vendas">
-                              <content>
-                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                                       <children>
-                                          <TableView fx:id="tableView" layoutX="14.0" layoutY="14.0" prefHeight="669.0" prefWidth="1258.0" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="14.0">
-                                             <columns>
-                                                <TableColumn fx:id="row1" prefWidth="241.0" text="ID" />
-                                                <TableColumn fx:id="row2" prefWidth="601.0" text="Nome" />
-                                                <TableColumn fx:id="row3" prefWidth="409.0" text="Preço" />
-                                             </columns>
-                                          </TableView>
-                                       </children>
-                                    </AnchorPane>
-                              </content>
-                            </Tab>
-                            <Tab closable="false" text="Usuários">
-                              <content>
-                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
-                              </content>
-                            </Tab>
-                              <Tab closable="false" text="Funcionários">
-                                <content>
-                                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
-                                </content>
-                              </Tab>
-                              <Tab closable="false" text="Fornecedores">
-                                <content>
-                                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
-                                </content>
-                              </Tab>
                             <Tab closable="false" text="Faturamento">
                               <content>
-                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="651.0" prefWidth="1274.0">
+                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="651.0" prefWidth="770.0">
                                        <children>
-                                          <BarChart layoutX="86.0" layoutY="94.0">
+                                          <BarChart fx:id="bar_barChart" layoutX="710.0" layoutY="85.0" prefHeight="440.0" prefWidth="527.0">
                                             <xAxis>
                                               <CategoryAxis side="BOTTOM" />
                                             </xAxis>
@@ -233,9 +296,343 @@
                                               <NumberAxis side="LEFT" />
                                             </yAxis>
                                           </BarChart>
+                                          <PieChart fx:id="pc_pieChart" layoutX="50.0" layoutY="93.0" prefHeight="424.0" prefWidth="590.0" />
+                                          <Label layoutX="112.0" layoutY="28.0" text="Gráfico de Distribuição de vendas">
+                                             <font>
+                                                <Font name="System Bold" size="28.0" />
+                                             </font>
+                                          </Label>
+                                          <Label layoutX="792.0" layoutY="28.0" text="Gráfico de Índice de vendas">
+                                             <font>
+                                                <Font name="System Bold" size="28.0" />
+                                             </font>
+                                          </Label>
+                                          <JFXComboBox fx:id="cbox_scopeBarChart" focusColor="DARKORANGE" layoutX="1097.0" layoutY="542.0" prefHeight="25.0" prefWidth="133.0" unFocusColor="SEAGREEN" />
+                                          <Label layoutX="1040.0" layoutY="546.0" text="Intervalo:" />
+                                          <Separator layoutX="669.0" layoutY="28.0" orientation="VERTICAL" prefHeight="591.0" prefWidth="9.0" />
+                                          <JFXComboBox fx:id="cbox_scopePieChart" focusColor="DARKORANGE" layoutX="507.0" layoutY="542.0" prefHeight="25.0" prefWidth="133.0" unFocusColor="SEAGREEN" />
+                                          <Label layoutX="450.0" layoutY="546.0" text="Intervalo:" />
                                        </children></AnchorPane>
                               </content>
                             </Tab>
+                            <Tab fx:id="salesTab" closable="false" text="Vendas">
+                              <content>
+                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                       <children>
+                                          <TableView fx:id="tViewSale" layoutX="14.0" layoutY="58.0" prefHeight="559.0" prefWidth="1252.0" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="58.0">
+                                             <columns>
+                                                <TableColumn fx:id="columnSaleID" prefWidth="165.0" text="ID" />
+                                                <TableColumn fx:id="columnSaleCostumer" prefWidth="367.0" text="Cliente" />
+                                                <TableColumn fx:id="columnSalePrice" prefWidth="342.0" text="Preço" />
+                                                <TableColumn fx:id="columnSaleCostumer" prefWidth="452.0" text="Data" />
+                                             </columns>
+                                          </TableView>
+                                          <JFXComboBox fx:id="cbox_typeSearchSale" focusColor="DARKORANGE" layoutX="14.0" layoutY="19.0" prefHeight="25.0" prefWidth="99.0" unFocusColor="SEAGREEN" AnchorPane.leftAnchor="15.0" />
+                                          <JFXTextField fx:id="txt_searchSale" focusColor="DARKORANGE" layoutX="122.0" layoutY="17.0" prefHeight="28.0" prefWidth="410.0" unFocusColor="SEAGREEN" AnchorPane.leftAnchor="122.0" />
+                                          <JFXButton fx:id="btn_searchSale" layoutX="539.0" layoutY="14.0" mnemonicParsing="false" text="Pesquisar" AnchorPane.leftAnchor="539.0" />
+                                          <JFXButton fx:id="btn_showSaleDetail" layoutX="1072.0" layoutY="13.0" mnemonicParsing="false" text="Ver Detalhes da Venda" AnchorPane.rightAnchor="70.0" />
+                                          <Separator layoutX="615.0" layoutY="7.0" orientation="VERTICAL" prefHeight="46.0" prefWidth="6.0" AnchorPane.leftAnchor="615.0" />
+                                          <AnchorPane layoutX="640.0" layoutY="13.0" AnchorPane.leftAnchor="640.0">
+                                             <children>
+                                                <JFXDatePicker fx:id="datePicker_sale" layoutX="43.0" prefHeight="33.0" prefWidth="236.0" />
+                                                <JFXButton fx:id="btn_filterSale" layoutX="293.0" text="Filtrar" />
+                                                <Label layoutY="8.0" text="Data:" />
+                                             </children>
+                                          </AnchorPane>
+                                          <Separator layoutX="1006.0" layoutY="9.0" orientation="VERTICAL" prefHeight="46.0" prefWidth="6.0" AnchorPane.leftAnchor="1006.0" />
+                                       </children>
+                                    </AnchorPane>
+                              </content>
+                            </Tab>
+                              <Tab closable="false" text="Fornecedores">
+                                <content>
+                                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                       <children>
+                                          <TableView fx:id="tview_supplier" layoutX="7.0" layoutY="38.0" prefHeight="587.0" prefWidth="713.0">
+                                             <columns>
+                                                <TableColumn fx:id="columnSupplierName" prefWidth="290.0" text="Nome" />
+                                                <TableColumn fx:id="columnSupplierPhone1" minWidth="0.0" prefWidth="107.0" text="Telefone 1" />
+                                                <TableColumn fx:id="columnSupplierPhone2" prefWidth="97.0" text="Telefone 2" />
+                                                <TableColumn fx:id="columnSupplierCep" prefWidth="110.0" text="CEP" />
+                                                <TableColumn fx:id="columnSupplierCnpj" prefWidth="108.0" text="CNPJ" />
+                                             </columns>
+                                          </TableView>
+                                          <AnchorPane layoutX="4.0" layoutY="1.0">
+                                             <children>
+                                                <JFXComboBox fx:id="cbox_typeSearchSupplier" focusColor="DARKORANGE" layoutY="5.0" prefHeight="25.0" prefWidth="99.0" unFocusColor="SEAGREEN" />
+                                                <JFXTextField fx:id="txt_searchSupplier" focusColor="DARKORANGE" layoutX="108.0" layoutY="3.0" prefHeight="28.0" prefWidth="532.0" unFocusColor="SEAGREEN" />
+                                                <JFXButton fx:id="btn_searchSupplier" layoutX="646.0" mnemonicParsing="false" text="Pesquisar" />
+                                             </children>
+                                          </AnchorPane>
+                                          <AnchorPane layoutX="755.0" layoutY="94.0">
+                                             <children>
+                                                <Label layoutX="10.0" layoutY="86.0" text="Nome:" />
+                                                <Label layoutX="13.0" layoutY="123.0" text="CNPJ:" />
+                                                <Group fx:id="group_dataSupplier" disable="true" layoutX="54.0" layoutY="82.0">
+                                                   <children>
+                                                      <JFXTextField fx:id="txt_nameSupplier" focusColor="DARKORANGE" prefHeight="28.0" prefWidth="435.0" unFocusColor="SEAGREEN" />
+                                                      <JFXTextField fx:id="txt_cnpjSupplier" focusColor="DARKORANGE" layoutY="35.0" prefHeight="28.0" prefWidth="197.0" unFocusColor="SEAGREEN" />
+                                                      <JFXTextField fx:id="txt_cepSupplier" focusColor="DARKORANGE" layoutY="126.0" prefHeight="28.0" prefWidth="163.0" unFocusColor="SEAGREEN" />
+                                                      <JFXTextField fx:id="txt_bairroSupplier" focusColor="DARKORANGE" layoutX="210.0" layoutY="125.0" prefHeight="28.0" prefWidth="227.0" unFocusColor="SEAGREEN" />
+                                                      <JFXTextField fx:id="txt_streetSupplier" focusColor="DARKORANGE" layoutY="162.0" prefHeight="28.0" prefWidth="303.0" unFocusColor="SEAGREEN" />
+                                                      <JFXTextField fx:id="txt_numberSupplier" focusColor="DARKORANGE" layoutX="364.0" layoutY="162.0" prefHeight="28.0" prefWidth="71.0" unFocusColor="SEAGREEN" />
+                                                      <JFXTextField fx:id="txt_phone1Supplier" focusColor="DARKORANGE" layoutY="258.0" prefHeight="28.0" prefWidth="204.0" unFocusColor="SEAGREEN" />
+                                                      <JFXTextField fx:id="txt_phone2Supplier" focusColor="DARKORANGE" layoutX="240.0" layoutY="257.0" prefHeight="28.0" prefWidth="192.0" unFocusColor="SEAGREEN" />
+                                                   </children>
+                                                </Group>
+                                                <Label layoutY="52.0" text="Dados pessoais" />
+                                                <Label layoutX="3.0" layoutY="181.0" text="Endereço" />
+                                                <Label layoutX="26.0" layoutY="214.0" text="CEP:" />
+                                                <Label layoutX="226.0" layoutY="214.0" text="Bairro:" />
+                                                <Label layoutX="26.0" layoutY="250.0" text="Rua:" />
+                                                <Label layoutX="366.0" layoutY="250.0" text="Número:" />
+                                                <Label layoutX="5.0" layoutY="312.0" text="Telefone" />
+                                                <Label layoutX="41.0" layoutY="344.0" text="1:" />
+                                                <Label layoutX="278.0" layoutY="346.0" text="2:" />
+                                             </children>
+                                          </AnchorPane>
+                                          <AnchorPane layoutX="777.0" layoutY="576.0">
+                                             <children>
+                                                <Group fx:id="group_supplierBtnSaveCancel" disable="true" layoutX="342.0">
+                                                   <children>
+                                                      <JFXButton fx:id="btn_saveSupplier" layoutX="74.0" text="Salvar" />
+                                                      <JFXButton fx:id="btn_cancelSupplier" text="Calcelar" />
+                                                   </children>
+                                                </Group>
+                                                <JFXButton disable="true" text="Excluir" />
+                                                <Group fx:id="group_supplierBtnEditNew" layoutX="57.0">
+                                                   <children>
+                                                      <JFXButton fx:id="btn_editSupplier" text="Editar" />
+                                                      <JFXButton fx:id="btn_newSupplier" layoutX="143.0" text="Adicionar" />
+                                                   </children>
+                                                </Group>
+                                             </children>
+                                          </AnchorPane>
+                                          <Separator layoutX="738.0" layoutY="6.0" orientation="VERTICAL" prefHeight="620.0" prefWidth="7.0" />
+                                          <Separator layoutX="749.0" layoutY="84.0" prefHeight="10.0" prefWidth="525.0" />
+                                          <Label layoutX="942.0" layoutY="37.0" text="Status:" />
+                                          <JFXToggleButton fx:id="tbtn_statusSupplier" layoutX="960.0" layoutY="18.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="123.0" text="Inativo" />
+                                          <Separator layoutX="755.0" layoutY="564.0" prefHeight="10.0" prefWidth="519.0" />
+                                       </children></AnchorPane>
+                                </content>
+                              </Tab>
+                              <Tab closable="false" text="Funcionários/Usuários">
+                                <content>
+                                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                       <children>
+                                          <TableView fx:id="tview_func" layoutX="7.0" layoutY="48.0" prefHeight="197.0" prefWidth="708.0">
+                                             <columns>
+                                                <TableColumn fx:id="columnEmployeeName" prefWidth="290.0" text="Nome" />
+                                                <TableColumn fx:id="columnEmployeePhone1" minWidth="0.0" prefWidth="107.0" text="Telefone 1" />
+                                                <TableColumn fx:id="columnEmployeePhone2" prefWidth="97.0" text="Telefone 2" />
+                                                <TableColumn fx:id="columnEmployeeRole" prefWidth="110.0" text="Função" />
+                                                <TableColumn fx:id="columnEmployeeStatus" prefWidth="105.0" text="Status" />
+                                             </columns>
+                                          </TableView>
+                                          <AnchorPane layoutX="7.0" layoutY="6.0">
+                                             <children>
+                                                <JFXComboBox fx:id="cbox_typeSearchEmployee" focusColor="DARKORANGE" layoutY="5.0" prefHeight="25.0" prefWidth="99.0" unFocusColor="SEAGREEN" />
+                                                <JFXTextField fx:id="txt_searchEmployee" focusColor="DARKORANGE" layoutX="108.0" layoutY="3.0" prefHeight="28.0" prefWidth="532.0" unFocusColor="SEAGREEN" />
+                                                <JFXButton fx:id="btn_searchEmployee" layoutX="646.0" mnemonicParsing="false" text="Pesquisar" />
+                                             </children>
+                                          </AnchorPane>
+                                          <Label layoutX="24.0" layoutY="308.0" text="Nome:" />
+                                          <Label layoutX="20.0" layoutY="345.0" text="Função:" />
+                                          <Group fx:id="group_dataFunc" disable="true" layoutX="68.0" layoutY="304.0">
+                                             <children>
+                                                <JFXTextField fx:id="txt_nameEmployee" focusColor="DARKORANGE" prefHeight="28.0" prefWidth="435.0" unFocusColor="SEAGREEN" />
+                                                <JFXTextField fx:id="txt_roleEmployee" focusColor="DARKORANGE" layoutY="35.0" prefHeight="28.0" prefWidth="197.0" unFocusColor="SEAGREEN" />
+                                                <JFXTextField fx:id="txt_cepEmployee" focusColor="DARKORANGE" layoutY="126.0" prefHeight="28.0" prefWidth="163.0" unFocusColor="SEAGREEN" />
+                                                <JFXTextField fx:id="txt_bairroEmployee" focusColor="DARKORANGE" layoutX="210.0" layoutY="125.0" prefHeight="28.0" prefWidth="227.0" unFocusColor="SEAGREEN" />
+                                                <JFXTextField fx:id="txt_streetEmployee" focusColor="DARKORANGE" layoutY="162.0" prefHeight="28.0" prefWidth="303.0" unFocusColor="SEAGREEN" />
+                                                <JFXTextField fx:id="txt_numberEmployee" focusColor="DARKORANGE" layoutX="364.0" layoutY="162.0" prefHeight="28.0" prefWidth="71.0" unFocusColor="SEAGREEN" />
+                                                <JFXTextField fx:id="txt_phone1Employee" focusColor="DARKORANGE" layoutY="258.0" prefHeight="28.0" prefWidth="204.0" unFocusColor="SEAGREEN" />
+                                                <JFXTextField fx:id="txt_phone2Employee" focusColor="DARKORANGE" layoutX="246.0" layoutY="260.0" prefHeight="28.0" prefWidth="192.0" unFocusColor="SEAGREEN" />
+                                                <JFXTextField fx:id="txt_cpfCostumer1" focusColor="DARKORANGE" layoutX="248.0" layoutY="35.0" prefHeight="28.0" prefWidth="187.0" unFocusColor="SEAGREEN" />
+                                                <JFXTextField fx:id="txt_cpfCostumer11" focusColor="DARKORANGE" layoutY="63.0" prefHeight="28.0" prefWidth="196.0" unFocusColor="SEAGREEN" />
+                                             </children>
+                                          </Group>
+                                          <Label layoutX="287.0" layoutY="345.0" text="CPF:" />
+                                          <Group fx:id="group_dataFunc_btn" disable="true" layoutX="548.0" layoutY="582.0">
+                                             <children>
+                                                <JFXButton fx:id="btn_saveEmployee" layoutX="100.0" text="Salvar" />
+                                                <JFXButton fx:id="btn_cancelEmployee" text="Calcelar" />
+                                             </children>
+                                          </Group>
+                                          <Label layoutX="14.0" layoutY="274.0" text="Dados pessoais" />
+                                          <Label layoutX="17.0" layoutY="403.0" text="Endereço" />
+                                          <Label layoutX="40.0" layoutY="436.0" text="CEP:" />
+                                          <Label layoutX="240.0" layoutY="436.0" text="Bairro:" />
+                                          <Label layoutX="40.0" layoutY="472.0" text="Rua:" />
+                                          <Label layoutX="380.0" layoutY="472.0" text="Número:" />
+                                          <Label layoutX="19.0" layoutY="534.0" text="Telefone" />
+                                          <Label layoutX="55.0" layoutY="566.0" text="1:" />
+                                          <Label layoutX="292.0" layoutY="568.0" text="2:" />
+                                          <Separator layoutX="7.0" layoutY="253.0" prefHeight="1.0" prefWidth="716.0" />
+                                          <Separator layoutX="532.0" layoutY="256.0" orientation="VERTICAL" prefHeight="371.0" prefWidth="8.0" />
+                                          <Label layoutX="562.0" layoutY="280.0" text="Status:" />
+                                          <JFXToggleButton fx:id="select_typeStatusFunc" layoutX="580.0" layoutY="260.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="123.0" text="Inativo" />
+                                          <Separator layoutX="724.0" layoutY="14.0" orientation="VERTICAL" prefHeight="614.0" prefWidth="10.0" />
+                                          <Separator layoutX="540.0" layoutY="320.0" prefHeight="3.0" prefWidth="183.0" />
+                                          <AnchorPane layoutX="760.0" layoutY="257.0" />
+                                          <Group fx:id="group_editAddFunc" layoutX="486.0" layoutY="263.0">
+                                             <children>
+                                                <Hyperlink fx:id="btn_editEmployee" text="Editar" />
+                                                <JFXButton fx:id="btn_addEmployee" layoutX="76.0" layoutY="261.0" text="Cadastrar Funcionário" />
+                                             </children>
+                                          </Group>
+                                          <Separator layoutX="540.0" layoutY="572.0" prefHeight="4.0" prefWidth="182.0" />
+                                          <JFXToggleButton fx:id="select_loginStatus" layoutX="588.0" layoutY="324.0" mnemonicParsing="false" prefHeight="56.0" prefWidth="136.0" text="Desabilitado" />
+                                          <Label layoutX="563.0" layoutY="343.0" text="Login:" />
+                                          <Separator layoutX="540.0" layoutY="377.0" prefHeight="4.0" prefWidth="182.0" />
+                                          <Separator layoutX="542.0" layoutY="510.0" prefHeight="4.0" prefWidth="182.0" />
+                                          <TitledPane fx:id="tp_login" animated="false" layoutX="854.0" layoutY="24.0" prefHeight="167.0" prefWidth="314.0" text="Login">
+                                            <content>
+                                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="137.0" prefWidth="312.0">
+                                                   <children>
+                                                      <Label layoutX="25.0" layoutY="15.0" text="Usuário:" />
+                                                      <Label layoutX="29.0" layoutY="61.0" text="Senha:" />
+                                                      <Label layoutX="32.0" layoutY="103.0" text="Nível:" />
+                                                      <Group fx:id="group_dataUser" disable="true" layoutX="72.0" layoutY="-2.0">
+                                                         <children>
+                                                            <JFXTextField fx:id="txt_userLogin" focusColor="DARKORANGE" layoutY="12.0" prefHeight="28.0" prefWidth="132.0" unFocusColor="SEAGREEN" />
+                                                            <JFXComboBox fx:id="cbox_typeLevelLogin" focusColor="DARKORANGE" layoutY="101.0" prefHeight="25.0" prefWidth="134.0" unFocusColor="SEAGREEN" />
+                                                            <JFXButton fx:id="btn_saveLogin" layoutX="170.0" text="Salvar" />
+                                                            <JFXButton fx:id="btn_cancelLogin" layoutX="164.0" layoutY="105.0" text="Calcelar" />
+                                                            <JFXPasswordField fx:id="txt_passLogin" focusColor="DARKORANGE" layoutX="-1.0" layoutY="59.0" unFocusColor="SEAGREEN" />
+                                                         </children>
+                                                      </Group>
+                                                      <Separator layoutX="226.0" layoutY="3.0" orientation="VERTICAL" prefHeight="135.0" prefWidth="5.0" />
+                                                      <Group fx:id="group_dataUserBtnEditarCriar" layoutX="244.0" layoutY="32.0">
+                                                         <children>
+                                                            <JFXButton fx:id="btn_editarLogin" disable="true" text="Editar" />
+                                                            <JFXButton fx:id="btn_criarLogin" layoutY="35.0" text="Criar" />
+                                                         </children>
+                                                      </Group>
+                                                   </children>
+                                                </AnchorPane>
+                                            </content>
+                                          </TitledPane>
+                                          <Hyperlink fx:id="btn_manageUsers" layoutX="937.0" layoutY="588.0" text="Gerenciar Usuários (Login)" />
+                                          <Label layoutX="40.0" layoutY="379.0" text="RG:" />
+                                       </children></AnchorPane>
+                                </content>
+                              </Tab>
+                              <Tab text="Produtos">
+                                <content>
+                                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                       <children>
+                                          <TableView fx:id="tview_product" layoutX="4.0" layoutY="51.0" prefHeight="574.0" prefWidth="713.0" AnchorPane.bottomAnchor="6.0" AnchorPane.leftAnchor="4.0" AnchorPane.topAnchor="51.0">
+                                             <columns>
+                                                <TableColumn fx:id="columnProductName" prefWidth="290.0" text="Nome" />
+                                                <TableColumn fx:id="columnProductFinalPrice" minWidth="0.0" prefWidth="107.0" text="Preço Final" />
+                                                <TableColumn fx:id="columnProductWeight" prefWidth="97.0" text="Peso" />
+                                                <TableColumn fx:id="columnProductType" prefWidth="110.0" text="Categoria" />
+                                                <TableColumn fx:id="columnProductStatus" prefWidth="108.0" text="Status" />
+                                             </columns>
+                                          </TableView>
+                                          <AnchorPane layoutX="4.0" layoutY="8.0" AnchorPane.leftAnchor="4.0" AnchorPane.topAnchor="8.0">
+                                             <children>
+                                                <JFXComboBox fx:id="cbox_typeSearchProduct" focusColor="DARKORANGE" layoutY="5.0" prefHeight="25.0" prefWidth="99.0" unFocusColor="SEAGREEN" />
+                                                <JFXTextField fx:id="txt_searchProduct" focusColor="DARKORANGE" layoutX="108.0" layoutY="3.0" prefHeight="28.0" prefWidth="532.0" unFocusColor="SEAGREEN" />
+                                                <JFXButton fx:id="btn_searchProduct" layoutX="646.0" mnemonicParsing="false" text="Pesquisar" />
+                                             </children>
+                                          </AnchorPane>
+                                          <AnchorPane layoutX="735.0" layoutY="15.0" AnchorPane.leftAnchor="735.0">
+                                             <children>
+                                                <Label layoutX="217.0" layoutY="67.0" text="Nome:" />
+                                                <Label layoutX="217.0" layoutY="103.0" text="Preço Final:" />
+                                                <Group fx:id="group_dataProduct" disable="true" layoutX="258.0" layoutY="61.0">
+                                                   <children>
+                                                      <JFXTextField fx:id="txt_nameProduct" focusColor="DARKORANGE" prefHeight="28.0" prefWidth="262.0" unFocusColor="SEAGREEN" />
+                                                      <JFXTextField fx:id="txt_finalPriceProduct" focusColor="DARKORANGE" layoutX="28.0" layoutY="36.0" prefHeight="28.0" prefWidth="106.0" unFocusColor="SEAGREEN" />
+                                                      <JFXTextField fx:id="txt_weightProduct" focusColor="DARKORANGE" layoutX="187.0" layoutY="37.0" prefHeight="28.0" prefWidth="72.0" unFocusColor="SEAGREEN" />
+                                                      <JFXComboBox fx:id="cbox_categoryProduct" focusColor="DARKORANGE" layoutX="19.0" layoutY="90.0" prefHeight="25.0" prefWidth="122.0" unFocusColor="SEAGREEN" />
+                                                   </children>
+                                                </Group>
+                                                <Label layoutX="411.0" layoutY="103.0" text="Peso:" />
+                                                <Label layoutX="308.0" layoutY="19.0" text="Status:" />
+                                                <JFXToggleButton fx:id="tbtn_statusProduct" layoutX="326.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="123.0" text="Inativo" />
+                                                <TitledPane animated="false" collapsible="false" text="Imagem">
+                                                  <content>
+                                                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                                         <children>
+                                                            <ImageView fx:id="imageview_product" fitHeight="144.0" fitWidth="154.0" layoutX="28.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
+                                                               <image>
+                                                                  <Image url="@../img/no-image.jpg" />
+                                                               </image>
+                                                            </ImageView>
+                                                            <Hyperlink fx:id="btn_alterImageProduct" layoutX="34.0" layoutY="155.0" text="Alterar" />
+                                                            <Hyperlink fx:id="btn_removeImageProduct" layoutX="114.0" layoutY="155.0" text="Remover" />
+                                                         </children>
+                                                      </AnchorPane>
+                                                  </content>
+                                                </TitledPane>
+                                                <Label layoutX="217.0" layoutY="155.0" text="Categoria:" />
+                                                <Hyperlink fx:id="btn_editProductType" layoutX="406.0" layoutY="152.0" text="Editar" />
+                                             </children>
+                                          </AnchorPane>
+                                          <Label layoutX="739.0" layoutY="244.0" text="Ingredientes:" />
+                                          <AnchorPane layoutX="772.0" layoutY="570.0" AnchorPane.bottomAnchor="26.0" AnchorPane.leftAnchor="772.0" AnchorPane.rightAnchor="37.0">
+                                             <children>
+                                                <Group fx:id="group_cancelSaveProduct" disable="true" layoutX="342.0">
+                                                   <children>
+                                                      <JFXButton fx:id="btn_saveProduct" layoutX="74.0" text="Salvar" />
+                                                      <JFXButton fx:id="btn_cancelProduct" text="Calcelar" />
+                                                   </children>
+                                                </Group>
+                                                <Group fx:id="group_editAddProduct">
+                                                   <children>
+                                                      <JFXButton disable="true" text="Excluir" />
+                                                      <JFXButton fx:id="btn_editProduct" layoutX="57.0" text="Editar" />
+                                                      <JFXButton fx:id="btn_addProduct" layoutX="200.0" text="Adicionar" />
+                                                   </children>
+                                                </Group>
+                                             </children>
+                                          </AnchorPane>
+                                          <TableView fx:id="tview_productIngredient" layoutX="739.0" layoutY="277.0" prefHeight="252.0" prefWidth="432.0" AnchorPane.bottomAnchor="102.0" AnchorPane.leftAnchor="739.0" AnchorPane.topAnchor="277.0">
+                                             <columns>
+                                                <TableColumn fx:id="columnIngredientName" prefWidth="245.0" text="Nome" />
+                                                <TableColumn fx:id="columnIngredientPrice" prefWidth="113.0" text="Preço" />
+                                                <TableColumn fx:id="columnIngredientStatus" prefWidth="73.0" text="Status" />
+                                             </columns>
+                                          </TableView>
+                                          <Separator layoutX="724.0" layoutY="8.0" orientation="VERTICAL" prefHeight="615.0" prefWidth="6.0" AnchorPane.bottomAnchor="8.0" AnchorPane.leftAnchor="724.0" AnchorPane.topAnchor="8.0" />
+                                          <Separator layoutX="729.0" layoutY="233.0" prefHeight="3.0" prefWidth="548.0" AnchorPane.leftAnchor="729.0" AnchorPane.rightAnchor="3.0" />
+                                          <Hyperlink fx:id="btn_editIngredients" layoutX="817.0" layoutY="241.0" text="Editar" />
+                                          <Group fx:id="group_addDropIngredients" disable="true" layoutX="1181.0" layoutY="351.0">
+                                             <children>
+                                                <JFXButton fx:id="btn_listIngredients" text="Adicionar" />
+                                                <JFXButton fx:id="btn_dropIngredients" layoutY="63.0" text="Remover" />
+                                             </children>
+                                          </Group>
+                                          <Separator layoutX="729.0" layoutY="546.0" prefHeight="3.0" prefWidth="548.0" AnchorPane.bottomAnchor="82.0" AnchorPane.leftAnchor="729.0" AnchorPane.rightAnchor="3.0" />
+                                       </children>
+                                    </AnchorPane>
+                                </content>
+                              </Tab>
+                              <Tab closable="false" text="Log">
+                                <content>
+                                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                       <children>
+                                          <TableView fx:id="tview_log" layoutX="14.0" layoutY="64.0" prefHeight="553.0" prefWidth="552.0" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="64.0">
+                                             <columns>
+                                                <TableColumn fx:id="row11" prefWidth="135.0" text="Data" />
+                                                <TableColumn fx:id="row21" prefWidth="250.0" text="Ação" />
+                                                <TableColumn fx:id="row31" prefWidth="166.0" text="Usuário" />
+                                             </columns>
+                                          </TableView>
+                                          <AnchorPane layoutX="91.0" layoutY="21.0" AnchorPane.leftAnchor="91.0" AnchorPane.rightAnchor="845.0">
+                                             <children>
+                                                <JFXDatePicker fx:id="datePicker_log" layoutX="43.0" prefHeight="33.0" prefWidth="236.0" />
+                                                <JFXButton fx:id="btn_filterLog" layoutX="293.0" text="Filtrar" />
+                                                <Label layoutY="8.0" text="Data:" />
+                                             </children>
+                                          </AnchorPane>
+                                          <Separator layoutX="584.0" layoutY="14.0" orientation="VERTICAL" prefHeight="612.0" prefWidth="6.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="584.0" AnchorPane.topAnchor="14.0" />
+                                       </children></AnchorPane>
+                                </content>
+                              </Tab>
                           </tabs>
                         </JFXTabPane>
                      </children>
@@ -251,4 +648,7 @@
             <Label fx:id="label_user" alignment="CENTER" contentDisplay="CENTER" layoutX="620.0" layoutY="2.0" text="User" textFill="WHITE" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
          </children></AnchorPane>
    </children>
+   <rotationAxis>
+      <Point3D />
+   </rotationAxis>
 </AnchorPane>

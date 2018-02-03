@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="435.0" prefWidth="658.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.dashboard.HistoricCostumerController">
+   <children>
+      <TableView fx:id="tview_salesHistoric" focusTraversable="false" layoutX="12.0" layoutY="14.0" prefHeight="379.0" prefWidth="346.0">
+         <columns>
+            <TableColumn prefWidth="72.0" text="ID" />
+            <TableColumn prefWidth="141.0" text="Data" />
+            <TableColumn minWidth="0.0" prefWidth="131.0" text="Valor" />
+         </columns>
+      </TableView>
+      <JFXButton fx:id="btn_closeHistoric" focusTraversable="false" layoutX="593.0" layoutY="398.0" prefHeight="33.0" prefWidth="51.0" text="Fechar" />
+      <Separator layoutX="7.0" layoutY="398.0" prefHeight="1.0" prefWidth="638.0" />
+      <TableView fx:id="tview_productsHistoric" focusTraversable="false" layoutX="369.0" layoutY="14.0" prefHeight="379.0" prefWidth="275.0">
+         <columns>
+            <TableColumn prefWidth="155.0" text="Produto" />
+            <TableColumn minWidth="0.0" prefWidth="119.0" text="Preço" />
+         </columns>
+      </TableView>
+      <Label layoutX="14.0" layoutY="406.0" text="Cliente:" />
+      <Label fx:id="lbl_nameCostumerHistoric" layoutX="60.0" layoutY="406.0" text="#nomedocliente" />
+   </children>
+</AnchorPane>

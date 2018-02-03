@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="384.0" prefWidth="270.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.dashboard.ListIngredientsController">
+   <children>
+      <TableView fx:id="tview_ingredient" focusTraversable="false" layoutX="15.0" layoutY="51.0" prefHeight="295.0" prefWidth="240.0">
+         <columns>
+            <TableColumn fx:id="columnIngredientName" prefWidth="239.0" text="Nome" />
+         </columns>
+      </TableView>
+      <AnchorPane layoutX="20.0" layoutY="428.0" />
+      <Separator layoutX="7.0" layoutY="351.0" prefHeight="0.0" prefWidth="256.0" />
+      <JFXTextField fx:id="txt_searchIngredient" focusColor="DARKORANGE" focusTraversable="false" layoutX="13.0" layoutY="14.0" prefHeight="28.0" prefWidth="168.0" unFocusColor="SEAGREEN" />
+      <JFXButton fx:id="btn_searchIngredient" focusTraversable="false" layoutX="190.0" layoutY="16.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="67.0" text="Pesquisar" />
+      <JFXButton fx:id="btn_newIngredient" focusTraversable="false" layoutX="184.0" layoutY="353.0" prefHeight="28.0" prefWidth="79.0" text="Adicionar" />
+      <JFXButton fx:id="btn_backIngredient" focusTraversable="false" layoutX="7.0" layoutY="353.0" prefHeight="28.0" prefWidth="59.0" text="Voltar" />
+   </children>
+</AnchorPane>

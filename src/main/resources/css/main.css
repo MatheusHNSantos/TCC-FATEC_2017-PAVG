@@ -1,6 +1,6 @@
 .button, .btn {
-    -fx-font-size: 12px;
-    -fx-font-family: "Arial";
+    /*-fx-font-size: 12px;*/
+    /*-fx-font-family: "Arial";*/
     -fx-padding: 10px;
     -fx-border-radius: 1px;
     -fx-background-radius: 1px;

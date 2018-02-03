@@ -26,7 +26,7 @@ public abstract class ConnectionFactory{
      * @DATABASE
      * Deve ser o nome do banco de dados
      */
-    private static final String DATABASE = "apetitoso";
+    private static final String DATABASE = "apetitoso2";
 
 
     /**
